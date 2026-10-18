@@ -127,6 +127,9 @@ var StudioCore = (function () {
         var copy = opt.cloneNode(true);
         var lets = copy.querySelectorAll('.let');
         for (var x = 0; x < lets.length; x++) lets[x].parentNode.removeChild(lets[x]);
+        // The page puts each option in its own <span>: keep only what is inside it
+        var ownText = [].some.call(copy.childNodes, function (n) { return n.nodeType === 3 && n.nodeValue.trim(); });
+        if (copy.children.length === 1 && !ownText && copy.children[0].tagName.toLowerCase() === 'span' && !copy.children[0].attributes.length) copy = copy.children[0];
         q.optionsHtml.push(sanitize(copy.innerHTML));
         if (inputs[k].hasAttribute('data-c')) { marked++; correct = q.optionsHtml.length - 1; }
       }

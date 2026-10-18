@@ -10,7 +10,7 @@ public final class SettingsDialog extends JDialog {
         super(owner, "Settings", true);
         JPanel root = new JPanel(new BorderLayout());
         root.setBackground(Theme.CREAM);
-        root.add(Theme.header("⚙  Settings", "Saved only on this PC, encrypted for your Windows account"), BorderLayout.NORTH);
+        root.add(Theme.header("settings", "Settings","Saved only on this PC, encrypted for your Windows account"), BorderLayout.NORTH);
 
         JPanel card = Theme.card();
         card.setLayout(new GridBagLayout());

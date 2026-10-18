@@ -52,7 +52,7 @@ public final class ImportDialog extends JDialog {
         this.docs = repo.resolve("docs");
         JPanel root = new JPanel(new BorderLayout());
         root.setBackground(Theme.CREAM);
-        root.add(Theme.header("📥  Import a test", "HTML files you downloaded from Claude into docs\\GradeN – English or Arabic"), BorderLayout.NORTH);
+        root.add(Theme.header("import", "Import a test","HTML files you downloaded from Claude into docs\\GradeN – English or Arabic"), BorderLayout.NORTH);
 
         JPanel body = new JPanel(new BorderLayout(0, 12));
         body.setOpaque(false);
@@ -60,10 +60,10 @@ public final class ImportDialog extends JDialog {
 
         JPanel tools = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 0));
         tools.setOpaque(false);
-        JButton refresh = Theme.softButton("↻  Look again");
-        JButton openFolder = Theme.softButton("📂  Open grade folders");
-        JButton browse = Theme.primaryButton("📄  Browse for a file…");
-        JButton prompt = Theme.softButton("📋  Copy the request for Claude");
+        JButton refresh = Theme.softButton("Look again", "refresh");
+        JButton openFolder = Theme.softButton("Open grade folders", "folder");
+        JButton browse = Theme.primaryButton("Browse for a file…", "file");
+        JButton prompt = Theme.softButton("Copy the request for Claude", "clipboard");
         refresh.addActionListener(e -> scan());
         openFolder.addActionListener(e -> { try { Desktop.getDesktop().open(docs.toFile()); } catch (Exception ignored) {} });
         browse.addActionListener(e -> browse());
@@ -85,11 +85,10 @@ public final class ImportDialog extends JDialog {
         table.setFillsViewportHeight(true);
         table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override public Component getTableCellRendererComponent(JTable t, Object v, boolean sel, boolean focus, int r, int c) {
-                Component comp = super.getTableCellRendererComponent(t, v, sel, focus, r, c);
-                if (!sel) {
-                    TestImporter.Kind k = rows.get(r).kind();
-                    comp.setForeground(k == TestImporter.Kind.NEW ? Theme.COFFEE : Theme.GREY);
-                }
+                JLabel comp = (JLabel) super.getTableCellRendererComponent(t, v, sel, focus, r, c);
+                TestImporter.Kind k = rows.get(r).kind();
+                if (!sel) comp.setForeground(k == TestImporter.Kind.NEW ? Theme.COFFEE : Theme.GREY);
+                comp.setIcon(c != 4 ? null : Icons.get(switch (k) { case NEW -> "import"; case PUBLISHED -> "ok"; case UNKNOWN -> "idle"; }, 18));
                 return comp;
             }
         });
@@ -277,9 +276,9 @@ public final class ImportDialog extends JDialog {
                 case 2 -> row.lang();
                 case 3 -> row.questions() > 0 ? String.valueOf(row.questions()) : "";
                 default -> switch (row.kind()) {
-                    case NEW -> "🆕 New – ready to import";
-                    case PUBLISHED -> "✔ Published";
-                    case UNKNOWN -> "– Not a test from Claude";
+                    case NEW -> "New – ready to import";
+                    case PUBLISHED -> "Published";
+                    case UNKNOWN -> "Not a test from Claude";
                 };
             };
         }

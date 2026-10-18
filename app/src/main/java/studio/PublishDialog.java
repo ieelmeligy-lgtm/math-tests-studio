@@ -25,8 +25,8 @@ public final class PublishDialog extends JDialog {
     private final JLabel[] icons = new JLabel[STEPS.length];
     private final JLabel[] details = new JLabel[STEPS.length];
     private final JButton close = Theme.primaryButton("Close");
-    private final JButton open = Theme.softButton("🌐  Open the live test");
-    private final JButton copy = Theme.softButton("📋  Copy answer key");
+    private final JButton open = Theme.softButton("Open the live test", "globe");
+    private final JButton copy = Theme.softButton("Copy answer key", "clipboard");
     private final JLabel result = new JLabel(" ");
     private String liveUrl;
 
@@ -36,7 +36,7 @@ public final class PublishDialog extends JDialog {
         String grade = test.grade();
         JPanel root = new JPanel(new BorderLayout());
         root.setBackground(Theme.CREAM);
-        root.add(Theme.header("🚀  Publish & deploy", title + " · Grade " + grade), BorderLayout.NORTH);
+        root.add(Theme.header("publish", "Publish & deploy",title + " · Grade " + grade), BorderLayout.NORTH);
 
         JPanel card = Theme.card();
         card.setLayout(new GridBagLayout());
@@ -44,9 +44,7 @@ public final class PublishDialog extends JDialog {
         c.anchor = GridBagConstraints.WEST;
         c.insets = new Insets(5, 4, 5, 10);
         for (int i = 0; i < STEPS.length; i++) {
-            icons[i] = new JLabel("○");
-            icons[i].setFont(Theme.font(Font.BOLD, 20f));
-            icons[i].setForeground(Theme.GREY);
+            icons[i] = new JLabel(Icons.get("idle", 26));
             JLabel t = new JLabel(STEPS[i]);
             t.setFont(Theme.font(Font.BOLD, 14f));
             t.setForeground(Theme.COFFEE);
@@ -183,8 +181,7 @@ public final class PublishDialog extends JDialog {
                 for (Object[] ch : chunks) {
                     int i = (Integer) ch[0];
                     String st = (String) ch[1];
-                    icons[i].setText(switch (st) { case "ok" -> "✔"; case "fail" -> "✖"; default -> "⏳"; });
-                    icons[i].setForeground(switch (st) { case "ok" -> Theme.GREEN; case "fail" -> Theme.RED; default -> Theme.GOLD; });
+                    icons[i].setIcon(Icons.get(switch (st) { case "ok" -> "ok"; case "fail" -> "fail"; default -> "busy"; }, 26));
                     details[i].setText((String) ch[2]);
                     log.accept(STEPS[i] + ": " + ch[2]);
                 }
@@ -197,13 +194,15 @@ public final class PublishDialog extends JDialog {
                 try {
                     String url = get();
                     liveUrl = url;
-                    result.setText("<html>🎉 Published! Answer key: " + draft.answerKey() + "</html>");
+                    result.setIcon(Icons.get("ok", 30));
+                    result.setText("<html>Published! Answer key: " + draft.answerKey() + "</html>");
                     open.setEnabled(true);
                     open.addActionListener(e -> { try { Desktop.getDesktop().browse(URI.create(url)); } catch (Exception ignored) {} });
                     log.accept("Published " + url + " · answer key " + draft.answerKey());
                 } catch (Exception ex) {
                     Throwable cause = ex.getCause() != null ? ex.getCause() : ex;
                     result.setForeground(Theme.RED);
+                    result.setIcon(Icons.get("fail", 30));
                     result.setText("<html>Stopped: " + Html.escape(cause.getMessage()) + "</html>");
                 }
             }

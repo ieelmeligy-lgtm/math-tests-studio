@@ -33,7 +33,7 @@ public final class ReviewDialog extends JDialog {
         this.grade = grade;
         JPanel root = new JPanel(new BorderLayout());
         root.setBackground(Theme.CREAM);
-        root.add(Theme.header("✨  Review the test", "Grade " + grade + " · " + (draft.arabic() ? "Arabic" : "English") + " · "
+        root.add(Theme.header("review", "Review the test","Grade " + grade + " · " + (draft.arabic() ? "Arabic" : "English") + " · "
                 + draft.questions.size() + " questions · nothing is published until you approve"), BorderLayout.NORTH);
 
         JPanel body = new JPanel(new BorderLayout(12, 12));
@@ -74,6 +74,17 @@ public final class ReviewDialog extends JDialog {
         list.setFont(Theme.font(Font.PLAIN, 14f));
         list.setFixedCellHeight(34);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        // Warning icon on questions to check, pencil on options written by Claude
+        list.setCellRenderer(new DefaultListCellRenderer() {
+            @Override public Component getListCellRendererComponent(JList<?> l, Object v, int i, boolean sel, boolean focus) {
+                JLabel c = (JLabel) super.getListCellRendererComponent(l, v, i, sel, focus);
+                TestDraft.Question q = i < draft.questions.size() ? draft.questions.get(i) : null;
+                c.setIcon(q == null ? null : !q.misprintNote.isBlank() ? Icons.get("warning", 18)
+                        : q.optionsWrittenByClaude ? Icons.get("pencil", 18) : Icons.get("idle", 18));
+                c.setIconTextGap(8);
+                return c;
+            }
+        });
         list.addListSelectionListener(e -> { if (!e.getValueIsAdjusting()) show(list.getSelectedIndex()); });
         JScrollPane ls = new JScrollPane(list);
         ls.setPreferredSize(new Dimension(300, 400));
@@ -87,7 +98,7 @@ public final class ReviewDialog extends JDialog {
         c.gridx = 0; c.gridwidth = 2; c.fill = GridBagConstraints.HORIZONTAL; c.weightx = 1; c.insets = new Insets(3, 2, 3, 2);
         int y = 0;
         c.gridy = y++; ed.add(Theme.sectionLabel("Question (HTML maths allowed)"), c);
-        c.gridy = y++; ed.add(new JScrollPane(stem), c);
+        c.gridy = y++; ed.add(tall(stem), c);
         c.gridy = y++; ed.add(Theme.sectionLabel("Options – tick the correct one"), c);
         ButtonGroup g = pickGroup;
         String[] arLetters = {"أ", "ب", "ج", "د"};
@@ -107,15 +118,21 @@ public final class ReviewDialog extends JDialog {
         }
         c.gridx = 0; c.gridwidth = 2;
         c.gridy = y++; ed.add(Theme.sectionLabel("Explanation shown after submitting"), c);
-        c.gridy = y++; ed.add(new JScrollPane(why), c);
+        c.gridy = y++; ed.add(tall(why), c);
         flag.setFont(Theme.font(Font.BOLD, 13f));
         flag.setForeground(new Color(0xa86b00));
         c.gridy = y++; ed.add(flag, c);
-        JButton remove = Theme.softButton("🗑  Remove this question");
+        JButton remove = Theme.softButton("Remove this question", "trash");
         remove.addActionListener(e -> removeCurrent());
         c.gridy = y; c.fill = GridBagConstraints.NONE; c.anchor = GridBagConstraints.WEST; c.weighty = 1;
         ed.add(remove, c);
-        body.add(ed, BorderLayout.CENTER);
+        // Scrolls on small screens, so the label at the top and the Remove button at the bottom are never cut off
+        JScrollPane edScroll = new JScrollPane(ed);
+        edScroll.setBorder(null);
+        edScroll.setOpaque(false);
+        edScroll.getViewport().setOpaque(false);
+        edScroll.getVerticalScrollBar().setUnitIncrement(16);
+        body.add(edScroll, BorderLayout.CENTER);
         root.add(body, BorderLayout.CENTER);
         if (draft.arabic()) {
             ComponentOrientation rtl = ComponentOrientation.RIGHT_TO_LEFT;
@@ -129,9 +146,9 @@ public final class ReviewDialog extends JDialog {
         // Buttons
         JPanel buttons = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 10));
         buttons.setOpaque(false);
-        JButton preview = Theme.softButton("👁  Preview in browser");
+        JButton preview = Theme.softButton("Preview in browser", "eye");
         JButton back = Theme.softButton("← Back");
-        JButton ok = Theme.primaryButton("Approve ✓");
+        JButton ok = Theme.primaryButton("Approve", "ok");
         preview.addActionListener(e -> preview());
         back.addActionListener(e -> dispose());
         ok.addActionListener(e -> approve());
@@ -147,8 +164,16 @@ public final class ReviewDialog extends JDialog {
         refreshList();
         if (!draft.questions.isEmpty()) list.setSelectedIndex(0);
         setContentPane(root);
-        setSize(1100, 760);
+        setSize(1100, 840);
         setLocationRelativeTo(owner);
+    }
+
+    /** A scroll box that keeps about four lines visible, so the text is never squashed to one line. */
+    private static JScrollPane tall(JTextArea a) {
+        JScrollPane sp = new JScrollPane(a);
+        sp.setMinimumSize(new Dimension(200, 92));
+        sp.setPreferredSize(new Dimension(400, 92));
+        return sp;
     }
 
     private static JTextArea area(int rows) {
@@ -161,21 +186,20 @@ public final class ReviewDialog extends JDialog {
 
     private String warnings() {
         StringBuilder sb = new StringBuilder();
-        for (String s : draft.skipped) sb.append("⚠ Left out: ").append(s).append('\n');
+        for (String s : draft.skipped) sb.append("•  Left out: ").append(s).append('\n');
         for (int i = 0; i < draft.questions.size(); i++) {
             TestDraft.Question q = draft.questions.get(i);
-            if (!q.misprintNote.isBlank()) sb.append("⚠ Q").append(i + 1).append(" – check this: ").append(q.misprintNote).append('\n');
-            if (q.optionsWrittenByClaude) sb.append("✎ Q").append(i + 1).append(": the options were written by Claude, not the book.\n");
+            if (!q.misprintNote.isBlank()) sb.append("•  Q").append(i + 1).append(" – check this: ").append(q.misprintNote).append('\n');
+            if (q.optionsWrittenByClaude) sb.append("•  Q").append(i + 1).append(": the options were written by Claude, not the book.\n");
         }
-        for (String s : draft.notes) sb.append("ℹ ").append(s).append('\n');
+        for (String s : draft.notes) sb.append("•  ").append(s).append('\n');
         return sb.toString().trim();
     }
 
     private String label(int i) {
         TestDraft.Question q = draft.questions.get(i);
-        String mark = !q.misprintNote.isBlank() ? "⚠ " : q.optionsWrittenByClaude ? "✎ " : "";
         String plain = Html.toPlain(q.stemHtml);
-        return (i + 1) + ".  " + mark + (plain.length() > 40 ? plain.substring(0, 40) + "…" : plain)
+        return (i + 1) + ".  " + (plain.length() > 40 ? plain.substring(0, 40) + "…" : plain)
                 + "   [" + (char) ('A' + q.correctIndex) + "]";
     }
 
@@ -203,8 +227,9 @@ public final class ReviewDialog extends JDialog {
             if (!unsure && k == q.correctIndex) correct[k].setSelected(true);
         }
         why.setText(q.explanationHtml);
-        String f = (!q.misprintNote.isBlank() ? "⚠ " + q.misprintNote + "   " : "")
-                + (q.optionsWrittenByClaude ? "✎ Options written by Claude   " : "")
+        flag.setIcon(!q.misprintNote.isBlank() ? Icons.get("warning", 18) : q.optionsWrittenByClaude ? Icons.get("pencil", 18) : null);
+        String f = (!q.misprintNote.isBlank() ? q.misprintNote + "   " : "")
+                + (q.optionsWrittenByClaude ? "Options written by Claude   " : "")
                 + (q.sectionHtml.isBlank() ? "" : "Part: " + Html.toPlain(q.sectionHtml));
         flag.setText(f.isEmpty() ? " " : f);
     }

@@ -33,7 +33,39 @@ public final class Theme {
         return new Font("Segoe UI", style, 12).deriveFont(size);
     }
 
-    /** Big rounded colourful button with a step number badge. */
+    /** Big rounded colourful step button with its icon on a white badge. */
+    public static JButton bigButton(String text, Color color, String icon) {
+        JButton b = bigButton(text, color);
+        b.setIcon(Icons.badge(icon, 40));
+        b.setDisabledIcon(Icons.badge(icon, 40));
+        b.setIconTextGap(14);
+        return b;
+    }
+
+    public static JButton softButton(String text, String icon) {
+        JButton b = softButton(text);
+        b.setIcon(Icons.get(icon, 20));
+        b.setIconTextGap(8);
+        return b;
+    }
+
+    public static JButton primaryButton(String text, String icon) {
+        JButton b = primaryButton(text);
+        b.setIcon(Icons.badge(icon, 26));
+        b.setIconTextGap(8);
+        return b;
+    }
+
+    /** Header with the window's icon on a white badge before the title. */
+    public static JPanel header(String icon, String title, String subtitle) {
+        JPanel h = header(title, subtitle);
+        JLabel badge = new JLabel(Icons.badge(icon, 52));
+        badge.setBorder(new EmptyBorder(0, 0, 0, 14));
+        h.add(badge, BorderLayout.WEST);
+        return h;
+    }
+
+    /** Big rounded colourful button. */
     public static JButton bigButton(String text, Color color) {
         JButton b = new JButton(text) {
             @Override

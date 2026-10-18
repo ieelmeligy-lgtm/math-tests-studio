@@ -90,6 +90,9 @@ public final class TestImporter {
                 if (opt == null) continue;
                 Element copy = opt.clone();
                 copy.select(".let").remove();
+                // The page puts each option in its own <span>: keep only what is inside it
+                Element only = copy.children().size() == 1 && copy.ownText().isBlank() ? copy.child(0) : null;
+                if (only != null && only.tagName().equals("span") && only.attributes().isEmpty()) copy = only;
                 q.optionsHtml.add(Html.sanitize(copy.html()));
                 if (in.hasAttr("data-c")) { marked++; correct = q.optionsHtml.size() - 1; }
             }

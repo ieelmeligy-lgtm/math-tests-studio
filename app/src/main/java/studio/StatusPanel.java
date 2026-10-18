@@ -39,7 +39,7 @@ public final class StatusPanel extends JPanel {
         JPanel top = new JPanel(new BorderLayout());
         top.setOpaque(false);
         top.add(Theme.sectionLabel("Connections"), BorderLayout.WEST);
-        JButton again = Theme.softButton("↻ Check now");
+        JButton again = Theme.softButton("Check now", "refresh");
         again.addActionListener(e -> checkAll());
         top.add(again, BorderLayout.EAST);
         add(top, BorderLayout.NORTH);

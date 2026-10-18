@@ -18,7 +18,17 @@ public final class MainWindow extends JFrame {
     private final Settings settings = new Settings();
     private final JTextArea log = new JTextArea(6, 40);
     private final JProgressBar progress = new JProgressBar();
-    private final JLabel online = new JLabel("  CHECKING…  ");
+    /** Rounded ONLINE / NOT READY pill. */
+    private final JLabel online = new JLabel("  CHECKING…  ") {
+        @Override protected void paintComponent(Graphics g) {
+            Graphics2D g2 = (Graphics2D) g.create();
+            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            g2.setColor(getBackground());
+            g2.fillRoundRect(0, 0, getWidth(), getHeight(), getHeight(), getHeight());
+            g2.dispose();
+            super.paintComponent(g);
+        }
+    };
     private final JLabel[] stepInfo = new JLabel[4];
     private final JButton[] steps = new JButton[4];
     private StatusPanel status;
@@ -34,16 +44,17 @@ public final class MainWindow extends JFrame {
         root.setBackground(Theme.CREAM);
 
         // Header with ONLINE pill and settings
-        JPanel header = Theme.header("🧮  Math Tests Studio", "Test files from Claude → live website");
+        setIconImages(Icons.windowImages());
+        JPanel header = Theme.header("app", "Math Tests Studio", "Test files from Claude → live website");
         JPanel right = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 6));
         right.setOpaque(false);
-        online.setOpaque(true);
+        online.setOpaque(false);
         online.setFont(Theme.font(Font.BOLD, 14f));
         online.setForeground(Color.WHITE);
         online.setBackground(Theme.GOLD);
         online.setBorder(new EmptyBorder(6, 10, 6, 10));
         online.putClientProperty("FlatLaf.style", "arc: 999");
-        JButton gear = Theme.softButton("⚙  Settings");
+        JButton gear = Theme.softButton("Settings", "settings");
         gear.addActionListener(e -> { new SettingsDialog(this, settings).setVisible(true); status.checkAll(); });
         right.add(online);
         right.add(gear);
@@ -64,12 +75,13 @@ public final class MainWindow extends JFrame {
 
         JPanel stepsCard = Theme.card();
         stepsCard.setLayout(new GridLayout(2, 2, 14, 14));
-        String[] names = {"1   📁  Site folder", "2   📥  Import test", "3   ✨  Review test", "4   🚀  Publish & deploy"};
+        String[] names = {"1  ·  Site folder", "2  ·  Import test", "3  ·  Review test", "4  ·  Publish & deploy"};
+        String[] stepIcons = {"folder", "import", "review", "publish"};
         Runnable[] actions = {this::stepRepo, this::stepImport, this::review, this::stepPublish};
         for (int i = 0; i < 4; i++) {
             JPanel cell = new JPanel(new BorderLayout(0, 4));
             cell.setOpaque(false);
-            steps[i] = Theme.bigButton(names[i], Theme.STEP_COLORS[i]);
+            steps[i] = Theme.bigButton(names[i], Theme.STEP_COLORS[i], stepIcons[i]);
             int k = i;
             steps[i].addActionListener(e -> actions[k].run());
             stepInfo[i] = new JLabel(" ");
@@ -183,6 +195,8 @@ public final class MainWindow extends JFrame {
                 + " · " + draft.questions.size() + " questions");
         stepInfo[2].setText(" ");
         stepInfo[3].setText(" ");
+        stepInfo[2].setIcon(null);
+        stepInfo[3].setIcon(null);
         log("Imported " + imported.source().getFileName() + ": " + draft.questions.size() + " question(s), "
                 + (draft.arabic() ? "Arabic" : "English") + ". Answer key: " + draft.answerKey());
         if (!draft.skipped.isEmpty()) log("Left out: " + String.join(" | ", draft.skipped));
@@ -198,10 +212,12 @@ public final class MainWindow extends JFrame {
         if (r.approved()) {
             approved = true;
             title = r.title();
-            stepInfo[2].setText("✔ Approved: " + title + " · " + draft.questions.size() + " questions");
+            stepInfo[2].setText("Approved: " + title + " · " + draft.questions.size() + " questions");
+            stepInfo[2].setIcon(Icons.get("ok", 16));
             log("Approved \"" + title + "\". Answer key: " + draft.answerKey());
         } else if (!approved) {
             stepInfo[2].setText("Not approved yet (press 3 to review)");
+            stepInfo[2].setIcon(Icons.get("warning", 16));
         }
         refreshSteps();
     }
@@ -215,13 +231,15 @@ public final class MainWindow extends JFrame {
         PublishDialog p = new PublishDialog(this, settings, imported, title, this::log);
         p.setVisible(true);
         if (p.published()) {
-            stepInfo[3].setText("✔ Live: " + p.liveUrl());
+            stepInfo[3].setText("Live: " + p.liveUrl());
+            stepInfo[3].setIcon(Icons.get("ok", 16));
             imported = null;
             approved = false;
             announceWaiting();
             refreshSteps();
         } else {
             stepInfo[3].setText("Stopped – see the activity log, fix it and press 4 again");
+            stepInfo[3].setIcon(Icons.get("fail", 16));
         }
         status.checkAll();
     }

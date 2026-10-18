@@ -8,6 +8,7 @@ import java.awt.*;
 /** Math Tests Studio – courtesy of Miss Sarah Awad, Math Teacher. */
 public final class App {
     public static void main(String[] args) throws Exception {
+        if (args.length == 2 && args[0].equals("--make-icons")) { IconPainter.makeAll(java.nio.file.Path.of(args[1])); return; }
         if (args.length == 4 && args[0].equals("--import-check")) {
             System.setOut(new java.io.PrintStream(System.out, true, java.nio.charset.StandardCharsets.UTF_8));
             importCheck(args[1], args[2], args[3]);

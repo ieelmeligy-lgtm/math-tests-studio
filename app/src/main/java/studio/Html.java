@@ -67,7 +67,7 @@ public final class Html {
         String s = html.replaceAll("<span class=\"frac\"><b>(.*?)</b><b>(.*?)</b></span>", "($1/$2)")
                 .replaceAll("<sup[^>]*>(.*?)</sup>", "^$1")
                 .replaceAll("<span class=\"blank\"></span>", " ____ ")
-                .replaceAll("<span class=\"circle\"></span>", " ◯ ")
+                .replaceAll("<span class=\"circle\"></span>", " ○ ")
                 .replaceAll("<svg.*?</svg>", " [diagram] ");
         return Jsoup.parseBodyFragment(s).text();
     }
