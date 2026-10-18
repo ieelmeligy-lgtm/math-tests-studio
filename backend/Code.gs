@@ -4,7 +4,8 @@
  * After code changes: Deploy > Manage deployments > edit > Version: New version (keeps the same URL).
  *
  * Tabs (created by setup()):
- *   Users     : Name | PW | Role | Grade          Role = Student, Teacher or Admin. Staff use Grade NA.
+ *   Users     : Name | PW | Role | Grade | Gender   Role = Student, Teacher or Admin. Staff use Grade NA.
+ *               Students can create their own account on the sign-in page (Role Student, Gender Boy or Girl).
  *   Tests     : Grade | Test ID | Title | Questions | File | Active
  *   Questions : Test ID | No. | Correct | Explanation      (the answer key – never sent to students before they submit)
  *   Results   : Timestamp | Name | Role | Grade | Test ID | Test title | Score | Total | Percent | Attempt | Answers
@@ -19,7 +20,7 @@
  */
 
 var TABS = {
-  Users: ['Name', 'PW', 'Role', 'Grade'],
+  Users: ['Name', 'PW', 'Role', 'Grade', 'Gender'],
   Tests: ['Grade', 'Test ID', 'Title', 'Questions', 'File', 'Active'],
   Questions: ['Test ID', 'No.', 'Correct', 'Explanation'],
   Results: ['Timestamp', 'Name', 'Role', 'Grade', 'Test ID', 'Test title', 'Score', 'Total', 'Percent', 'Attempt', 'Answers']
@@ -53,6 +54,7 @@ function doPost(e) {
     switch (body.action) {
       case 'ping': return json_(ping_());
       case 'login': return json_(login_(body));
+      case 'register': return json_(register_(body));
       case 'tests': return json_(withUser_(body, function (u) { return { ok: true, tests: testsFor_(u) }; }));
       case 'submitTest': return json_(withUser_(body, function (u) { return submitTest_(u, body); }));
       case 'addTest': return json_(withUser_(body, function (u) { return addTest_(u, body); }));
@@ -100,6 +102,41 @@ function login_(b) {
   var user = { name: String(found.Name).trim(), role: String(found.Role).trim().toLowerCase(), grade: String(found.Grade).trim() };
   var exp = Date.now() + SESSION_HOURS * 3600 * 1000;
   return { ok: true, token: sign_({ n: user.name, r: user.role, g: user.grade, exp: exp }), name: user.name, role: user.role, grade: user.grade, exp: exp, tests: testsFor_(user) };
+}
+
+/**
+ * A student creates an account: name, password, boy or girl, and the grade chosen on the sign-in page.
+ * Always Role Student. Names must be unique (case and spaces ignored, as at sign-in). Signs the student in.
+ */
+function register_(b) {
+  var name = String(b.name || '').replace(/\s+/g, ' ').trim();
+  var pw = String(b.password || '');
+  var gender = { boy: 'Boy', girl: 'Girl' }[String(b.gender || '').toLowerCase()];
+  var grade = String(b.grade || '').trim();
+  if (!/^[A-Za-z؀-ۿ][A-Za-z؀-ۿ0-9 .'_-]{1,39}$/.test(name)) return { ok: false, error: 'bad_name' };
+  if (pw.length < 4 || pw.length > 30 || /[\u0000-\u001f]/.test(pw) || /^[=+\-@]/.test(pw)) return { ok: false, error: 'bad_password' };
+  if (!gender) return { ok: false, error: 'bad_gender' };
+  if (!/^\d{1,2}$/.test(grade)) return { ok: false, error: 'bad_grade' };
+
+  // At most 40 new accounts every 10 minutes, so the Sheet cannot be flooded.
+  var cache = CacheService.getScriptCache(), n = Number(cache.get('registrations') || 0);
+  if (n >= 40) return { ok: false, error: 'too_many' };
+
+  var lock = LockService.getScriptLock();
+  lock.waitLock(20000);
+  try {
+    var key = norm_(name);
+    if (rows_('Users').some(function (r) { return norm_(r.Name) === key; })) return { ok: false, error: 'name_taken' };
+    var sh = sheet_('Users');
+    var head = sh.getRange(1, 1, 1, Math.max(sh.getLastColumn(), 1)).getValues()[0].map(String);
+    if (head.indexOf('Gender') < 0) { head.push('Gender'); sh.getRange(1, head.length).setValue('Gender').setFontWeight('bold'); }
+    var values = { Name: name, PW: pw, Role: 'Student', Grade: grade, Gender: gender };
+    var row = head.map(function (h) { return values[h] !== undefined ? values[h] : ''; });
+    // Plain-text cells, so a password like 0123 keeps its leading zero.
+    sh.getRange(sh.getLastRow() + 1, 1, 1, row.length).setNumberFormat('@').setValues([row]);
+    cache.put('registrations', String(n + 1), 600);
+  } finally { lock.releaseLock(); }
+  return login_({ grade: grade, name: name, password: pw });
 }
 
 function testsFor_(u) {

@@ -34,6 +34,10 @@
   .go{appearance:none;width:100%;margin-top:22px;border:0;border-radius:16px;min-height:56px;font:inherit;font-weight:800;font-size:1.1rem;color:#fff;cursor:pointer;background:linear-gradient(180deg,#12a09d,#0c7f7c)}
   .go[disabled]{opacity:.65}
   .err{color:var(--red);font-weight:700;margin:14px 0 0}
+  .hint{color:var(--coffee-mid);font-size:.9rem;margin:10px 0 0}
+  .gender{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .gender .gbtn{font-size:1.05rem}
+  .switch{appearance:none;display:block;width:100%;margin-top:14px;border:0;background:none;color:var(--turq-deep);font:inherit;font-weight:800;font-size:.95rem;text-decoration:underline;min-height:44px;cursor:pointer}
   .hello{display:flex;align-items:center;gap:16px}
   .ring{flex:none;position:relative;width:84px;height:84px}
   .ring svg{width:84px;height:84px;transform:rotate(-90deg)}
@@ -71,12 +75,19 @@
     <span class="lab">My grade</span>
     <div class="grades" id="grades"></div>
     <button type="button" class="staff" id="staffBtn" aria-pressed="false">Teacher / Admin</button>
+    <p class="hint" id="regHint" hidden>New here? Choose your grade, then write your name, a password you will remember, and tap Boy or Girl.</p>
     <label class="lab" for="name">User name</label>
     <input id="name" autocomplete="username">
     <label class="lab" for="pw">Password</label>
     <div class="pw"><input id="pw" type="password" autocomplete="current-password"><button type="button" class="eye" id="eye">Show</button></div>
+    <p class="hint" id="pwHint" hidden>At least 4 letters or numbers.</p>
+    <div id="genderBox" hidden>
+      <span class="lab">I am a</span>
+      <div class="gender"><button type="button" class="gbtn" data-v="boy" aria-pressed="false">👦 Boy</button><button type="button" class="gbtn" data-v="girl" aria-pressed="false">👧 Girl</button></div>
+    </div>
     <button class="go" id="go" type="submit">Sign in</button>
     <p class="err" id="err" hidden></p>
+    <button type="button" class="switch" id="switchBtn">New student? Create an account</button>
   </form>
 
   <section id="home" hidden>
@@ -92,7 +103,7 @@
 <footer>Courtesy of Miss Sarah Awad – Math Teacher</footer>
 
 <script>
-var grade=null, staff=false;
+var grade=null, staff=false, registering=false, gender=null;
 var $=function(id){return document.getElementById(id);};
 
 function setPressed(){
@@ -105,23 +116,52 @@ function setPressed(){
   b.onclick=function(){grade=g;staff=false;setPressed();};
   $('grades').appendChild(b);
 });
-$('staffBtn').onclick=function(){staff=!staff;setPressed();};
+$('staffBtn').onclick=function(){if(registering)return;staff=!staff;setPressed();};
 $('eye').onclick=function(){var p=$('pw');p.type=p.type==='password'?'text':'password';this.textContent=p.type==='password'?'Show':'Hide';};
 
 function err(t){$('err').textContent=t;$('err').hidden=!t;}
+
+/* New students create their own account: grade, name, password, boy or girl. */
+var gbs=$('genderBox').querySelectorAll('.gbtn');
+for(var gi=0;gi<gbs.length;gi++)gbs[gi].onclick=function(){gender=this.dataset.v;err('');for(var k=0;k<gbs.length;k++)gbs[k].setAttribute('aria-pressed',String(gbs[k]===this));};
+function goLabel(){return registering?'Create my account':'Sign in';}
+$('switchBtn').onclick=function(){
+  registering=!registering; err('');
+  if(registering){staff=false;setPressed();}
+  $('staffBtn').hidden=registering;
+  $('genderBox').hidden=$('regHint').hidden=$('pwHint').hidden=!registering;
+  $('pw').autocomplete=registering?'new-password':'current-password';
+  $('go').textContent=goLabel();
+  this.textContent=registering?'Already have an account? Sign in':'New student? Create an account';
+};
+
 $('signin').onsubmit=function(e){
   e.preventDefault();
+  var name=$('name').value.replace(/\s+/g,' ').trim(), pw=$('pw').value;
   if(!staff&&!grade){err('Choose your grade.');return;}
-  if(!$('name').value.trim()||!$('pw').value){err('Write your user name and password.');return;}
-  err(''); $('go').disabled=true; $('go').textContent='Signing in…';
-  Portal.login(staff?'staff':grade,$('name').value.trim(),$('pw').value,function(r){
-    $('go').disabled=false; $('go').textContent='Sign in';
+  if(!name||!pw){err('Write your user name and password.');return;}
+  if(registering){
+    if(name.length<2){err('Write your full name.');return;}
+    if(pw.length<4){err('Your password needs at least 4 letters or numbers.');return;}
+    if(!gender){err('Tap Boy or Girl.');return;}
+  }
+  err(''); $('go').disabled=true; $('go').textContent=registering?'Creating your account…':'Signing in…';
+  var done=function(r){
+    $('go').disabled=false; $('go').textContent=goLabel();
     if(r.ok){$('pw').value='';showHome();return;}
     err(r.error==='locked'?'Too many tries. Wait 10 minutes and try again.':
         r.error==='not_configured'?'The site is not connected to its database yet.':
         r.error==='network'?'No connection. Check your internet and try again.':
+        r.error==='name_taken'?'This name is already used. Add your family name, then try again.':
+        r.error==='bad_name'?'Write your name with letters only (Arabic or English).':
+        r.error==='bad_password'?'Choose a password of 4 to 30 letters or numbers.':
+        r.error==='too_many'?'Many accounts were made just now. Please try again in 10 minutes.':
+        r.error==='unknown_action'?'Creating an account is not switched on yet. Please ask your teacher.':
+        registering?'Your account could not be created. Please try again.':
         'Your name, password or grade is not correct.');
-  });
+  };
+  if(registering)Portal.register(grade,name,pw,gender,done);
+  else Portal.login(staff?'staff':grade,name,pw,done);
 };
 
 function stars(best,total){

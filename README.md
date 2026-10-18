@@ -79,7 +79,12 @@ Questions without options are left out and listed. Only the maths markup the sit
 ## One-time setup
 
 1. **Google Sheet.** Create a new Google Sheet. Open **Extensions → Apps Script** and replace the code with `backend/Code.gs`. Run `setup()` once and approve the access request. Then choose **Deploy → New deployment → Web app**, set **Execute as** to *Me* and **Who has access** to *Anyone*, and copy the `/exec` URL.
-2. **Users.** In the `Users` tab add yourself as `Name | PW | Role | Grade`, for example `Sarah Awad | ... | Teacher | NA`. Add students with Role `Student` and their grade.
+2. **Users.** In the `Users` tab add yourself as `Name | PW | Role | Grade | Gender`, for example `Sarah Awad | ... | Teacher | NA`.
+   - **Students can create their own account.** On the sign-in page they tap **New student? Create an account**, then choose their grade, write their name and a password, and tap Boy or Girl. The backend adds the row as a Student, with the Gender column set to Boy or Girl, and signs them in.
+   - Names must be unique.
+   - At most 40 new accounts every 10 minutes.
+   - You can still add, change or delete students in the Sheet yourself.
+   - **Arabic students:** a name that starts with `AR.` (for example `AR.Ahmed`), or contains `(AR)`, sees only the Arabic tests, whose file names end in `-ar`. Everyone else sees the English tests. Staff see all tests.
 3. **App settings.** Start the app with `Start-MathTestsStudio.cmd` and open **Settings**. Enter:
    - the `/exec` URL (it is saved into `docs/config.js`)
    - the Teacher or Admin name and password from step 2

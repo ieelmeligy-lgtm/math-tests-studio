@@ -31,6 +31,13 @@ var Portal = (function () {
       cb(r);
     });
   }
+  /* A new student creates an account (name, password, boy or girl, grade) and is signed in straight away. */
+  function register(grade, name, password, gender, cb) {
+    call({ action: 'register', grade: grade, name: name, password: password, gender: gender }, function (r) {
+      if (r.ok) setSession({ token: r.token, name: r.name, role: r.role, grade: r.grade, exp: r.exp, tests: r.tests || [] });
+      cb(r);
+    });
+  }
   function refreshTests(cb) {
     var s = session();
     if (!s) { cb({ ok: false, error: 'signed_out' }); return; }
@@ -53,5 +60,5 @@ var Portal = (function () {
     data.action = 'submitTest'; data.token = s.token;
     call(data, function (r) { if (r.error === 'signed_out') clear(); cb(r); });
   }
-  return { session: session, login: login, refreshTests: refreshTests, requireLogin: requireLogin, submitTest: submitTest, signOut: signOut, home: home };
+  return { session: session, login: login, register: register, refreshTests: refreshTests, requireLogin: requireLogin, submitTest: submitTest, signOut: signOut, home: home };
 })();
