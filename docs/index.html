@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0c7f7c">
+<title>Math Tests</title>
+<style>
+  :root{--turq:#17b3b0;--turq-deep:#0c7f7c;--turq-soft:#e2f5f4;--coffee:#4e3426;--coffee-mid:#7a5a47;--cream:#f7f2eb;--card:#fffdfa;--line:#e6dccf;--gold:#e0a526;--red:#b8392e}
+  *{box-sizing:border-box}
+  [hidden]{display:none!important}
+  body{margin:0;font-family:"Trebuchet MS","Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--cream);color:var(--coffee);line-height:1.45}
+  .top{color:#fff;padding:34px 20px 62px;text-align:center;
+    background:repeating-linear-gradient(45deg,rgba(255,255,255,.055) 0 2px,transparent 2px 6px),
+      repeating-linear-gradient(-45deg,rgba(0,0,0,.045) 0 2px,transparent 2px 6px),
+      linear-gradient(160deg,#1cc2be 0%,#12a09d 55%,#0c7f7c 100%);
+    border-bottom:6px solid var(--coffee)}
+  .top h1{margin:0;font-size:1.75rem}
+  .top p{margin:6px 0 0;opacity:.95}
+  main{max-width:480px;margin:-40px auto 0;padding:0 16px 32px;position:relative}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 20px;box-shadow:0 10px 30px rgba(78,52,38,.10)}
+  .lab{display:block;font-weight:700;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--coffee-mid);margin:18px 0 8px}
+  .lab:first-child{margin-top:0}
+  .grades{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+  .gbtn{appearance:none;border:2px solid var(--line);background:#fff;color:var(--coffee);font:inherit;font-weight:800;font-size:1.25rem;border-radius:16px;min-height:56px;cursor:pointer}
+  .gbtn[aria-pressed=true]{background:var(--turq-deep);border-color:var(--turq-deep);color:#fff}
+  .staff{appearance:none;display:block;width:100%;margin-top:8px;border:2px dashed var(--line);background:transparent;color:var(--coffee-mid);font:inherit;font-weight:700;font-size:.9rem;border-radius:14px;min-height:48px;cursor:pointer}
+  .staff[aria-pressed=true]{border-style:solid;border-color:var(--coffee);background:var(--coffee);color:#fff}
+  input{width:100%;padding:14px;font:inherit;font-size:1.05rem;border:2px solid var(--line);border-radius:14px;background:#fff;color:inherit;min-height:52px}
+  input:focus,button:focus-visible,a.test:focus-visible{outline:3px solid rgba(23,179,176,.45);outline-offset:2px}
+  .pw{position:relative}
+  .pw input{padding-right:76px}
+  .eye{position:absolute;right:6px;top:6px;bottom:6px;border:0;background:var(--turq-soft);color:var(--turq-deep);font:inherit;font-weight:700;font-size:.85rem;border-radius:10px;padding:0 12px;cursor:pointer;min-width:60px}
+  .go{appearance:none;width:100%;margin-top:22px;border:0;border-radius:16px;min-height:56px;font:inherit;font-weight:800;font-size:1.1rem;color:#fff;cursor:pointer;background:linear-gradient(180deg,#12a09d,#0c7f7c)}
+  .go[disabled]{opacity:.65}
+  .err{color:var(--red);font-weight:700;margin:14px 0 0}
+  .hello{display:flex;align-items:center;gap:16px}
+  .ring{flex:none;position:relative;width:84px;height:84px}
+  .ring svg{width:84px;height:84px;transform:rotate(-90deg)}
+  .ring circle{fill:none;stroke-width:9;stroke-linecap:round}
+  .ring .bg{stroke:var(--turq-soft)}
+  .ring .fg{stroke:var(--turq-deep);transition:stroke-dashoffset .8s}
+  .ring b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:1.15rem}
+  .hello h2{margin:0;font-size:1.3rem}
+  .hello p{margin:2px 0 0;color:var(--coffee-mid);font-size:.95rem}
+  .out{appearance:none;border:0;background:none;color:var(--coffee-mid);font:inherit;font-weight:700;font-size:.9rem;text-decoration:underline;padding:8px 0 0;cursor:pointer}
+  .sec{font-weight:700;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--coffee-mid);margin:24px 4px 10px}
+  a.test{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:12px;text-decoration:none;color:inherit;box-shadow:0 4px 14px rgba(78,52,38,.07)}
+  .g{flex:none;width:50px;height:50px;border-radius:15px;background:var(--turq-soft);color:var(--turq-deep);font-weight:800;font-size:1.3rem;display:flex;align-items:center;justify-content:center}
+  .mid{flex:1;min-width:0}
+  .t{font-weight:800;display:block}
+  .d{color:var(--coffee-mid);font-size:.88rem;display:block;margin-top:2px}
+  .stars{letter-spacing:2px;font-size:1.05rem;color:#d9cdbd}
+  .stars i{font-style:normal;color:var(--gold)}
+  .btn{flex:none;background:var(--turq-deep);color:#fff;font-weight:800;border-radius:12px;padding:10px 14px;font-size:.9rem}
+  .btn.again{background:var(--turq-soft);color:var(--turq-deep)}
+  .empty{text-align:center;color:var(--coffee-mid)}
+  footer{text-align:center;color:var(--coffee-mid);font-size:.85rem;font-style:italic;padding:8px 16px 28px}
+</style>
+<script src="config.js"></script>
+<script src="portal.js"></script>
+</head>
+<body>
+<header class="top">
+  <h1>Math Tests</h1>
+  <p id="sub">Sign in to see your tests</p>
+</header>
+
+<main>
+  <form class="card" id="signin" autocomplete="off" hidden>
+    <span class="lab">My grade</span>
+    <div class="grades" id="grades"></div>
+    <button type="button" class="staff" id="staffBtn" aria-pressed="false">Teacher / Admin</button>
+    <label class="lab" for="name">User name</label>
+    <input id="name" autocomplete="username">
+    <label class="lab" for="pw">Password</label>
+    <div class="pw"><input id="pw" type="password" autocomplete="current-password"><button type="button" class="eye" id="eye">Show</button></div>
+    <button class="go" id="go" type="submit">Sign in</button>
+    <p class="err" id="err" hidden></p>
+  </form>
+
+  <section id="home" hidden>
+    <div class="card hello" style="margin-bottom:14px">
+      <div class="ring"><svg viewBox="0 0 84 84"><circle class="bg" cx="42" cy="42" r="36"/><circle class="fg" id="ringFg" cx="42" cy="42" r="36" stroke-dasharray="226.2" stroke-dashoffset="226.2"/></svg><b id="ringTxt">0%</b></div>
+      <div><h2 id="hi"></h2><p id="sum"></p><button class="out" type="button" onclick="Portal.signOut()">Sign out</button></div>
+    </div>
+    <a class="test" id="studioLink" href="studio.html" hidden><span class="g">＋</span><span class="mid"><span class="t">Studio</span><span class="d">Add a test from a Claude file · iPad or computer</span></span><span class="btn">Open</span></a>
+    <div class="sec">My tests</div>
+    <div id="list"></div>
+  </section>
+</main>
+<footer>Courtesy of Miss Sarah Awad – Math Teacher</footer>
+
+<script>
+var grade=null, staff=false;
+var $=function(id){return document.getElementById(id);};
+
+function setPressed(){
+  var bs=$('grades').querySelectorAll('.gbtn');
+  for(var i=0;i<bs.length;i++)bs[i].setAttribute('aria-pressed',String(!staff&&bs[i].dataset.g===grade));
+  $('staffBtn').setAttribute('aria-pressed',String(staff));
+}
+(window.PORTAL_GRADES||[]).forEach(function(g){
+  var b=document.createElement('button'); b.type='button'; b.className='gbtn'; b.textContent=g; b.dataset.g=g;
+  b.onclick=function(){grade=g;staff=false;setPressed();};
+  $('grades').appendChild(b);
+});
+$('staffBtn').onclick=function(){staff=!staff;setPressed();};
+$('eye').onclick=function(){var p=$('pw');p.type=p.type==='password'?'text':'password';this.textContent=p.type==='password'?'Show':'Hide';};
+
+function err(t){$('err').textContent=t;$('err').hidden=!t;}
+$('signin').onsubmit=function(e){
+  e.preventDefault();
+  if(!staff&&!grade){err('Choose your grade.');return;}
+  if(!$('name').value.trim()||!$('pw').value){err('Write your user name and password.');return;}
+  err(''); $('go').disabled=true; $('go').textContent='Signing in…';
+  Portal.login(staff?'staff':grade,$('name').value.trim(),$('pw').value,function(r){
+    $('go').disabled=false; $('go').textContent='Sign in';
+    if(r.ok){$('pw').value='';showHome();return;}
+    err(r.error==='locked'?'Too many tries. Wait 10 minutes and try again.':
+        r.error==='not_configured'?'The site is not connected to its database yet.':
+        r.error==='network'?'No connection. Check your internet and try again.':
+        'Your name, password or grade is not correct.');
+  });
+};
+
+function stars(best,total){
+  var p=total?best/total:0, n=p>=1?3:p>=.8?2:p>=.5?1:0, s='';
+  for(var i=0;i<3;i++)s+=i<n?'<i>★</i>':'★';
+  return s;
+}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+
+function render(s){
+  $('signin').hidden=true; $('home').hidden=false;
+  $('sub').textContent=s.role==='student'?'Grade '+s.grade:'Teacher view · all grades';
+  $('hi').textContent='Hello, '+s.name+'!';
+  $('studioLink').hidden=s.role==='student';
+  var tests=(s.tests||[]).filter(function(t){return /^(Grade\d+\/)?[\w-]+\.html$/.test(t.file);});
+  var done=tests.filter(function(t){return t.attempts>0;}).length;
+  var pct=tests.length?Math.round(done/tests.length*100):0;
+  $('ringFg').setAttribute('stroke-dashoffset',String(226.2*(1-pct/100)));
+  $('ringTxt').textContent=pct+'%';
+  $('sum').textContent=done+' of '+tests.length+' tests done';
+  var list=$('list'); list.innerHTML='';
+  if(!tests.length){list.innerHTML='<div class="card empty">No tests yet. Check again soon.</div>';return;}
+  tests.forEach(function(t){
+    var a=document.createElement('a'); a.className='test'; a.href=t.file;
+    a.innerHTML='<span class="g">'+esc(t.grade)+'</span><span class="mid"><span class="t">'+esc(t.title)+'</span>'+
+      '<span class="d">'+t.questions+' questions'+(t.attempts?' · best '+t.best+'/'+t.total:'')+'</span>'+
+      '<span class="stars">'+stars(t.best,t.total)+'</span></span>'+
+      '<span class="btn'+(t.attempts?' again':'')+'">'+(t.attempts?'Try again':'Start')+'</span>';
+    list.appendChild(a);
+  });
+}
+function showHome(){
+  var s=Portal.session(); if(!s){$('signin').hidden=false;$('home').hidden=true;return;}
+  render(s);
+  Portal.refreshTests(function(r){var s2=Portal.session(); if(s2)render(s2); else showHome();});
+}
+showHome();
+</script>
+</body>
+</html>

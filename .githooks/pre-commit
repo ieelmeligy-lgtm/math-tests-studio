@@ -1,0 +1,13 @@
+#!/bin/sh
+# Stops a commit that would put an answer key on the public site.
+# A test file made in Claude marks the correct option with data-c and fills the
+# explanations; Math Tests Studio removes both before it publishes the page.
+# Math Tests Studio turns this on with: git config core.hooksPath .githooks
+bad=0
+for f in $(git diff --cached --name-only --diff-filter=ACMR -- 'docs/*.html'); do
+  if git show ":$f" | grep -Eqi '<input[^>]*data-c|class="why"> *[^< ]|class="why"> *<[^/]'; then
+    echo "Blocked: $f still contains the answers. Import and publish it with Math Tests Studio." >&2
+    bad=1
+  fi
+done
+exit $bad
