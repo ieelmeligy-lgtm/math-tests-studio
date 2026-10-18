@@ -78,6 +78,8 @@ Questions without options are left out and listed. Only the maths markup the sit
 
 ## One-time setup
 
+The full step-by-step guide for the website, backend and checks is in [DEPLOY.md](DEPLOY.md).
+
 1. **Google Sheet.** Create a new Google Sheet. Open **Extensions → Apps Script** and replace the code with `backend/Code.gs`. Run `setup()` once and approve the access request. Then choose **Deploy → New deployment → Web app**, set **Execute as** to *Me* and **Who has access** to *Anyone*, and copy the `/exec` URL.
 2. **Users.** In the `Users` tab add yourself as `Name | PW | Role | Grade | Gender`, for example `Sarah Awad | ... | Teacher | NA`.
    - **Students can create their own account.** On the sign-in page they tap **New student? Create an account**, then choose their grade, write their name and a password, and tap Boy or Girl. The backend adds the row as a Student, with the Gender column set to Boy or Girl, and signs them in.
