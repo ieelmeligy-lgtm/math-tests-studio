@@ -142,9 +142,15 @@ public final class PublishDialog extends JDialog {
                     if (f.endsWith(".html") && AnswerGuard.hasAnswers(repo.resolve(f))) fail(f + " contains answers – not committed.");
                 }
                 git.ensureHook();
-                r = git.commitFiles(files, "Add test: Grade " + grade + " – " + title);
-                if (!r.ok() && !r.out().contains("nothing to commit")) fail(last(r.out()));
-                mark(2, "ok", files.size() == 1 ? "1 file" : "Test page and backend address");
+                // Publishing again with the same content: the page is already on GitHub, nothing to commit
+                files.removeIf(f -> { try { return git.run(15, "status", "--porcelain", "--", f).out().isBlank(); } catch (Exception e) { return false; } });
+                if (files.isEmpty()) {
+                    mark(2, "ok", "No change – the page is already on GitHub");
+                } else {
+                    r = git.commitFiles(files, "Add test: Grade " + grade + " – " + title);
+                    if (!r.ok() && !r.out().contains("nothing to commit") && !r.out().contains("no changes added to commit")) fail(last(r.out()));
+                    mark(2, "ok", files.size() == 1 ? "1 file" : "Test page and backend address");
+                }
 
                 step = 3; mark(3, "run", "Pushing…");
                 r = git.push();
