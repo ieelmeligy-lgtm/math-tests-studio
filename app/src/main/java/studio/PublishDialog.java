@@ -121,7 +121,8 @@ public final class PublishDialog extends JDialog {
                 // Keep the file from Claude (with the answers) privately on this PC, outside the repo
                 Path source = test.source().toAbsolutePath().normalize();
                 Path backup = Settings.originalsDir().resolve("Grade" + grade).resolve(test.fileName()).toAbsolutePath().normalize();
-                if (!source.equals(backup)) {
+                // Only a file that still has the answers is kept: on a second Publish the source is already the public page
+                if (!source.equals(backup) && AnswerGuard.hasAnswers(source)) {
                     Files.createDirectories(backup.getParent());
                     Files.copy(source, backup, StandardCopyOption.REPLACE_EXISTING);
                 }

@@ -129,6 +129,8 @@ function stars(best,total){
   for(var i=0;i<3;i++)s+=i<n?'<i>★</i>':'★';
   return s;
 }
+function arabicUser(n){return /^\s*ar[.\s_-]/i.test(n)||/\(ar\)/i.test(n);}
+function arabicFile(f){return /[-_]ar\.html$/i.test(f);}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
 function render(s){
@@ -137,6 +139,8 @@ function render(s){
   $('hi').textContent='Hello, '+s.name+'!';
   $('studioLink').hidden=s.role==='student';
   var tests=(s.tests||[]).filter(function(t){return /^(Grade\d+\/)?[\w-]+\.html$/.test(t.file);});
+  // Students whose user name starts with "AR." (or contains "(AR)") see the Arabic tests (file name ending in -ar); others see the English ones. Staff see all.
+  if(s.role==='student'){var ar=arabicUser(s.name);tests=tests.filter(function(t){return arabicFile(t.file)===ar;});}
   var done=tests.filter(function(t){return t.attempts>0;}).length;
   var pct=tests.length?Math.round(done/tests.length*100):0;
   $('ringFg').setAttribute('stroke-dashoffset',String(226.2*(1-pct/100)));
