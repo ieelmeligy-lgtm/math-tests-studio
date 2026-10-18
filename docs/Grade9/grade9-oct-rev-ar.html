@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Math Tests Studio">
+<title>اختبار رياضيات الصف التاسع – مراجعة أكتوبر</title>
+<style>
+  :root{
+    --green:#1f9d57; --green-dark:#157a42; --green-soft:#e8f6ee;
+    --ink:#1d2b24; --muted:#5f6f67; --line:#d5e3db; --bg:#f4f8f5; --card:#ffffff;
+    --red:#c8372d; --red-soft:#fdeceb; --amber:#f2b632;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+  html[lang=ar] body{font-family:"Segoe UI",Tahoma,"Noto Sans Arabic","Noto Naskh Arabic",Roboto,Arial,sans-serif}
+  header{background:var(--green);color:#fff;padding:22px 16px 26px}
+  header .wrap{max-width:760px;margin:0 auto}
+  header h1{margin:0 0 4px;font-size:1.5rem}
+  header p{margin:0;opacity:.92;font-size:.95rem}
+  main{max-width:760px;margin:0 auto;padding:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+  .sec{font-size:1.05rem;color:var(--green-dark);margin:20px 4px 10px}
+  .progress{position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0 10px}
+  .bar{height:8px;background:#dde9e2;border-radius:99px;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:var(--green);transition:width .2s}
+  .progress small{color:var(--muted);display:block;margin-top:4px}
+  .q-head{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}
+  .num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--green-soft);color:var(--green-dark);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+  .stem{font-size:1.1rem;padding-top:2px;min-width:0}
+  .opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .opt{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;cursor:pointer;font-size:1.05rem;min-height:52px;background:#fff}
+  .opt:hover{border-color:var(--green)}
+  .opt .let{flex:none;width:26px;height:26px;border-radius:6px;border:1.5px solid var(--line);font-size:.85rem;font-weight:700;display:flex;align-items:center;justify-content:center;color:var(--muted)}
+  .why{display:none;margin-top:10px;padding:10px 12px;border-radius:8px;background:#f6f9f7;border-inline-start:4px solid var(--green);font-size:.95rem}
+  .why.bad{border-inline-start-color:var(--red)}
+  .card.missing{border-color:var(--amber);box-shadow:0 0 0 3px rgba(242,182,50,.25)}
+  /* maths markup */
+  .frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;line-height:1.1;font-size:.9em;margin:0 2px}
+  .frac b{font-weight:500;padding:0 4px}
+  .frac b:first-child{border-bottom:1.5px solid currentColor}
+  .rep,.ov{text-decoration:overline}
+  .nw,.rt{white-space:nowrap}
+  .m{white-space:nowrap;display:inline-block;font-family:"Segoe UI",Roboto,Arial,sans-serif}
+  .opt .m{white-space:normal}
+  .mb{display:block;margin:6px 0 2px;text-align:left}
+  .mb .m{white-space:normal}
+  .seq{line-height:2}
+  .rad{display:inline-block;border-top:1.5px solid currentColor;padding:1px 1px 0;margin-left:1px;line-height:1.15}
+  .rad>.frac{padding-top:3px}
+  .ri{font-size:.6em;margin-right:-.45em;vertical-align:.95em}
+  .circle{display:inline-block;width:26px;height:26px;border:1.5px solid #9bb3a6;border-radius:50%;vertical-align:middle;margin:0 8px}
+  .blank{display:inline-block;width:56px;border-bottom:1.5px solid #9bb3a6;vertical-align:baseline;margin:0 4px}
+  .venn{display:inline-flex;align-items:center;vertical-align:middle;margin-inline-start:10px;font-size:.9rem}
+  .venn span{display:inline-flex;align-items:center;justify-content:center;border:1.5px solid var(--ink);border-radius:50%;height:44px;line-height:1.1;text-align:center}
+  .venn .vl{width:58px;justify-content:flex-start;padding-left:12px;border-right:0;border-radius:50% 0 0 50%}
+  .venn .vm{width:34px;border-radius:50%;margin:0 -2px}
+  .venn .vr{width:58px;justify-content:flex-end;padding-right:12px;border-left:0;border-radius:0 50% 50% 0}
+  .venn-svg{display:block;margin:8px 0 0}
+  .venn-svg svg{max-width:100%;height:auto}
+  .venn-svg ellipse{fill:none;stroke:var(--ink);stroke-width:1.5}
+  .venn-svg circle{fill:currentColor}
+  .venn-svg text{font-size:15px;text-anchor:middle;fill:var(--ink);font-family:"Segoe UI",Roboto,Arial,sans-serif}
+  .venn-svg text.lab{font-weight:700;fill:#1f5fa8}
+  button{font:inherit;font-weight:600;border:0;border-radius:10px;padding:13px 20px;cursor:pointer}
+  button[disabled]{opacity:.65;cursor:default}
+  .primary{background:var(--green);color:#fff;width:100%;font-size:1.05rem}
+  .primary:hover{background:var(--green-dark)}
+  .ghost{background:#fff;color:var(--green-dark);border:1.5px solid var(--green)}
+  .msg{color:var(--red);font-weight:600;margin:0 0 10px;display:none}
+  #result{display:none;text-align:center}
+  #result .score{font-size:2.6rem;font-weight:800;color:var(--green-dark);margin:4px 0;direction:ltr;unicode-bidi:isolate}
+  #result .who{font-weight:600;font-size:1.1rem}
+  #result .note{color:var(--muted);margin:4px 0 14px}
+  .actions{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+  a.primary,a.ghost{display:inline-block;text-decoration:none;border-radius:10px;padding:13px 20px;font-weight:600;text-align:center}
+  footer{text-align:center;color:var(--muted);font-size:.8rem;padding:8px 16px 28px}
+  @media (max-width:420px){.opts{grid-template-columns:1fr}}
+  @media print{.progress,.actions,#submitCard{display:none}body{background:#fff}.card{break-inside:avoid}}
+  .ch{display:block;position:relative;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .ch input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+  .ch input:checked + .opt{border-color:var(--green);background:var(--green-soft)}
+  .ch input:checked + .opt .let{background:var(--green);border-color:var(--green);color:#fff}
+  .ch input:focus + .opt{box-shadow:0 0 0 3px rgba(31,157,87,.25)}
+  /* after the server grades: data-c marks the correct option */
+  .graded .ch{pointer-events:none;cursor:default}
+  .graded .ch input[data-c] + .opt{border-color:var(--green);background:var(--green-soft)}
+  .graded .ch input[data-c] + .opt .let{background:var(--green);border-color:var(--green);color:#fff}
+  .graded .ch input:checked:not([data-c]) + .opt{border-color:var(--red);background:var(--red-soft)}
+  .graded .ch input:checked:not([data-c]) + .opt .let{background:var(--red);border-color:var(--red);color:#fff}
+  .graded .why{display:block}
+  html:not(.js) .jsonly{display:none!important}
+  .js .nojs{display:none!important}
+  .notice{background:#fff8e6;border-color:#f2d58a;font-size:.95rem}
+  .who-bar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;font-size:.95rem;margin-bottom:12px}
+  .who-bar a{color:var(--green-dark);font-weight:600}
+  #saveMsg{font-weight:600;color:var(--green-dark);margin:0 0 12px}
+</style>
+<script>document.documentElement.className='js';</script>
+<script src="../config.js"></script>
+<script src="../portal.js"></script>
+<script>var PORTAL_SESSION=Portal.requireLogin('9');</script>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>مراجعة أكتوبر</h1>
+    <p>رياضيات الصف التاسع · عدد الأسئلة: 58</p>
+  </div>
+</header>
+
+<main>
+  <div class="who-bar jsonly"><span id="whoami"></span><a href="../index.html">اختباراتي</a></div>
+  <div class="card notice nojs">أنت تشاهد الاختبار في وضع المعاينة. افتحه عبر الإنترنت وسجّل الدخول لإرسال إجاباتك ومعرفة نتيجتك.</div>
+
+  <div class="card" id="result" aria-live="polite">
+    <div class="who" id="who"></div>
+    <div class="score" id="score"></div>
+    <div class="note" id="note"></div>
+    <p id="saveMsg"></p>
+    <div class="actions">
+      <button class="ghost" onclick="window.print()">طباعة / حفظ النتيجة</button>
+      <button class="ghost" onclick="restart()">حاول مرة أخرى</button>
+      <a class="ghost" href="../index.html">اختباراتي</a>
+    </div>
+  </div>
+
+  <div class="progress jsonly" id="progress">
+    <div class="bar"><i id="barFill"></i></div>
+    <small id="barText">تمت الإجابة عن 0 من 58</small>
+  </div>
+
+  <div id="quiz">
+  <h2 class="sec">الوحدة الأولى · اختر الإجابة الصحيحة</h2>
+  <div class="card" id="q0"><div class="q-head"><div class="num">1</div><div class="stem">أي مما يلي يساوي <span class="m" dir="ltr">(<i>a</i><sup>4</sup>)<sup>7</sup></span>؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 1">
+    <label class="ch"><input type="radio" name="q0" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr"><i>a</i><sup>3</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q0" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr"><i>a</i><sup>11</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q0" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr"><i>a</i><sup>28</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q0" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr"><i>a</i><sup>47</sup></span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q1"><div class="q-head"><div class="num">2</div><div class="stem">ما قيمة <span class="m" dir="ltr">(3<sup>8</sup>)<sup>0</sup></span>؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 2">
+    <label class="ch"><input type="radio" name="q1" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">3<sup>8</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q1" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">3<sup>80</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q1" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">1</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q1" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">24</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q2"><div class="q-head"><div class="num">3</div><div class="stem">أي مما يلي يساوي <span class="m" dir="ltr">(3<sup>4</sup>)<sup>2</sup> × 3<sup>5</sup></span>؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 3">
+    <label class="ch"><input type="radio" name="q2" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">3<sup>11</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q2" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">3<sup>13</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q2" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">3<sup>40</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q2" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">9<sup>11</sup></span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q3"><div class="q-head"><div class="num">4</div><div class="stem">أي مما يلي لا يساوي <span class="m" dir="ltr">2<sup>12</sup></span>؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 4">
+    <label class="ch"><input type="radio" name="q3" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">8<sup>4</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q3" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">4<sup>6</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q3" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">(16)<sup>3</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q3" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">6<sup>5</sup></span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q4"><div class="q-head"><div class="num">5</div><div class="stem">مساحة المربع الذي طول ضلعه <span class="m" dir="ltr">4<i>a</i><sup>3</sup><i>x</i><sup>5</sup></span> سم في أبسط صورة هي <span class="blank"></span> سم²</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 5">
+    <label class="ch"><input type="radio" name="q4" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">8<i>a</i><sup>6</sup><i>x</i><sup>10</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q4" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">16<i>a</i><sup>3</sup><i>x</i><sup>5</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q4" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">16<i>a</i><sup>6</sup><i>x</i><sup>10</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q4" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">16<i>a</i><sup>9</sup><i>x</i><sup>25</sup></span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q5"><div class="q-head"><div class="num">6</div><div class="stem">ما ناتج <span class="m" dir="ltr"><i>x</i><sup>2</sup> × (<i>x</i><sup>5</sup>)<sup>2</sup></span> في أبسط صورة؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 6">
+    <label class="ch"><input type="radio" name="q5" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr"><i>x</i><sup>9</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q5" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr"><i>x</i><sup>12</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q5" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr"><i>x</i><sup>14</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q5" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr"><i>x</i><sup>20</sup></span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q6"><div class="q-head"><div class="num">7</div><div class="stem">ما ناتج <span class="m" dir="ltr"><span class="frac"><b>(<i>x</i><sup>3</sup>)<sup>5</sup></b><b>(<i>x</i><sup>8</sup>)<sup>2</sup></b></span></span> في أبسط صورة؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 7">
+    <label class="ch"><input type="radio" name="q6" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr"><span class="frac"><b>1</b><b><i>x</i></b></span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q6" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr"><i>x</i></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q6" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr"><i>x</i><sup>−2</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q6" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr"><i>x</i><sup>31</sup></span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q7"><div class="q-head"><div class="num">8</div><div class="stem">ما ناتج <span class="m" dir="ltr">(−<i>a</i><sup>3</sup><i>b</i>)<sup>2</sup></span> في أبسط صورة؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 8">
+    <label class="ch"><input type="radio" name="q7" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr"><i>a</i><sup>3</sup><i>b</i><sup>3</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q7" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">−<i>a</i><sup>5</sup><i>b</i><sup>3</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q7" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr"><i>a</i><sup>6</sup><i>b</i><sup>2</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q7" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">−<i>a</i><sup>6</sup><i>b</i><sup>2</sup></span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q8"><div class="q-head"><div class="num">9</div><div class="stem">ما ناتج <span class="m" dir="ltr">(<span class="frac"><b>3<i>a</i><sup>2</sup></b><b>2<i>b</i></b></span>)<sup>2</sup></span> في أبسط صورة؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 9">
+    <label class="ch"><input type="radio" name="q8" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr"><span class="frac"><b>9<i>a</i><sup>4</sup></b><b>4<i>b</i><sup>3</sup></b></span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q8" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr"><span class="frac"><b>9<i>a</i><sup>4</sup></b><b>4<i>b</i><sup>2</sup></b></span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q8" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr"><span class="frac"><b>3<i>a</i><sup>4</sup></b><b>2<i>b</i><sup>2</sup></b></span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q8" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr"><span class="frac"><b>3<i>a</i><sup>4</sup></b><b>2<i>b</i><sup>3</sup></b></span></span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q9"><div class="q-head"><div class="num">10</div><div class="stem"><span class="m" dir="ltr">(<span class="frac"><b><i>b</i><sup>−2</sup><i>c</i><sup>0</sup><i>a</i><sup>4</sup></b><b>3<i>a</i><sup>6</sup><i>b</i><sup>−4</sup></b></span>)<sup>−2</sup> = <span class="blank"></span></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 10">
+    <label class="ch"><input type="radio" name="q9" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">(<span class="frac"><b><i>b</i></b><b>3<i>a</i></b></span>)<sup>4</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q9" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr"><span class="frac"><b><i>b</i><sup>3</sup></b><b>4<i>a</i><sup>4</sup></b></span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q9" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">9(<span class="frac"><b><i>a</i></b><b><i>b</i></b></span>)<sup>4</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q9" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr"><span class="frac"><b><i>b</i><sup>2</sup></b><b>3<i>a</i><sup>2</sup></b></span></span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q10"><div class="q-head"><div class="num">11</div><div class="stem">إذا كان <span class="m" dir="ltr">2<sup><i>x</i></sup> = 5</span> فما قيمة <span class="m" dir="ltr">8<sup><i>x</i></sup></span>؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 11">
+    <label class="ch"><input type="radio" name="q10" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">125</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q10" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">32</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q10" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">27</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q10" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">15</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q11"><div class="q-head"><div class="num">12</div><div class="stem"><span class="m" dir="ltr">(4 + 4)<sup>2</sup> = 2<sup>…</sup></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 12">
+    <label class="ch"><input type="radio" name="q11" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">3</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q11" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">5</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q11" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">6</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q11" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">8</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q12"><div class="q-head"><div class="num">13</div><div class="stem">إذا كان <span class="m" dir="ltr">((10)<sup>2</sup> × 8)<sup>4</sup> = 2<sup><i>a</i></sup> × 5<sup><i>b</i></sup></span> فإن <span class="m" dir="ltr"><i>a</i> + <i>b</i> = <span class="blank"></span></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 13">
+    <label class="ch"><input type="radio" name="q12" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">6</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q12" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">20</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q12" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">8</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q12" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">28</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q13"><div class="q-head"><div class="num">14</div><div class="stem">إذا كان <span class="m" dir="ltr">3 = 5<sup><i>x</i> − 1</sup></span> فإن <span class="m" dir="ltr">5<sup><i>x</i></sup> = <span class="blank"></span></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 14">
+    <label class="ch"><input type="radio" name="q13" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">15</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q13" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">9</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q13" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">8</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q13" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">18</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q14"><div class="q-head"><div class="num">15</div><div class="stem">إذا كان <span class="m" dir="ltr">11<sup><i>x</i> − 3</sup> = 1</span> فما قيمة <span class="m" dir="ltr"><i>x</i></span>؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 15">
+    <label class="ch"><input type="radio" name="q14" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">1</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q14" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">2</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q14" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">3</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q14" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">4</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q15"><div class="q-head"><div class="num">16</div><div class="stem">إذا كان <span class="m" dir="ltr">3<sup>−<i>x</i></sup> = 3</span> فما قيمة <span class="m" dir="ltr"><i>x</i></span>؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 16">
+    <label class="ch"><input type="radio" name="q15" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">−3</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q15" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">−1</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q15" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">1</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q15" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">3</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q16"><div class="q-head"><div class="num">17</div><div class="stem">إذا كان <span class="m" dir="ltr">3<sup><i>x</i> + 2</sup> = 3<sup>2<i>x</i> − 1</sup></span> فما قيمة <span class="m" dir="ltr"><i>x</i></span>؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 17">
+    <label class="ch"><input type="radio" name="q16" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">2</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q16" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">3</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q16" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">4</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q16" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">5</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q17"><div class="q-head"><div class="num">18</div><div class="stem">إذا كان <span class="m" dir="ltr">7<sup><i>x</i> − 1</sup> = 7<sup>1 − <i>x</i></sup></span> فما قيمة <span class="m" dir="ltr"><i>x</i></span>؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 18">
+    <label class="ch"><input type="radio" name="q17" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">−1</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q17" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">0</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q17" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">3<sup>0</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q17" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">7</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q18"><div class="q-head"><div class="num">19</div><div class="stem">مجموعة حل المعادلة <span class="m" dir="ltr">(3<sup><i>x</i></sup>)<sup><i>x</i></sup> = 81</span> في R هي <span class="blank"></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 19">
+    <label class="ch"><input type="radio" name="q18" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">{9}</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q18" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">{9, −9}</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q18" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">{2}</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q18" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">{2, −2}</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q19"><div class="q-head"><div class="num">20</div><div class="stem">إذا كان <span class="m" dir="ltr">5<sup><i>x</i> − 1</sup> = 3<sup><i>x</i> − 1</sup></span> فما قيمة <span class="m" dir="ltr"><i>x</i></span>؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 20">
+    <label class="ch"><input type="radio" name="q19" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">0</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q19" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">1</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q19" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">3</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q19" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">5</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q20"><div class="q-head"><div class="num">21</div><div class="stem">إذا كان <span class="m" dir="ltr">5<sup>2<i>x</i> − 1</sup> = (<span class="frac"><b>1</b><b>5</b></span>)<sup>−7</sup></span> فما قيمة <span class="m" dir="ltr"><i>x</i></span>؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 21">
+    <label class="ch"><input type="radio" name="q20" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">2</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q20" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">3</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q20" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">4</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q20" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">5</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q21"><div class="q-head"><div class="num">22</div><div class="stem">إذا كان <span class="m" dir="ltr">3<sup><i>x</i></sup> + 3<sup><i>x</i></sup> = 6</span> فما قيمة <span class="m" dir="ltr"><i>x</i></span>؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 22">
+    <label class="ch"><input type="radio" name="q21" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">1</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q21" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">2</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q21" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">3</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q21" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">9</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <h2 class="sec">الوحدة الأولى · أجب عما يلي</h2>
+  <div class="card" id="q22"><div class="q-head"><div class="num">23</div><div class="stem">ما قيمة <span class="m" dir="ltr">(<i>n</i><sup>2</sup><i>m</i><sup>3</sup>)<sup>3</sup></span> عندما <span class="m" dir="ltr"><i>n</i> = <i>m</i> = 2</span>؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 23">
+    <label class="ch"><input type="radio" name="q22" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">96</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q22" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">1024</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q22" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">32768</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q22" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">4096</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q23"><div class="q-head"><div class="num">24</div><div class="stem"><span class="m" dir="ltr"><span class="frac"><b>(<i>x</i><sup>4</sup>)<sup>3</sup></b><b>(−<i>x</i><sup>3</sup>)<sup>4</sup></b></span> = <span class="blank"></span></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 24">
+    <label class="ch"><input type="radio" name="q23" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">1</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q23" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">−1</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q23" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr"><i>x</i><sup>24</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q23" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">0</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q24"><div class="q-head"><div class="num">25</div><div class="stem"><span class="m" dir="ltr">−<i>a</i><sup>5</sup> × (−<i>a</i><sup>6</sup>)<sup>2</sup> = <span class="blank"></span></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 25">
+    <label class="ch"><input type="radio" name="q24" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr"><i>a</i><sup>17</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q24" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">−<i>a</i><sup>17</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q24" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">−<i>a</i><sup>60</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q24" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr"><i>a</i><sup>60</sup></span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q25"><div class="q-head"><div class="num">26</div><div class="stem">أوجد قيمة <span class="m" dir="ltr"><span class="frac"><b>5<sup><i>m</i></sup> × 7<sup><i>m</i> − 1</sup></b><b>35<sup><i>m</i></sup></b></span></span> عندما <span class="m" dir="ltr"><i>m</i> = 1</span>.</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 26">
+    <label class="ch"><input type="radio" name="q25" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">7</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q25" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr"><span class="frac"><b>1</b><b>35</b></span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q25" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">5</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q25" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr"><span class="frac"><b>1</b><b>7</b></span></span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q26"><div class="q-head"><div class="num">27</div><div class="stem">إذا كان <span class="m" dir="ltr">3<sup><i>y</i></sup> = 5</span> فما قيمة <span class="m" dir="ltr">27<sup><i>y</i></sup></span>؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 27">
+    <label class="ch"><input type="radio" name="q26" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">15</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q26" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">125</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q26" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">25</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q26" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">243</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q27"><div class="q-head"><div class="num">28</div><div class="stem">ما قيمة <span class="m" dir="ltr">(<i>x</i><sup>11</sup>)<sup>6</sup></span> عندما <span class="m" dir="ltr"><i>x</i> = 1</span>؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 28">
+    <label class="ch"><input type="radio" name="q27" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">66</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q27" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">17</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q27" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">1</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q27" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">0</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q28"><div class="q-head"><div class="num">29</div><div class="stem">ما ناتج <span class="m" dir="ltr"><i>y</i><sup>8</sup> × (<i>y</i><sup>3</sup>)<sup>4</sup></span> في أبسط صورة؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 29">
+    <label class="ch"><input type="radio" name="q28" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr"><i>y</i><sup>15</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q28" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr"><i>y</i><sup>96</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q28" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr"><i>y</i><sup>32</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q28" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr"><i>y</i><sup>20</sup></span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q29"><div class="q-head"><div class="num">30</div><div class="stem">ما ناتج <span class="m" dir="ltr">(−<i>m</i><sup>3</sup><i>n</i>)<sup>2</sup></span> في أبسط صورة؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 30">
+    <label class="ch"><input type="radio" name="q29" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr"><i>m</i><sup>6</sup><i>n</i><sup>2</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q29" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">−<i>m</i><sup>6</sup><i>n</i><sup>2</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q29" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr"><i>m</i><sup>5</sup><i>n</i><sup>2</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q29" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr"><i>m</i><sup>9</sup><i>n</i><sup>2</sup></span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q30"><div class="q-head"><div class="num">31</div><div class="stem">إذا كان <span class="m" dir="ltr">3<sup><i>y</i></sup> = 2</span> فما قيمة <span class="m" dir="ltr">9<sup><i>y</i></sup></span>؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 31">
+    <label class="ch"><input type="radio" name="q30" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">6</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q30" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">4</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q30" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">18</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q30" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">8</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q31"><div class="q-head"><div class="num">32</div><div class="stem"><span class="m" dir="ltr"><span class="frac"><b>(16<i>x</i><sup>2</sup><i>y</i><sup>−2</sup>)<sup>0</sup></b><b>(4<i>x</i><sup>0</sup><i>y</i><sup>−6</sup>)<sup>−2</sup></b></span> = <span class="blank"></span></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 32">
+    <label class="ch"><input type="radio" name="q31" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr"><span class="frac"><b>1</b><b>16<i>y</i><sup>12</sup></b></span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q31" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">16<i>y</i><sup>12</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q31" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr"><span class="frac"><b>16</b><b><i>y</i><sup>12</sup></b></span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q31" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">0</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q32"><div class="q-head"><div class="num">33</div><div class="stem"><span class="m" dir="ltr"><span class="frac"><b>(2<i>a</i><sup>5</sup>)<sup>3</sup> × (3<i>a</i><sup>3</sup>)<sup>2</sup></b><b>(6<i>a</i><sup>7</sup>)<sup>2</sup> × (<i>a</i><sup>−1</sup>)<sup>3</sup></b></span> = <span class="blank"></span></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 33">
+    <label class="ch"><input type="radio" name="q32" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">2<i>a</i><sup>4</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q32" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">6<i>a</i><sup>10</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q32" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">2<i>a</i><sup>10</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q32" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">2<i>a</i><sup>16</sup></span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q33"><div class="q-head"><div class="num">34</div><div class="stem">أوجد قيمة <span class="m" dir="ltr"><span class="frac"><b>4<sup><i>x</i></sup> × 2<sup><i>x</i> − 4</sup></b><b>16<sup><i>x</i> − 2</sup></b></span></span> عندما <span class="m" dir="ltr"><i>x</i> = 1</span>.</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 34">
+    <label class="ch"><input type="radio" name="q33" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">2</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q33" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">8</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q33" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr"><span class="frac"><b>1</b><b>8</b></span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q33" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">4</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q34"><div class="q-head"><div class="num">35</div><div class="stem">حل في R: <span class="m" dir="ltr">4<sup><i>x</i> + 1</sup> = 2<sup><i>x</i></sup></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 35">
+    <label class="ch"><input type="radio" name="q34" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">{2}</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q34" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">{−1}</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q34" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">{−2}</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q34" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">{1}</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q35"><div class="q-head"><div class="num">36</div><div class="stem">حل في R: <span class="m" dir="ltr">25<sup><i>x</i><sup>2</sup> − 9</sup> = 1</span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 36">
+    <label class="ch"><input type="radio" name="q35" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">{3}</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q35" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">{3, −3}</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q35" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">{9}</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q35" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">∅</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q36"><div class="q-head"><div class="num">37</div><div class="stem">حل في R: <span class="m" dir="ltr">3<sup><i>x</i><sup>2</sup></sup> = 81<sup>3 − <i>x</i></sup></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 37">
+    <label class="ch"><input type="radio" name="q36" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">{−2, 6}</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q36" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">{2}</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q36" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">{6}</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q36" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">{2, −6}</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q37"><div class="q-head"><div class="num">38</div><div class="stem">حل في R: <span class="m" dir="ltr">2<sup>2<i>x</i> − 1</sup> = 8</span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 38">
+    <label class="ch"><input type="radio" name="q37" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">{2}</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q37" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">{1}</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q37" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">{4}</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q37" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">{3}</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <h2 class="sec">نموذج امتحان · اختر الإجابة الصحيحة</h2>
+  <div class="card" id="q38"><div class="q-head"><div class="num">39</div><div class="stem">أي مما يلي يساوي <span class="m" dir="ltr">(<i>a</i><sup>2</sup>)<sup>4</sup> × <i>a</i><sup>5</sup></span>؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 39">
+    <label class="ch"><input type="radio" name="q38" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr"><i>a</i><sup>11</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q38" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr"><i>a</i><sup>13</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q38" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr"><i>a</i><sup>40</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q38" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr"><i>a</i><sup>30</sup></span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q39"><div class="q-head"><div class="num">40</div><div class="stem">إذا كان <span class="m" dir="ltr"><span class="frac"><b>3<sup><i>x</i></sup> × 27<sup><i>x</i></sup></b><b>81<sup><i>x</i></sup></b></span> = 2<sup>−2<i>x</i></sup></span> فما قيمة <span class="m" dir="ltr"><i>x</i></span>؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 40">
+    <label class="ch"><input type="radio" name="q39" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">0</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q39" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">1</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q39" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">2</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q39" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">−1</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q40"><div class="q-head"><div class="num">41</div><div class="stem">إذا كان <span class="m" dir="ltr">3<sup><i>x</i></sup> = <i>b</i></span> فأي مما يلي يساوي <span class="m" dir="ltr">9<sup><i>x</i> + 1</sup></span>؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 41">
+    <label class="ch"><input type="radio" name="q40" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">27<i>b</i><sup>2</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q40" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">3<i>b</i><sup>2</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q40" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">9<i>b</i><sup>2</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q40" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">3<i>b</i></span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q41"><div class="q-head"><div class="num">42</div><div class="stem">إذا كان <span class="m" dir="ltr">4<sup><i>x</i></sup> = 8</span> فما قيمة <span class="m" dir="ltr"><i>x</i></span>؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 42">
+    <label class="ch"><input type="radio" name="q41" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">1</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q41" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">2</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q41" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr"><span class="frac"><b>2</b><b>3</b></span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q41" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr"><span class="frac"><b>3</b><b>2</b></span></span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <h2 class="sec">نموذج امتحان · أكمل</h2>
+  <div class="card" id="q42"><div class="q-head"><div class="num">43</div><div class="stem">إذا كان <span class="m" dir="ltr">7<sup><i>x</i> + 1</sup> = 5<sup><i>x</i> + 1</sup></span> فإن <span class="m" dir="ltr"><i>x</i> = <span class="blank"></span></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 43">
+    <label class="ch"><input type="radio" name="q42" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">1</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q42" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">0</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q42" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">−1</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q42" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">7</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q43"><div class="q-head"><div class="num">44</div><div class="stem">ناتج <span class="m" dir="ltr"><span class="frac"><b>(−2<i>a</i><sup>2</sup>)<sup>3</sup></b><b>2<i>a</i></b></span></span> في أبسط صورة هو <span class="blank"></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 44">
+    <label class="ch"><input type="radio" name="q43" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">4<i>a</i><sup>5</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q43" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">−4<i>a</i><sup>5</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q43" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">−8<i>a</i><sup>5</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q43" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">−4<i>a</i><sup>6</sup></span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q44"><div class="q-head"><div class="num">45</div><div class="stem">إذا كان <span class="m" dir="ltr">5<sup><i>x</i> − 3</sup> = 1</span> فإن <span class="m" dir="ltr">2<sup><i>x</i></sup> = <span class="blank"></span></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 45">
+    <label class="ch"><input type="radio" name="q44" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">3</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q44" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">6</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q44" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">8</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q44" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">1</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q45"><div class="q-head"><div class="num">46</div><div class="stem">إذا كان <span class="m" dir="ltr">2<sup><i>a</i></sup> + 2<sup><i>a</i></sup> + 2<sup><i>a</i></sup> = 24</span> فإن <span class="m" dir="ltr"><i>a</i> = <span class="blank"></span></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 46">
+    <label class="ch"><input type="radio" name="q45" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">8</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q45" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">3</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q45" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">2</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q45" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">4</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <h2 class="sec">نموذج امتحان · أجب عن الأسئلة التالية</h2>
+  <div class="card" id="q46"><div class="q-head"><div class="num">47</div><div class="stem">إذا كان <span class="m" dir="ltr">2<sup><i>x</i></sup> = 5</span> فأوجد قيمة <span class="m" dir="ltr">8<sup><i>x</i></sup> − 3 × 2<sup><i>x</i> + 2</sup></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 47">
+    <label class="ch"><input type="radio" name="q46" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">185</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q46" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">60</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q46" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">65</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q46" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">105</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q47"><div class="q-head"><div class="num">48</div><div class="stem">اختصر <span class="m" dir="ltr"><span class="frac"><b>4<sup><i>x</i></sup> × 9<sup>2 − <i>x</i></sup></b><b>6<sup>2<i>x</i></sup></b></span></span> ثم أوجد قيمته عندما <span class="m" dir="ltr"><i>x</i> = 1</span>.</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 48">
+    <label class="ch"><input type="radio" name="q47" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">3<sup>4 − 2<i>x</i></sup></span>، القيمة 9</span></span></span></label>
+    <label class="ch"><input type="radio" name="q47" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">2 × 3<sup>4 − 4<i>x</i></sup></span>، القيمة 2</span></span></span></label>
+    <label class="ch"><input type="radio" name="q47" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">3<sup>2 − 4<i>x</i></sup></span>، القيمة <span class="m" dir="ltr"><span class="frac"><b>1</b><b>9</b></span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q47" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">3<sup>4 − 4<i>x</i></sup></span>، القيمة 1</span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q48"><div class="q-head"><div class="num">49</div><div class="stem">أوجد في R مجموعة حل المعادلة <span class="m" dir="ltr">5<sup><i>x</i><sup>2</sup> − 4</sup> = 125<sup>2</sup></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 49">
+    <label class="ch"><input type="radio" name="q48" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">{<span class="rt">√<span class="rad">10</span></span>}</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q48" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">{10}</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q48" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">{<span class="rt">√<span class="rad">10</span></span>, −<span class="rt">√<span class="rad">10</span></span>}</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q48" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">{2, −2}</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q49"><div class="q-head"><div class="num">50</div><div class="stem">أوجد قيمة <span class="m" dir="ltr"><i>m</i></span> إذا كان <span class="m" dir="ltr">3<sup>−2<i>m</i> + 1</sup> × 9<sup>2<i>m</i></sup> = <span class="frac"><b>1</b><b>27</b></span></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 50">
+    <label class="ch"><input type="radio" name="q49" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">2</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q49" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">−1</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q49" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">−2</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q49" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">1</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <h2 class="sec">مراجعة الوحدة الأولى · اختر الإجابة الصحيحة</h2>
+  <div class="card" id="q50"><div class="q-head"><div class="num">51</div><div class="stem">إذا كان <span class="m" dir="ltr">2<sup><i>x</i></sup> = 8</span> فإن <span class="m" dir="ltr"><i>x</i> = <span class="blank"></span></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 51">
+    <label class="ch"><input type="radio" name="q50" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">1</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q50" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">2</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q50" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">3</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q50" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">4</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q51"><div class="q-head"><div class="num">52</div><div class="stem">إذا كان <span class="m" dir="ltr">3<sup><i>x</i> + 4</sup> = 81</span> فإن <span class="m" dir="ltr"><i>x</i> = <span class="blank"></span></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 52">
+    <label class="ch"><input type="radio" name="q51" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">1</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q51" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">0</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q51" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">2</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q51" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">4</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q52"><div class="q-head"><div class="num">53</div><div class="stem">إذا كان <span class="m" dir="ltr">5<sup><i>x</i> + 3</sup> = 1</span> فإن <span class="m" dir="ltr"><i>x</i> = <span class="blank"></span></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 53">
+    <label class="ch"><input type="radio" name="q52" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">1</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q52" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">3</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q52" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">−3</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q52" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">4</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q53"><div class="q-head"><div class="num">54</div><div class="stem">إذا كان <span class="m" dir="ltr">9<sup><i>x</i></sup> = 27</span> فإن <span class="m" dir="ltr"><i>x</i> = <span class="blank"></span></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 54">
+    <label class="ch"><input type="radio" name="q53" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr"><span class="frac"><b>2</b><b>3</b></span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q53" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr"><span class="frac"><b>3</b><b>2</b></span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q53" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr"><span class="frac"><b>1</b><b>3</b></span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q53" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">3</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q54"><div class="q-head"><div class="num">55</div><div class="stem">إذا كان <span class="m" dir="ltr">5<sup><i>x</i> − 3</sup> = 7<sup><i>x</i> − 3</sup></span> فإن <span class="m" dir="ltr"><i>x</i> = <span class="blank"></span></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 55">
+    <label class="ch"><input type="radio" name="q54" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">5</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q54" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">7</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q54" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">3</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q54" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">1</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <h2 class="sec">مراجعة الوحدة الأولى · اختصر</h2>
+  <div class="card" id="q55"><div class="q-head"><div class="num">56</div><div class="stem">اختصر: <span class="m" dir="ltr"><span class="frac"><b>4<i>m</i><sup>2</sup><i>n</i><sup>−3</sup></b><b><i>n</i><sup>−4</sup><i>m</i><sup>3</sup></b></span></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 56">
+    <label class="ch"><input type="radio" name="q55" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr"><span class="frac"><b>4<i>m</i></b><b><i>n</i></b></span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q55" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr"><span class="frac"><b>4<i>n</i></b><b><i>m</i></b></span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q55" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr"><span class="frac"><b>4<i>n</i><sup>7</sup></b><b><i>m</i></b></span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q55" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr"><span class="frac"><b>4</b><b><i>m</i><i>n</i></b></span></span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q56"><div class="q-head"><div class="num">57</div><div class="stem">اختصر: <span class="m" dir="ltr"><span class="frac"><b>4<sup><i>x</i></sup> × 2<sup><i>x</i> − 4</sup></b><b>16<sup><i>x</i> − 2</sup></b></span></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 57">
+    <label class="ch"><input type="radio" name="q56" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">2<sup><i>x</i> − 4</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q56" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">2<sup>7<i>x</i> − 12</sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q56" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr">2<sup>4 − <i>x</i></sup></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q56" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">2<sup>−<i>x</i> − 12</sup></span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q57"><div class="q-head"><div class="num">58</div><div class="stem">أوجد القيمة العددية عندما <span class="m" dir="ltr"><i>x</i> = 1</span>: <span class="m" dir="ltr"><span class="frac"><b>9<sup>2<i>x</i></sup> × 3<sup><i>x</i> − 1</sup></b><b>27<sup><i>x</i></sup></b></span></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 58">
+    <label class="ch"><input type="radio" name="q57" value="0"><span class="opt"><span class="let">أ</span><span><span><span class="m" dir="ltr">1</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q57" value="1"><span class="opt"><span class="let">ب</span><span><span><span class="m" dir="ltr">9</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q57" value="2"><span class="opt"><span class="let">ج</span><span><span><span class="m" dir="ltr"><span class="frac"><b>1</b><b>3</b></span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q57" value="3"><span class="opt"><span class="let">د</span><span><span><span class="m" dir="ltr">3</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+
+  </div>
+
+  <div class="card jsonly" id="submitCard">
+    <p class="msg" id="msg"></p>
+    <button class="primary" id="submitBtn" onclick="submitTest()">أرسل إجاباتي</button>
+  </div>
+</main>
+<footer>اختر الإجابة الصحيحة لكل سؤال، ثم اضغط «أرسل إجاباتي».</footer>
+
+<script>
+var TEST_TITLE='الصف التاسع - مراجعة أكتوبر';
+var TEST_ID='g9-grade9-oct-rev-ar';
+var T={"myTests":"اختباراتي","notice":"أنت تشاهد الاختبار في وضع المعاينة. افتحه عبر الإنترنت وسجّل الدخول لإرسال إجاباتك ومعرفة نتيجتك.","print":"طباعة / حفظ النتيجة","again":"حاول مرة أخرى","submit":"أرسل إجاباتي","footer":"اختر الإجابة الصحيحة لكل سؤال، ثم اضغط «أرسل إجاباتي».","answered":"تمت الإجابة عن {n} من {N}","left1":"بقي سؤال واحد بدون إجابة.","leftN":"بقي {n} من الأسئلة بدون إجابة.","checking":"جارٍ تصحيح إجاباتك…","expired":"انتهت مدة تسجيل الدخول. يرجى تسجيل الدخول مرة أخرى.","failed":"تعذّر تصحيح إجاباتك. تحقق من الإنترنت واضغط «أرسل إجاباتي» مرة أخرى.","correct":"إجابة صحيحة. ","correctAnswer":"الإجابة الصحيحة: {L}. ","saved":"تم حفظ نتيجتك.","signedIn":"تم تسجيل الدخول باسم {name}","note100":"ممتاز! الدرجة كاملة.","note80":"عمل جيد جدًا. راجع الأسئلة المحددة باللون الأحمر.","note50":"محاولة جيدة. اقرأ الشرح وحاول مرة أخرى.","note0":"استمر في التدريب. اقرأ شرح كل سؤال ثم حاول مرة أخرى.","letters":["أ","ب","ج","د"]};
+
+var L=T.letters, attempt=1, busy=false;
+var quiz=document.getElementById('quiz');
+var cards=quiz.querySelectorAll('.card'), N=cards.length;
+
+function fill(s,v){return s.replace(/\{(\w+)\}/g,function(m,k){return v[k];});}
+function inputsOf(i){return cards[i].querySelectorAll('input');}
+function pickedOf(i){var a=inputsOf(i),k;for(k=0;k<a.length;k++){if(a[k].checked)return k;}return -1;}
+
+function updateBar(){
+  var c=0,i;
+  for(i=0;i<N;i++){if(pickedOf(i)>=0){c++;cards[i].classList.remove('missing');}}
+  document.getElementById('barFill').style.width=(c/N*100)+'%';
+  document.getElementById('barText').textContent=fill(T.answered,{n:c,N:N});
+}
+quiz.addEventListener('change',updateBar);
+
+function showMsg(t){var m=document.getElementById('msg');m.textContent=t;m.style.display=t?'block':'none';}
+
+function submitTest(){
+  if(busy)return;
+  if(!PORTAL_SESSION){location.replace('../index.html');return;}
+  var first=-1,left=0,i,picks=[];
+  for(i=0;i<N;i++){
+    var p=pickedOf(i), miss=p<0;
+    cards[i].classList.toggle('missing',miss);
+    if(miss){left++;if(first<0)first=i;}
+    picks.push(p);
+  }
+  if(left){showMsg(fill(left>1?T.leftN:T.left1,{n:left}));cards[first].scrollIntoView();return;}
+  showMsg('');
+  busy=true;
+  var btn=document.getElementById('submitBtn'); btn.disabled=true; btn.textContent=T.checking;
+  Portal.submitTest({testId:TEST_ID,picks:picks,attempt:attempt},function(r){
+    busy=false; btn.disabled=false; btn.textContent=T.submit;
+    if(!r||!r.ok){
+      showMsg(r&&r.error==='signed_out'?T.expired:T.failed);
+      return;
+    }
+    showResult(r);
+  });
+}
+
+function showResult(r){
+  for(var i=0;i<N;i++){
+    var a=inputsOf(i), c=r.correct[i], ok=pickedOf(i)===c, k;
+    for(k=0;k<a.length;k++){if(k===c)a[k].setAttribute('data-c','');else a[k].removeAttribute('data-c');}
+    var w=cards[i].querySelector('.why');
+    w.classList.toggle('bad',!ok);
+    w.innerHTML='<strong>'+(ok?T.correct:fill(T.correctAnswer,{L:L[c]}))+'</strong>'+(r.explanations[i]||'');
+  }
+  quiz.classList.add('graded');
+  var pct=r.percent;
+  document.getElementById('who').textContent=PORTAL_SESSION.name;
+  document.getElementById('score').textContent=r.score+' / '+r.total+'  ('+pct+'%)';
+  document.getElementById('note').textContent=pct===100?T.note100:pct>=80?T.note80:pct>=50?T.note50:T.note0;
+  document.getElementById('saveMsg').textContent=r.saved?T.saved:'';
+  document.getElementById('result').style.display='block';
+  document.getElementById('submitCard').style.display='none';
+  document.getElementById('progress').style.display='none';
+  window.scrollTo(0,0);
+}
+function restart(){
+  var all=quiz.querySelectorAll('input'), k;
+  for(k=0;k<all.length;k++){all[k].checked=false;all[k].removeAttribute('data-c');}
+  var ws=quiz.querySelectorAll('.why'); for(k=0;k<ws.length;k++){ws[k].innerHTML='';ws[k].classList.remove('bad');}
+  attempt++;
+  quiz.classList.remove('graded');
+  updateBar();
+  document.getElementById('result').style.display='none';
+  document.getElementById('submitCard').style.display='block';
+  document.getElementById('progress').style.display='block';
+  window.scrollTo(0,0);
+}
+updateBar();
+if(PORTAL_SESSION){document.getElementById('whoami').textContent=fill(T.signedIn,{name:PORTAL_SESSION.name});}
+</script>
+</body>
+</html>
