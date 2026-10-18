@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Math Tests Studio">
+<title>Grade 6 Math Test – October Revision</title>
+<style>
+  :root{
+    --green:#1f9d57; --green-dark:#157a42; --green-soft:#e8f6ee;
+    --ink:#1d2b24; --muted:#5f6f67; --line:#d5e3db; --bg:#f4f8f5; --card:#ffffff;
+    --red:#c8372d; --red-soft:#fdeceb; --amber:#f2b632;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+  html[lang=ar] body{font-family:"Segoe UI",Tahoma,"Noto Sans Arabic","Noto Naskh Arabic",Roboto,Arial,sans-serif}
+  header{background:var(--green);color:#fff;padding:22px 16px 26px}
+  header .wrap{max-width:760px;margin:0 auto}
+  header h1{margin:0 0 4px;font-size:1.5rem}
+  header p{margin:0;opacity:.92;font-size:.95rem}
+  main{max-width:760px;margin:0 auto;padding:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+  .sec{font-size:1.05rem;color:var(--green-dark);margin:20px 4px 10px}
+  .progress{position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0 10px}
+  .bar{height:8px;background:#dde9e2;border-radius:99px;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:var(--green);transition:width .2s}
+  .progress small{color:var(--muted);display:block;margin-top:4px}
+  .q-head{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}
+  .num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--green-soft);color:var(--green-dark);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+  .stem{font-size:1.1rem;padding-top:2px;min-width:0}
+  .opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .opt{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;cursor:pointer;font-size:1.05rem;min-height:52px;background:#fff}
+  .opt:hover{border-color:var(--green)}
+  .opt .let{flex:none;width:26px;height:26px;border-radius:6px;border:1.5px solid var(--line);font-size:.85rem;font-weight:700;display:flex;align-items:center;justify-content:center;color:var(--muted)}
+  .why{display:none;margin-top:10px;padding:10px 12px;border-radius:8px;background:#f6f9f7;border-inline-start:4px solid var(--green);font-size:.95rem}
+  .why.bad{border-inline-start-color:var(--red)}
+  .card.missing{border-color:var(--amber);box-shadow:0 0 0 3px rgba(242,182,50,.25)}
+  /* maths markup */
+  .frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;line-height:1.1;font-size:.9em;margin:0 2px}
+  .frac b{font-weight:500;padding:0 4px}
+  .frac b:first-child{border-bottom:1.5px solid currentColor}
+  .rep,.ov{text-decoration:overline}
+  .nw,.rt{white-space:nowrap}
+  .m{white-space:nowrap;display:inline-block;font-family:"Segoe UI",Roboto,Arial,sans-serif}
+  .opt .m{white-space:normal}
+  .mb{display:block;margin:6px 0 2px;text-align:left}
+  .mb .m{white-space:normal}
+  .seq{line-height:2}
+  .rad{display:inline-block;border-top:1.5px solid currentColor;padding:1px 1px 0;margin-left:1px;line-height:1.15}
+  .rad>.frac{padding-top:3px}
+  .ri{font-size:.6em;margin-right:-.45em;vertical-align:.95em}
+  .circle{display:inline-block;width:26px;height:26px;border:1.5px solid #9bb3a6;border-radius:50%;vertical-align:middle;margin:0 8px}
+  .blank{display:inline-block;width:56px;border-bottom:1.5px solid #9bb3a6;vertical-align:baseline;margin:0 4px}
+  .venn{display:inline-flex;align-items:center;vertical-align:middle;margin-inline-start:10px;font-size:.9rem}
+  .venn span{display:inline-flex;align-items:center;justify-content:center;border:1.5px solid var(--ink);border-radius:50%;height:44px;line-height:1.1;text-align:center}
+  .venn .vl{width:58px;justify-content:flex-start;padding-left:12px;border-right:0;border-radius:50% 0 0 50%}
+  .venn .vm{width:34px;border-radius:50%;margin:0 -2px}
+  .venn .vr{width:58px;justify-content:flex-end;padding-right:12px;border-left:0;border-radius:0 50% 50% 0}
+  .venn-svg{display:block;margin:8px 0 0}
+  .venn-svg svg{max-width:100%;height:auto}
+  .venn-svg ellipse{fill:none;stroke:var(--ink);stroke-width:1.5}
+  .venn-svg circle{fill:currentColor}
+  .venn-svg text{font-size:15px;text-anchor:middle;fill:var(--ink);font-family:"Segoe UI",Roboto,Arial,sans-serif}
+  .venn-svg text.lab{font-weight:700;fill:#1f5fa8}
+  button{font:inherit;font-weight:600;border:0;border-radius:10px;padding:13px 20px;cursor:pointer}
+  button[disabled]{opacity:.65;cursor:default}
+  .primary{background:var(--green);color:#fff;width:100%;font-size:1.05rem}
+  .primary:hover{background:var(--green-dark)}
+  .ghost{background:#fff;color:var(--green-dark);border:1.5px solid var(--green)}
+  .msg{color:var(--red);font-weight:600;margin:0 0 10px;display:none}
+  #result{display:none;text-align:center}
+  #result .score{font-size:2.6rem;font-weight:800;color:var(--green-dark);margin:4px 0;direction:ltr;unicode-bidi:isolate}
+  #result .who{font-weight:600;font-size:1.1rem}
+  #result .note{color:var(--muted);margin:4px 0 14px}
+  .actions{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+  a.primary,a.ghost{display:inline-block;text-decoration:none;border-radius:10px;padding:13px 20px;font-weight:600;text-align:center}
+  footer{text-align:center;color:var(--muted);font-size:.8rem;padding:8px 16px 28px}
+  @media (max-width:420px){.opts{grid-template-columns:1fr}}
+  @media print{.progress,.actions,#submitCard{display:none}body{background:#fff}.card{break-inside:avoid}}
+  .ch{display:block;position:relative;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .ch input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+  .ch input:checked + .opt{border-color:var(--green);background:var(--green-soft)}
+  .ch input:checked + .opt .let{background:var(--green);border-color:var(--green);color:#fff}
+  .ch input:focus + .opt{box-shadow:0 0 0 3px rgba(31,157,87,.25)}
+  /* after the server grades: data-c marks the correct option */
+  .graded .ch{pointer-events:none;cursor:default}
+  .graded .ch input[data-c] + .opt{border-color:var(--green);background:var(--green-soft)}
+  .graded .ch input[data-c] + .opt .let{background:var(--green);border-color:var(--green);color:#fff}
+  .graded .ch input:checked:not([data-c]) + .opt{border-color:var(--red);background:var(--red-soft)}
+  .graded .ch input:checked:not([data-c]) + .opt .let{background:var(--red);border-color:var(--red);color:#fff}
+  .graded .why{display:block}
+  html:not(.js) .jsonly{display:none!important}
+  .js .nojs{display:none!important}
+  .notice{background:#fff8e6;border-color:#f2d58a;font-size:.95rem}
+  .who-bar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;font-size:.95rem;margin-bottom:12px}
+  .who-bar a{color:var(--green-dark);font-weight:600}
+  #saveMsg{font-weight:600;color:var(--green-dark);margin:0 0 12px}
+</style>
+<script>document.documentElement.className='js';</script>
+<script src="../config.js"></script>
+<script src="../portal.js"></script>
+<script>var PORTAL_SESSION=Portal.requireLogin('6');</script>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>October Revision</h1>
+    <p>Grade 6 Math · 29 multiple choice questions</p>
+  </div>
+</header>
+
+<main>
+  <div class="who-bar jsonly"><span id="whoami"></span><a href="../index.html">My tests</a></div>
+  <div class="card notice nojs">You are viewing this test in preview mode. Open it online and sign in to submit your answers and see your score.</div>
+
+  <div class="card" id="result" aria-live="polite">
+    <div class="who" id="who"></div>
+    <div class="score" id="score"></div>
+    <div class="note" id="note"></div>
+    <p id="saveMsg"></p>
+    <div class="actions">
+      <button class="ghost" onclick="window.print()">Print / save result</button>
+      <button class="ghost" onclick="restart()">Try again</button>
+      <a class="ghost" href="../index.html">My tests</a>
+    </div>
+  </div>
+
+  <div class="progress jsonly" id="progress">
+    <div class="bar"><i id="barFill"></i></div>
+    <small id="barText">0 of 29 answered</small>
+  </div>
+
+  <div id="quiz">
+  <h2 class="sec">Page 2 · Choose the correct answer</h2>
+  <div class="card" id="q0"><div class="q-head"><div class="num">1</div><div class="stem">The expression that represents the Venn diagram is <span class="blank"></span><span class="venn"><span class="vl">2</span><span class="vm">2<br>
+  3</span><span class="vr">3</span></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 1">
+    <label class="ch"><input type="radio" name="q0" value="0"><span class="opt"><span class="let">A</span><span>6 (2 + 3)</span></span></label>
+    <label class="ch"><input type="radio" name="q0" value="1"><span class="opt"><span class="let">B</span><span>5 (2 + 3)</span></span></label>
+    <label class="ch"><input type="radio" name="q0" value="2"><span class="opt"><span class="let">C</span><span>2 (5 + 3)</span></span></label>
+    <label class="ch"><input type="radio" name="q0" value="3"><span class="opt"><span class="let">D</span><span>3 (2 + 6)</span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q1"><div class="q-head"><div class="num">2</div><div class="stem">The opposite of the number (−9) is <span class="blank"></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 2">
+    <label class="ch"><input type="radio" name="q1" value="0"><span class="opt"><span class="let">A</span><span>−9</span></span></label>
+    <label class="ch"><input type="radio" name="q1" value="1"><span class="opt"><span class="let">B</span><span>9</span></span></label>
+    <label class="ch"><input type="radio" name="q1" value="2"><span class="opt"><span class="let">C</span><span>18</span></span></label>
+    <label class="ch"><input type="radio" name="q1" value="3"><span class="opt"><span class="let">D</span><span>0</span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q2"><div class="q-head"><div class="num">3</div><div class="stem">−9 &lt; <span class="blank"></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 3">
+    <label class="ch"><input type="radio" name="q2" value="0"><span class="opt"><span class="let">A</span><span>−10</span></span></label>
+    <label class="ch"><input type="radio" name="q2" value="1"><span class="opt"><span class="let">B</span><span>−15</span></span></label>
+    <label class="ch"><input type="radio" name="q2" value="2"><span class="opt"><span class="let">C</span><span>−5</span></span></label>
+    <label class="ch"><input type="radio" name="q2" value="3"><span class="opt"><span class="let">D</span><span>−12</span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q3"><div class="q-head"><div class="num">4</div><div class="stem">The number <span class="blank"></span> belongs to the set of integers.</div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 4">
+    <label class="ch"><input type="radio" name="q3" value="0"><span class="opt"><span class="let">A</span><span>−0.5</span></span></label>
+    <label class="ch"><input type="radio" name="q3" value="1"><span class="opt"><span class="let">B</span><span><span class="frac"><b>1</b><b>2</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q3" value="2"><span class="opt"><span class="let">C</span><span>−9</span></span></label>
+    <label class="ch"><input type="radio" name="q3" value="3"><span class="opt"><span class="let">D</span><span>1.7</span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q4"><div class="q-head"><div class="num">5</div><div class="stem">The set of integers <span class="blank"></span> the set of rational numbers.</div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 5">
+    <label class="ch"><input type="radio" name="q4" value="0"><span class="opt"><span class="let">A</span><span>belongs to</span></span></label>
+    <label class="ch"><input type="radio" name="q4" value="1"><span class="opt"><span class="let">B</span><span>doesn't belong to</span></span></label>
+    <label class="ch"><input type="radio" name="q4" value="2"><span class="opt"><span class="let">C</span><span>is subset of</span></span></label>
+    <label class="ch"><input type="radio" name="q4" value="3"><span class="opt"><span class="let">D</span><span>is not subset of</span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q5"><div class="q-head"><div class="num">6</div><div class="stem">0.6 &lt; <span class="blank"></span> &lt; 0.7</div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 6">
+    <label class="ch"><input type="radio" name="q5" value="0"><span class="opt"><span class="let">A</span><span>0.72</span></span></label>
+    <label class="ch"><input type="radio" name="q5" value="1"><span class="opt"><span class="let">B</span><span>0.56</span></span></label>
+    <label class="ch"><input type="radio" name="q5" value="2"><span class="opt"><span class="let">C</span><span>0.65</span></span></label>
+    <label class="ch"><input type="radio" name="q5" value="3"><span class="opt"><span class="let">D</span><span>0.357</span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q6"><div class="q-head"><div class="num">7</div><div class="stem"><span class="nw">|−6|</span> = <span class="blank"></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 7">
+    <label class="ch"><input type="radio" name="q6" value="0"><span class="opt"><span class="let">A</span><span>−6</span></span></label>
+    <label class="ch"><input type="radio" name="q6" value="1"><span class="opt"><span class="let">B</span><span>6</span></span></label>
+    <label class="ch"><input type="radio" name="q6" value="2"><span class="opt"><span class="let">C</span><span>0</span></span></label>
+    <label class="ch"><input type="radio" name="q6" value="3"><span class="opt"><span class="let">D</span><span>12</span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q7"><div class="q-head"><div class="num">8</div><div class="stem"><span class="nw">|−6|</span> &lt; <span class="blank"></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 8">
+    <label class="ch"><input type="radio" name="q7" value="0"><span class="opt"><span class="let">A</span><span><span class="nw">|−6|</span></span></span></label>
+    <label class="ch"><input type="radio" name="q7" value="1"><span class="opt"><span class="let">B</span><span><span class="nw">|−7|</span></span></span></label>
+    <label class="ch"><input type="radio" name="q7" value="2"><span class="opt"><span class="let">C</span><span><span class="nw">|−5|</span></span></span></label>
+    <label class="ch"><input type="radio" name="q7" value="3"><span class="opt"><span class="let">D</span><span><span class="nw">|−4|</span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q8"><div class="q-head"><div class="num">9</div><div class="stem"><span class="nw">|<span class="nw">−1<span class="frac"><b>2</b><b>9</b></span></span>|</span> <span class="blank"></span> <span class="nw">1<span class="frac"><b>1</b><b>9</b></span></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 9">
+    <label class="ch"><input type="radio" name="q8" value="0"><span class="opt"><span class="let">A</span><span>&lt;</span></span></label>
+    <label class="ch"><input type="radio" name="q8" value="1"><span class="opt"><span class="let">B</span><span>&gt;</span></span></label>
+    <label class="ch"><input type="radio" name="q8" value="2"><span class="opt"><span class="let">C</span><span>=</span></span></label>
+    <label class="ch"><input type="radio" name="q8" value="3"><span class="opt"><span class="let">D</span><span>otherwise</span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q9"><div class="q-head"><div class="num">10</div><div class="stem">−0.25 <span class="blank"></span> −0.45</div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 10">
+    <label class="ch"><input type="radio" name="q9" value="0"><span class="opt"><span class="let">A</span><span>&lt;</span></span></label>
+    <label class="ch"><input type="radio" name="q9" value="1"><span class="opt"><span class="let">B</span><span>&gt;</span></span></label>
+    <label class="ch"><input type="radio" name="q9" value="2"><span class="opt"><span class="let">C</span><span>=</span></span></label>
+    <label class="ch"><input type="radio" name="q9" value="3"><span class="opt"><span class="let">D</span><span>otherwise</span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q10"><div class="q-head"><div class="num">11</div><div class="stem">15 <span class="blank"></span> <span class="nw">|−18|</span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 11">
+    <label class="ch"><input type="radio" name="q10" value="0"><span class="opt"><span class="let">A</span><span>&lt;</span></span></label>
+    <label class="ch"><input type="radio" name="q10" value="1"><span class="opt"><span class="let">B</span><span>&gt;</span></span></label>
+    <label class="ch"><input type="radio" name="q10" value="2"><span class="opt"><span class="let">C</span><span>=</span></span></label>
+    <label class="ch"><input type="radio" name="q10" value="3"><span class="opt"><span class="let">D</span><span>otherwise</span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <h2 class="sec">Page 3 · Essay problems</h2>
+  <div class="card" id="q11"><div class="q-head"><div class="num">12</div><div class="stem">The GCF and the LCM of the two numbers 6 and 9 are <span class="blank"></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 12">
+    <label class="ch"><input type="radio" name="q11" value="0"><span class="opt"><span class="let">A</span><span>GCF = 3, LCM = 54</span></span></label>
+    <label class="ch"><input type="radio" name="q11" value="1"><span class="opt"><span class="let">B</span><span>GCF = 6, LCM = 18</span></span></label>
+    <label class="ch"><input type="radio" name="q11" value="2"><span class="opt"><span class="let">C</span><span>GCF = 3, LCM = 18</span></span></label>
+    <label class="ch"><input type="radio" name="q11" value="3"><span class="opt"><span class="let">D</span><span>GCF = 1, LCM = 54</span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q12"><div class="q-head"><div class="num">13</div><div class="stem">Mona has 18 bags of rice and 12 bottles of oil. She wants to distribute them into groups of the same number of items. What is the largest number of groups that can be formed?</div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 13">
+    <label class="ch"><input type="radio" name="q12" value="0"><span class="opt"><span class="let">A</span><span>3</span></span></label>
+    <label class="ch"><input type="radio" name="q12" value="1"><span class="opt"><span class="let">B</span><span>6</span></span></label>
+    <label class="ch"><input type="radio" name="q12" value="2"><span class="opt"><span class="let">C</span><span>12</span></span></label>
+    <label class="ch"><input type="radio" name="q12" value="3"><span class="opt"><span class="let">D</span><span>36</span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q13"><div class="q-head"><div class="num">14</div><div class="stem">Which five numbers are all greater than (−2)?</div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 14">
+    <label class="ch"><input type="radio" name="q13" value="0"><span class="opt"><span class="let">A</span><span><span class="seq"><span class="nw">−3</span>, <span class="nw">−1</span>, <span class="nw">0</span>, <span class="nw">1</span>, <span class="nw">2</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q13" value="1"><span class="opt"><span class="let">B</span><span><span class="seq"><span class="nw">−2</span>, <span class="nw">−1</span>, <span class="nw">0</span>, <span class="nw">1</span>, <span class="nw">2</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q13" value="2"><span class="opt"><span class="let">C</span><span><span class="seq"><span class="nw">−5</span>, <span class="nw">−4</span>, <span class="nw">−3</span>, <span class="nw">−2.5</span>, <span class="nw">−6</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q13" value="3"><span class="opt"><span class="let">D</span><span><span class="seq"><span class="nw">−1</span>, <span class="nw">0</span>, <span class="nw">1</span>, <span class="nw">2</span>, <span class="nw">3</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q14"><div class="q-head"><div class="num">15</div><div class="stem">Arrange in ascending order: 15, 0, −3, 2, −5</div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 15">
+    <label class="ch"><input type="radio" name="q14" value="0"><span class="opt"><span class="let">A</span><span><span class="seq"><span class="nw">15</span>, <span class="nw">2</span>, <span class="nw">0</span>, <span class="nw">−3</span>, <span class="nw">−5</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q14" value="1"><span class="opt"><span class="let">B</span><span><span class="seq"><span class="nw">−5</span>, <span class="nw">−3</span>, <span class="nw">0</span>, <span class="nw">2</span>, <span class="nw">15</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q14" value="2"><span class="opt"><span class="let">C</span><span><span class="seq"><span class="nw">−3</span>, <span class="nw">−5</span>, <span class="nw">0</span>, <span class="nw">2</span>, <span class="nw">15</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q14" value="3"><span class="opt"><span class="let">D</span><span><span class="seq"><span class="nw">0</span>, <span class="nw">−3</span>, <span class="nw">−5</span>, <span class="nw">2</span>, <span class="nw">15</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q15"><div class="q-head"><div class="num">16</div><div class="stem">Arrange in ascending order: <span class="nw">|−18|</span>, −20.14, <span class="nw">|<span class="nw">−2<span class="frac"><b>9</b><b>10</b></span></span>|</span>, <span class="nw">|−5|</span>, 3</div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 16">
+    <label class="ch"><input type="radio" name="q15" value="0"><span class="opt"><span class="let">A</span><span><span class="seq"><span class="nw"><span class="nw">|<span class="nw">−2<span class="frac"><b>9</b><b>10</b></span></span>|</span></span>, <span class="nw">−20.14</span>, <span class="nw">3</span>, <span class="nw"><span class="nw">|−5|</span></span>, <span class="nw"><span class="nw">|−18|</span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q15" value="1"><span class="opt"><span class="let">B</span><span><span class="seq"><span class="nw"><span class="nw">|−18|</span></span>, <span class="nw">−20.14</span>, <span class="nw"><span class="nw">|−5|</span></span>, <span class="nw"><span class="nw">|<span class="nw">−2<span class="frac"><b>9</b><b>10</b></span></span>|</span></span>, <span class="nw">3</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q15" value="2"><span class="opt"><span class="let">C</span><span><span class="seq"><span class="nw">−20.14</span>, <span class="nw">3</span>, <span class="nw"><span class="nw">|<span class="nw">−2<span class="frac"><b>9</b><b>10</b></span></span>|</span></span>, <span class="nw"><span class="nw">|−5|</span></span>, <span class="nw"><span class="nw">|−18|</span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q15" value="3"><span class="opt"><span class="let">D</span><span><span class="seq"><span class="nw">−20.14</span>, <span class="nw"><span class="nw">|<span class="nw">−2<span class="frac"><b>9</b><b>10</b></span></span>|</span></span>, <span class="nw">3</span>, <span class="nw"><span class="nw">|−5|</span></span>, <span class="nw"><span class="nw">|−18|</span></span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q16"><div class="q-head"><div class="num">17</div><div class="stem">Arrange in ascending order: <span class="nw">−2<span class="frac"><b>1</b><b>2</b></span></span>, <span class="nw">−1<span class="frac"><b>7</b><b>8</b></span></span>, <span class="nw">−3<span class="frac"><b>1</b><b>4</b></span></span>, 1.4, 2.1</div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 17">
+    <label class="ch"><input type="radio" name="q16" value="0"><span class="opt"><span class="let">A</span><span><span class="seq"><span class="nw"><span class="nw">−3<span class="frac"><b>1</b><b>4</b></span></span></span>, <span class="nw"><span class="nw">−2<span class="frac"><b>1</b><b>2</b></span></span></span>, <span class="nw"><span class="nw">−1<span class="frac"><b>7</b><b>8</b></span></span></span>, <span class="nw">1.4</span>, <span class="nw">2.1</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q16" value="1"><span class="opt"><span class="let">B</span><span><span class="seq"><span class="nw"><span class="nw">−1<span class="frac"><b>7</b><b>8</b></span></span></span>, <span class="nw"><span class="nw">−2<span class="frac"><b>1</b><b>2</b></span></span></span>, <span class="nw"><span class="nw">−3<span class="frac"><b>1</b><b>4</b></span></span></span>, <span class="nw">1.4</span>, <span class="nw">2.1</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q16" value="2"><span class="opt"><span class="let">C</span><span><span class="seq"><span class="nw"><span class="nw">−2<span class="frac"><b>1</b><b>2</b></span></span></span>, <span class="nw"><span class="nw">−3<span class="frac"><b>1</b><b>4</b></span></span></span>, <span class="nw"><span class="nw">−1<span class="frac"><b>7</b><b>8</b></span></span></span>, <span class="nw">1.4</span>, <span class="nw">2.1</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q16" value="3"><span class="opt"><span class="let">D</span><span><span class="seq"><span class="nw">2.1</span>, <span class="nw">1.4</span>, <span class="nw"><span class="nw">−1<span class="frac"><b>7</b><b>8</b></span></span></span>, <span class="nw"><span class="nw">−2<span class="frac"><b>1</b><b>2</b></span></span></span>, <span class="nw"><span class="nw">−3<span class="frac"><b>1</b><b>4</b></span></span></span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <h2 class="sec">Page 4 · Answer the following</h2>
+  <div class="card" id="q17"><div class="q-head"><div class="num">18</div><div class="stem">Arrange in descending order: −8, 7, 1, −9, 8</div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 18">
+    <label class="ch"><input type="radio" name="q17" value="0"><span class="opt"><span class="let">A</span><span><span class="seq"><span class="nw">−9</span>, <span class="nw">−8</span>, <span class="nw">1</span>, <span class="nw">7</span>, <span class="nw">8</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q17" value="1"><span class="opt"><span class="let">B</span><span><span class="seq"><span class="nw">8</span>, <span class="nw">7</span>, <span class="nw">1</span>, <span class="nw">−9</span>, <span class="nw">−8</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q17" value="2"><span class="opt"><span class="let">C</span><span><span class="seq"><span class="nw">1</span>, <span class="nw">7</span>, <span class="nw">8</span>, <span class="nw">−8</span>, <span class="nw">−9</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q17" value="3"><span class="opt"><span class="let">D</span><span><span class="seq"><span class="nw">8</span>, <span class="nw">7</span>, <span class="nw">1</span>, <span class="nw">−8</span>, <span class="nw">−9</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q18"><div class="q-head"><div class="num">19</div><div class="stem">The additive inverses of 7, −5, −17, 0, 10 are <span class="blank"></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 19">
+    <label class="ch"><input type="radio" name="q18" value="0"><span class="opt"><span class="let">A</span><span><span class="seq"><span class="nw">−7</span>, <span class="nw">5</span>, <span class="nw">17</span>, <span class="nw">0</span>, <span class="nw">−10</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q18" value="1"><span class="opt"><span class="let">B</span><span><span class="seq"><span class="nw"><span class="frac"><b>1</b><b>7</b></span></span>, <span class="nw">−<span class="frac"><b>1</b><b>5</b></span></span>, <span class="nw">−<span class="frac"><b>1</b><b>17</b></span></span>, <span class="nw">0</span>, <span class="nw"><span class="frac"><b>1</b><b>10</b></span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q18" value="2"><span class="opt"><span class="let">C</span><span><span class="seq"><span class="nw">7</span>, <span class="nw">−5</span>, <span class="nw">−17</span>, <span class="nw">0</span>, <span class="nw">10</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q18" value="3"><span class="opt"><span class="let">D</span><span><span class="seq"><span class="nw">−7</span>, <span class="nw">5</span>, <span class="nw">17</span>, <span class="nw">1</span>, <span class="nw">−10</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q19"><div class="q-head"><div class="num">20</div><div class="stem">Which five numbers are all less than (1)?</div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 20">
+    <label class="ch"><input type="radio" name="q19" value="0"><span class="opt"><span class="let">A</span><span><span class="seq"><span class="nw">1</span>, <span class="nw">0</span>, <span class="nw">−1</span>, <span class="nw">−2</span>, <span class="nw">−3</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q19" value="1"><span class="opt"><span class="let">B</span><span><span class="seq"><span class="nw">0.5</span>, <span class="nw">0</span>, <span class="nw">−1</span>, <span class="nw">1.5</span>, <span class="nw">−2</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q19" value="2"><span class="opt"><span class="let">C</span><span><span class="seq"><span class="nw">0</span>, <span class="nw">−1</span>, <span class="nw">−2</span>, <span class="nw">−3</span>, <span class="nw">−4</span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q19" value="3"><span class="opt"><span class="let">D</span><span><span class="seq"><span class="nw">2</span>, <span class="nw">3</span>, <span class="nw">4</span>, <span class="nw">5</span>, <span class="nw">6</span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q20"><div class="q-head"><div class="num">21</div><div class="stem">Write each number in the form <span class="frac"><b><i>a</i></b><b><i>b</i></b></span>: −1.7, 0.5, 3, 1.5, <span class="nw">1<span class="frac"><b>3</b><b>4</b></span></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 21">
+    <label class="ch"><input type="radio" name="q20" value="0"><span class="opt"><span class="let">A</span><span><span class="seq"><span class="nw">−<span class="frac"><b>17</b><b>100</b></span></span>, <span class="nw"><span class="frac"><b>1</b><b>2</b></span></span>, <span class="nw"><span class="frac"><b>3</b><b>1</b></span></span>, <span class="nw"><span class="frac"><b>15</b><b>100</b></span></span>, <span class="nw"><span class="frac"><b>7</b><b>4</b></span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q20" value="1"><span class="opt"><span class="let">B</span><span><span class="seq"><span class="nw"><span class="frac"><b>17</b><b>10</b></span></span>, <span class="nw"><span class="frac"><b>5</b><b>10</b></span></span>, <span class="nw"><span class="frac"><b>1</b><b>3</b></span></span>, <span class="nw"><span class="frac"><b>3</b><b>2</b></span></span>, <span class="nw"><span class="frac"><b>4</b><b>7</b></span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q20" value="2"><span class="opt"><span class="let">C</span><span><span class="seq"><span class="nw">−<span class="frac"><b>17</b><b>10</b></span></span>, <span class="nw"><span class="frac"><b>1</b><b>2</b></span></span>, <span class="nw"><span class="frac"><b>3</b><b>1</b></span></span>, <span class="nw"><span class="frac"><b>3</b><b>2</b></span></span>, <span class="nw"><span class="frac"><b>7</b><b>4</b></span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q20" value="3"><span class="opt"><span class="let">D</span><span><span class="seq"><span class="nw">−<span class="frac"><b>1</b><b>7</b></span></span>, <span class="nw"><span class="frac"><b>1</b><b>2</b></span></span>, <span class="nw"><span class="frac"><b>3</b><b>1</b></span></span>, <span class="nw"><span class="frac"><b>1</b><b>5</b></span></span>, <span class="nw"><span class="frac"><b>13</b><b>4</b></span></span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q21"><div class="q-head"><div class="num">22</div><div class="stem">A rational number that lies between <span class="frac"><b>5</b><b>7</b></span> and <span class="frac"><b>6</b><b>7</b></span> is <span class="blank"></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 22">
+    <label class="ch"><input type="radio" name="q21" value="0"><span class="opt"><span class="let">A</span><span><span class="frac"><b>4</b><b>7</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q21" value="1"><span class="opt"><span class="let">B</span><span><span class="frac"><b>11</b><b>14</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q21" value="2"><span class="opt"><span class="let">C</span><span><span class="frac"><b>13</b><b>14</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q21" value="3"><span class="opt"><span class="let">D</span><span>1</span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q22"><div class="q-head"><div class="num">23</div><div class="stem">Which is greater: −9 or <span class="nw">|−9|</span>?</div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 23">
+    <label class="ch"><input type="radio" name="q22" value="0"><span class="opt"><span class="let">A</span><span>−9</span></span></label>
+    <label class="ch"><input type="radio" name="q22" value="1"><span class="opt"><span class="let">B</span><span>They are equal</span></span></label>
+    <label class="ch"><input type="radio" name="q22" value="2"><span class="opt"><span class="let">C</span><span><span class="nw">|−9|</span></span></span></label>
+    <label class="ch"><input type="radio" name="q22" value="3"><span class="opt"><span class="let">D</span><span>They cannot be compared</span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q23"><div class="q-head"><div class="num">24</div><div class="stem"><span class="nw">|9|</span> + <span class="nw">|−7|</span> = <span class="blank"></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 24">
+    <label class="ch"><input type="radio" name="q23" value="0"><span class="opt"><span class="let">A</span><span>2</span></span></label>
+    <label class="ch"><input type="radio" name="q23" value="1"><span class="opt"><span class="let">B</span><span>16</span></span></label>
+    <label class="ch"><input type="radio" name="q23" value="2"><span class="opt"><span class="let">C</span><span>−16</span></span></label>
+    <label class="ch"><input type="radio" name="q23" value="3"><span class="opt"><span class="let">D</span><span>−2</span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q24"><div class="q-head"><div class="num">25</div><div class="stem"><span class="frac"><b>2</b><b>5</b></span> + <span class="frac"><b>1</b><b>4</b></span> = <span class="blank"></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 25">
+    <label class="ch"><input type="radio" name="q24" value="0"><span class="opt"><span class="let">A</span><span><span class="frac"><b>3</b><b>9</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q24" value="1"><span class="opt"><span class="let">B</span><span><span class="frac"><b>2</b><b>20</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q24" value="2"><span class="opt"><span class="let">C</span><span><span class="frac"><b>8</b><b>20</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q24" value="3"><span class="opt"><span class="let">D</span><span><span class="frac"><b>13</b><b>20</b></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q25"><div class="q-head"><div class="num">26</div><div class="stem">The greatest non-positive integer is <span class="blank"></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 26">
+    <label class="ch"><input type="radio" name="q25" value="0"><span class="opt"><span class="let">A</span><span>−1</span></span></label>
+    <label class="ch"><input type="radio" name="q25" value="1"><span class="opt"><span class="let">B</span><span>1</span></span></label>
+    <label class="ch"><input type="radio" name="q25" value="2"><span class="opt"><span class="let">C</span><span>0</span></span></label>
+    <label class="ch"><input type="radio" name="q25" value="3"><span class="opt"><span class="let">D</span><span>There is none</span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q26"><div class="q-head"><div class="num">27</div><div class="stem">The greatest negative integer is <span class="blank"></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 27">
+    <label class="ch"><input type="radio" name="q26" value="0"><span class="opt"><span class="let">A</span><span>0</span></span></label>
+    <label class="ch"><input type="radio" name="q26" value="1"><span class="opt"><span class="let">B</span><span>−1</span></span></label>
+    <label class="ch"><input type="radio" name="q26" value="2"><span class="opt"><span class="let">C</span><span>−100</span></span></label>
+    <label class="ch"><input type="radio" name="q26" value="3"><span class="opt"><span class="let">D</span><span>1</span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q27"><div class="q-head"><div class="num">28</div><div class="stem">The smallest positive integer is <span class="blank"></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 28">
+    <label class="ch"><input type="radio" name="q27" value="0"><span class="opt"><span class="let">A</span><span>1</span></span></label>
+    <label class="ch"><input type="radio" name="q27" value="1"><span class="opt"><span class="let">B</span><span>0</span></span></label>
+    <label class="ch"><input type="radio" name="q27" value="2"><span class="opt"><span class="let">C</span><span>−1</span></span></label>
+    <label class="ch"><input type="radio" name="q27" value="3"><span class="opt"><span class="let">D</span><span>2</span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q28"><div class="q-head"><div class="num">29</div><div class="stem">If <span class="nw">|<i>x</i>|</span> = 7, then <i>x</i> = <span class="blank"></span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 29">
+    <label class="ch"><input type="radio" name="q28" value="0"><span class="opt"><span class="let">A</span><span>7 only</span></span></label>
+    <label class="ch"><input type="radio" name="q28" value="1"><span class="opt"><span class="let">B</span><span>−7 only</span></span></label>
+    <label class="ch"><input type="radio" name="q28" value="2"><span class="opt"><span class="let">C</span><span>0 or 7</span></span></label>
+    <label class="ch"><input type="radio" name="q28" value="3"><span class="opt"><span class="let">D</span><span>7 or −7</span></span></label>
+   </div>
+   <div class="why"></div></div>
+
+  </div>
+
+  <div class="card jsonly" id="submitCard">
+    <p class="msg" id="msg"></p>
+    <button class="primary" id="submitBtn" onclick="submitTest()">Submit my answers</button>
+  </div>
+</main>
+<footer>Choose the correct answer for each question, then press Submit.</footer>
+
+<script>
+var TEST_TITLE='Grade 6 - October Revision';
+var TEST_ID='g6-grade6-oct-rev';
+var T={"myTests":"My tests","notice":"You are viewing this test in preview mode. Open it online and sign in to submit your answers and see your score.","print":"Print / save result","again":"Try again","submit":"Submit my answers","footer":"Choose the correct answer for each question, then press Submit.","answered":"{n} of {N} answered","left1":"You still have 1 question to answer.","leftN":"You still have {n} questions to answer.","checking":"Checking your answers…","expired":"Your sign-in has expired. Please sign in again.","failed":"Your answers could not be checked. Check your internet and press Submit again.","correct":"Correct. ","correctAnswer":"Correct answer: {L}. ","saved":"Your result is saved.","signedIn":"Signed in as {name}","note100":"Excellent! Full marks.","note80":"Very good work. Check the questions marked in red.","note50":"Good try. Read the explanations and try again.","note0":"Keep practising. Read each explanation below, then try again.","letters":["A","B","C","D"]};
+
+var L=T.letters, attempt=1, busy=false;
+var quiz=document.getElementById('quiz');
+var cards=quiz.querySelectorAll('.card'), N=cards.length;
+
+function fill(s,v){return s.replace(/\{(\w+)\}/g,function(m,k){return v[k];});}
+function inputsOf(i){return cards[i].querySelectorAll('input');}
+function pickedOf(i){var a=inputsOf(i),k;for(k=0;k<a.length;k++){if(a[k].checked)return k;}return -1;}
+
+function updateBar(){
+  var c=0,i;
+  for(i=0;i<N;i++){if(pickedOf(i)>=0){c++;cards[i].classList.remove('missing');}}
+  document.getElementById('barFill').style.width=(c/N*100)+'%';
+  document.getElementById('barText').textContent=fill(T.answered,{n:c,N:N});
+}
+quiz.addEventListener('change',updateBar);
+
+function showMsg(t){var m=document.getElementById('msg');m.textContent=t;m.style.display=t?'block':'none';}
+
+function submitTest(){
+  if(busy)return;
+  if(!PORTAL_SESSION){location.replace('../index.html');return;}
+  var first=-1,left=0,i,picks=[];
+  for(i=0;i<N;i++){
+    var p=pickedOf(i), miss=p<0;
+    cards[i].classList.toggle('missing',miss);
+    if(miss){left++;if(first<0)first=i;}
+    picks.push(p);
+  }
+  if(left){showMsg(fill(left>1?T.leftN:T.left1,{n:left}));cards[first].scrollIntoView();return;}
+  showMsg('');
+  busy=true;
+  var btn=document.getElementById('submitBtn'); btn.disabled=true; btn.textContent=T.checking;
+  Portal.submitTest({testId:TEST_ID,picks:picks,attempt:attempt},function(r){
+    busy=false; btn.disabled=false; btn.textContent=T.submit;
+    if(!r||!r.ok){
+      showMsg(r&&r.error==='signed_out'?T.expired:T.failed);
+      return;
+    }
+    showResult(r);
+  });
+}
+
+function showResult(r){
+  for(var i=0;i<N;i++){
+    var a=inputsOf(i), c=r.correct[i], ok=pickedOf(i)===c, k;
+    for(k=0;k<a.length;k++){if(k===c)a[k].setAttribute('data-c','');else a[k].removeAttribute('data-c');}
+    var w=cards[i].querySelector('.why');
+    w.classList.toggle('bad',!ok);
+    w.innerHTML='<strong>'+(ok?T.correct:fill(T.correctAnswer,{L:L[c]}))+'</strong>'+(r.explanations[i]||'');
+  }
+  quiz.classList.add('graded');
+  var pct=r.percent;
+  document.getElementById('who').textContent=PORTAL_SESSION.name;
+  document.getElementById('score').textContent=r.score+' / '+r.total+'  ('+pct+'%)';
+  document.getElementById('note').textContent=pct===100?T.note100:pct>=80?T.note80:pct>=50?T.note50:T.note0;
+  document.getElementById('saveMsg').textContent=r.saved?T.saved:'';
+  document.getElementById('result').style.display='block';
+  document.getElementById('submitCard').style.display='none';
+  document.getElementById('progress').style.display='none';
+  window.scrollTo(0,0);
+}
+function restart(){
+  var all=quiz.querySelectorAll('input'), k;
+  for(k=0;k<all.length;k++){all[k].checked=false;all[k].removeAttribute('data-c');}
+  var ws=quiz.querySelectorAll('.why'); for(k=0;k<ws.length;k++){ws[k].innerHTML='';ws[k].classList.remove('bad');}
+  attempt++;
+  quiz.classList.remove('graded');
+  updateBar();
+  document.getElementById('result').style.display='none';
+  document.getElementById('submitCard').style.display='block';
+  document.getElementById('progress').style.display='block';
+  window.scrollTo(0,0);
+}
+updateBar();
+if(PORTAL_SESSION){document.getElementById('whoami').textContent=fill(T.signedIn,{name:PORTAL_SESSION.name});}
+</script>
+</body>
+</html>
