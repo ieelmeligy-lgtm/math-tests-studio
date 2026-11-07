@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Math Tests Studio">
+<title>اختبار رياضيات الصف التاسع – النسب المثلثية للزاوية الحادة</title>
+<style>
+  :root{
+    --green:#1f9d57; --green-dark:#157a42; --green-soft:#e8f6ee;
+    --ink:#1d2b24; --muted:#5f6f67; --line:#d5e3db; --bg:#f4f8f5; --card:#ffffff;
+    --red:#c8372d; --red-soft:#fdeceb; --amber:#f2b632;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+  html[lang=ar] body{font-family:"Segoe UI",Tahoma,"Noto Sans Arabic","Noto Naskh Arabic",Roboto,Arial,sans-serif}
+  header{background:var(--green);color:#fff;padding:22px 16px 26px}
+  header .wrap{max-width:760px;margin:0 auto}
+  header h1{margin:0 0 4px;font-size:1.5rem}
+  header p{margin:0;opacity:.92;font-size:.95rem}
+  main{max-width:760px;margin:0 auto;padding:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+  .sec{font-size:1.05rem;color:var(--green-dark);margin:20px 4px 10px}
+  .progress{position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0 10px}
+  .bar{height:8px;background:#dde9e2;border-radius:99px;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:var(--green);transition:width .2s}
+  .progress small{color:var(--muted);display:block;margin-top:4px}
+  .q-head{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}
+  .num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--green-soft);color:var(--green-dark);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+  .stem{font-size:1.1rem;padding-top:2px;min-width:0}
+  .opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .opt{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;cursor:pointer;font-size:1.05rem;min-height:52px;background:#fff}
+  .opt:hover{border-color:var(--green)}
+  .opt .let{flex:none;width:26px;height:26px;border-radius:6px;border:1.5px solid var(--line);font-size:.85rem;font-weight:700;display:flex;align-items:center;justify-content:center;color:var(--muted)}
+  .why{display:none;margin-top:10px;padding:10px 12px;border-radius:8px;background:#f6f9f7;border-inline-start:4px solid var(--green);font-size:.95rem}
+  .why.bad{border-inline-start-color:var(--red)}
+  .card.missing{border-color:var(--amber);box-shadow:0 0 0 3px rgba(242,182,50,.25)}
+  /* maths markup */
+  .frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;line-height:1.1;font-size:.9em;margin:0 2px}
+  .frac b{font-weight:500;padding:0 4px}
+  .frac b:first-child{border-bottom:1.5px solid currentColor}
+  .rep,.ov{text-decoration:overline}
+  .nw,.rt{white-space:nowrap}
+  .m{white-space:nowrap;display:inline-block;font-family:"Segoe UI",Roboto,Arial,sans-serif}
+  .opt .m{white-space:normal}
+  .mb{display:block;margin:6px 0 2px;text-align:left}
+  .mb .m{white-space:normal}
+  .seq{line-height:2}
+  .rad{display:inline-block;border-top:1.5px solid currentColor;padding:1px 1px 0;margin-left:1px;line-height:1.15}
+  .rad>.frac{padding-top:3px}
+  .ri{font-size:.6em;margin-right:-.45em;vertical-align:.95em}
+  .circle{display:inline-block;width:26px;height:26px;border:1.5px solid #9bb3a6;border-radius:50%;vertical-align:middle;margin:0 8px}
+  .blank{display:inline-block;width:56px;border-bottom:1.5px solid #9bb3a6;vertical-align:baseline;margin:0 4px}
+  .venn{display:inline-flex;align-items:center;vertical-align:middle;margin-inline-start:10px;font-size:.9rem}
+  .venn span{display:inline-flex;align-items:center;justify-content:center;border:1.5px solid var(--ink);border-radius:50%;height:44px;line-height:1.1;text-align:center}
+  .venn .vl{width:58px;justify-content:flex-start;padding-left:12px;border-right:0;border-radius:50% 0 0 50%}
+  .venn .vm{width:34px;border-radius:50%;margin:0 -2px}
+  .venn .vr{width:58px;justify-content:flex-end;padding-right:12px;border-left:0;border-radius:0 50% 50% 0}
+  .venn-svg{display:block;margin:8px 0 0}
+  .venn-svg svg{max-width:100%;height:auto}
+  .venn-svg ellipse{fill:none;stroke:var(--ink);stroke-width:1.5}
+  .venn-svg circle{fill:currentColor}
+  .venn-svg text{font-size:15px;text-anchor:middle;fill:var(--ink);font-family:"Segoe UI",Roboto,Arial,sans-serif}
+  .venn-svg text.lab{font-weight:700;fill:#1f5fa8}
+  /* pictures */
+  .figwrap{text-align:center;margin:6px 0 12px;background:#fff;border-radius:10px;padding:6px}
+  .figimg{display:block;width:100%;height:auto;margin:0 auto}
+  .optimg{display:block;width:100%;max-width:120px!important;height:auto;margin:0 auto}
+  .stem img,.why img{max-width:100%;height:auto;vertical-align:middle}
+  .opts.pics .opt{justify-content:flex-start}
+  .opt>span:last-child{flex:1;min-width:0}
+  button{font:inherit;font-weight:600;border:0;border-radius:10px;padding:13px 20px;cursor:pointer}
+  button[disabled]{opacity:.65;cursor:default}
+  .primary{background:var(--green);color:#fff;width:100%;font-size:1.05rem}
+  .primary:hover{background:var(--green-dark)}
+  .ghost{background:#fff;color:var(--green-dark);border:1.5px solid var(--green)}
+  .msg{color:var(--red);font-weight:600;margin:0 0 10px;display:none}
+  #result{display:none;text-align:center}
+  #result .score{font-size:2.6rem;font-weight:800;color:var(--green-dark);margin:4px 0;direction:ltr;unicode-bidi:isolate}
+  #result .who{font-weight:600;font-size:1.1rem}
+  #result .note{color:var(--muted);margin:4px 0 14px}
+  .actions{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+  a.primary,a.ghost{display:inline-block;text-decoration:none;border-radius:10px;padding:13px 20px;font-weight:600;text-align:center}
+  footer{text-align:center;color:var(--muted);font-size:.8rem;padding:8px 16px 28px}
+  @media (max-width:420px){.opts{grid-template-columns:1fr}}
+  @media print{.progress,.actions,#submitCard{display:none}body{background:#fff}.card{break-inside:avoid}}
+  .ch{display:block;position:relative;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .ch input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+  .ch input:checked + .opt{border-color:var(--green);background:var(--green-soft)}
+  .ch input:checked + .opt .let{background:var(--green);border-color:var(--green);color:#fff}
+  .ch input:focus + .opt{box-shadow:0 0 0 3px rgba(31,157,87,.25)}
+  /* after the server grades: data-c marks the correct option */
+  .graded .ch{pointer-events:none;cursor:default}
+  .graded .ch input[data-c] + .opt{border-color:var(--green);background:var(--green-soft)}
+  .graded .ch input[data-c] + .opt .let{background:var(--green);border-color:var(--green);color:#fff}
+  .graded .ch input:checked:not([data-c]) + .opt{border-color:var(--red);background:var(--red-soft)}
+  .graded .ch input:checked:not([data-c]) + .opt .let{background:var(--red);border-color:var(--red);color:#fff}
+  .graded .why{display:block}
+  html:not(.js) .jsonly{display:none!important}
+  .js .nojs{display:none!important}
+  .notice{background:#fff8e6;border-color:#f2d58a;font-size:.95rem}
+  .who-bar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;font-size:.95rem;margin-bottom:12px}
+  .who-bar a{color:var(--green-dark);font-weight:600}
+  #saveMsg{font-weight:600;color:var(--green-dark);margin:0 0 12px}
+</style>
+<script>document.documentElement.className='js';</script>
+<script src="../config.js"></script>
+<script src="../portal.js"></script>
+<script>var PORTAL_SESSION=Portal.requireLogin('9');</script>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>النسب المثلثية للزاوية الحادة</h1>
+    <p>رياضيات الصف التاسع · عدد الأسئلة: 18</p>
+  </div>
+</header>
+
+<main>
+  <div class="who-bar jsonly"><span id="whoami"></span><a href="../index.html">اختباراتي</a></div>
+  <div class="card notice nojs">أنت تشاهد الاختبار في وضع المعاينة. افتحه عبر الإنترنت وسجّل الدخول لإرسال إجاباتك ومعرفة نتيجتك.</div>
+
+  <div class="card" id="result" aria-live="polite">
+    <div class="who" id="who"></div>
+    <div class="score" id="score"></div>
+    <div class="note" id="note"></div>
+    <p id="saveMsg"></p>
+    <div class="actions">
+      <button class="ghost" onclick="window.print()">طباعة / حفظ النتيجة</button>
+      <button class="ghost" onclick="restart()">حاول مرة أخرى</button>
+      <a class="ghost" href="../index.html">اختباراتي</a>
+    </div>
+  </div>
+
+  <div class="progress jsonly" id="progress">
+    <div class="bar"><i id="barFill"></i></div>
+    <small id="barText">تمت الإجابة عن 0 من 18</small>
+  </div>
+
+  <div id="quiz">
+  <div class="card" id="q0"><div class="q-head"><div class="num">1</div><div class="stem">في الشكل المقابل: ما قيمة جا θ؟</div></div>
+   <div class="figwrap" dir="ltr"><svg aria-label="مثلث أ ب ج قائم في ب" role="img" viewbox="0 0 320 160">
+ <polygon fill="none" points="30,130 68.5,37.7 290,130" stroke="#c2185b" stroke-width="2.2"></polygon> <polyline fill="none" points="64.6,46.9 73.9,50.8 77.7,41.5" stroke="#c2185b" stroke-width="1.4"></polyline> <path d="M52,130 A22,22 0 0 0 38.5,109.7" fill="none" stroke="#c2185b" stroke-width="1.4"></path> <text fill="#4e3426" font-size="15" text-anchor="middle" x="51" y="122">θ</text> <text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="21" y="148">أ</text><text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="65" y="30">ب</text><text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="299" y="148">ج</text> <text fill="#4e3426" font-size="15" text-anchor="middle" x="28" y="86">5 سم</text><text fill="#4e3426" font-size="15" text-anchor="middle" x="195" y="70">12 سم</text>
+</svg></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 1">
+    <label class="ch"><input type="radio" name="q0" value="0"><span class="opt"><span class="let">أ</span><span><span class="frac"><b>5</b><b>12</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q0" value="1"><span class="opt"><span class="let">ب</span><span><span class="frac"><b>12</b><b>13</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q0" value="2"><span class="opt"><span class="let">ج</span><span><span class="frac"><b>5</b><b>13</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q0" value="3"><span class="opt"><span class="let">د</span><span><span class="frac"><b>12</b><b>5</b></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q1"><div class="q-head"><div class="num">2</div><div class="stem">في الشكل المقابل: ما قيمة ظا س؟</div></div>
+   <div class="figwrap" dir="ltr"><svg aria-label="مثلث قائم وتره 41 سم وقاعدته 40 سم" role="img" viewbox="0 0 310 150">
+ <polygon fill="none" points="30,120 270,120 270,66" stroke="#c2185b" stroke-width="2.2"></polygon> <polyline fill="none" points="260,120 260,110 270,110" stroke="#c2185b" stroke-width="1.4"></polyline> <path d="M70,120 A40,40 0 0 0 69,111" fill="none" stroke="#c2185b" stroke-width="1.4"></path> <text fill="#4e3426" font-size="15" text-anchor="middle" x="84" y="117">س</text> <text fill="#4e3426" font-size="15" text-anchor="middle" x="150" y="82">41 سم</text><text fill="#4e3426" font-size="15" text-anchor="middle" x="150" y="142">40 سم</text>
+</svg></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 2">
+    <label class="ch"><input type="radio" name="q1" value="0"><span class="opt"><span class="let">أ</span><span><span class="frac"><b>40</b><b>41</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q1" value="1"><span class="opt"><span class="let">ب</span><span><span class="frac"><b>9</b><b>41</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q1" value="2"><span class="opt"><span class="let">ج</span><span><span class="frac"><b>9</b><b>40</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q1" value="3"><span class="opt"><span class="let">د</span><span><span class="frac"><b>40</b><b>9</b></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q2"><div class="q-head"><div class="num">3</div><div class="stem">إذا كان <span class="m">جا θ = <span class="frac"><b>1</b><b>2</b></span></span> ، <span class="m">جتا θ = <span class="frac"><b>√<span class="ov">3</span></b><b>2</b></span></span> فما قيمة ظا θ؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 3">
+    <label class="ch"><input type="radio" name="q2" value="0"><span class="opt"><span class="let">أ</span><span>1</span></span></label>
+    <label class="ch"><input type="radio" name="q2" value="1"><span class="opt"><span class="let">ب</span><span><span class="frac"><b>√<span class="ov">3</span></b><b>2</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q2" value="2"><span class="opt"><span class="let">ج</span><span><span class="frac"><b>1</b><b>√<span class="ov">3</span></b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q2" value="3"><span class="opt"><span class="let">د</span><span><span class="frac"><b>2</b><b>√<span class="ov">3</span></b></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q3"><div class="q-head"><div class="num">4</div><div class="stem">إذا كانت θ ، β قياسي زاويتين متتامتين وكان <span class="m">جا θ = <span class="frac"><b>3</b><b>5</b></span></span> فما قيمة جتا β؟
+<br><span>(بورسعيد 24 / الجيزة 20 / البحيرة 18 / الجيزة 17)</span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 4">
+    <label class="ch"><input type="radio" name="q3" value="0"><span class="opt"><span class="let">أ</span><span><span class="frac"><b>4</b><b>5</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q3" value="1"><span class="opt"><span class="let">ب</span><span><span class="frac"><b>3</b><b>5</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q3" value="2"><span class="opt"><span class="let">ج</span><span><span class="frac"><b>3</b><b>4</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q3" value="3"><span class="opt"><span class="let">د</span><span><span class="frac"><b>5</b><b>3</b></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q4"><div class="q-head"><div class="num">5</div><div class="stem"><span class="m">△ أ ب ج</span> قائم الزاوية في ب. ما قيمة <span class="frac"><b>جتا ج</b><b>جا أ</b></span>؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 5">
+    <label class="ch"><input type="radio" name="q4" value="0"><span class="opt"><span class="let">أ</span><span><span class="frac"><b>3</b><b>5</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q4" value="1"><span class="opt"><span class="let">ب</span><span><span class="frac"><b>4</b><b>3</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q4" value="2"><span class="opt"><span class="let">ج</span><span><span class="frac"><b>3</b><b>4</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q4" value="3"><span class="opt"><span class="let">د</span><span>1</span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q5"><div class="q-head"><div class="num">6</div><div class="stem">في الشكل المقابل (<span class="m">أ د ∥ ج ب</span>): ما قيمة جتا θ؟</div></div>
+   <div class="figwrap" dir="ltr"><svg aria-label="مثلث أ ب ج قائم في ب، أ ب 40 سم، ج ب 30 سم، أ د يوازي ج ب" role="img" viewbox="0 0 320 225">
+ <line fill="none" stroke="#c2185b" stroke-width="2.2" x1="60" x2="260" y1="30" y2="30"></line> <polygon fill="none" points="260,30 260,190 140,190" stroke="#c2185b" stroke-width="2.2"></polygon> <polyline fill="none" points="250,190 250,180 260,180" stroke="#c2185b" stroke-width="1.4"></polyline> <polyline fill="none" points="152,25 160,30 152,35" stroke="#c2185b" stroke-width="1.4"></polyline> <polyline fill="none" points="196,185 204,190 196,195" stroke="#c2185b" stroke-width="1.4"></polyline> <path d="M236,30 A24,24 0 0 0 245.6,49.2" fill="none" stroke="#c2185b" stroke-width="1.4"></path> <text fill="#4e3426" font-size="15" text-anchor="middle" x="231" y="54">θ</text> <text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="101" y="20">د</text><text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="269" y="22">أ</text> <text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="269" y="212">ب</text><text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="129" y="212">ج</text> <text fill="#4e3426" font-size="15" text-anchor="middle" x="290" y="115">40 سم</text><text fill="#4e3426" font-size="15" text-anchor="middle" x="198" y="214">30 سم</text>
+</svg></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 6">
+    <label class="ch"><input type="radio" name="q5" value="0"><span class="opt"><span class="let">أ</span><span><span class="frac"><b>4</b><b>5</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q5" value="1"><span class="opt"><span class="let">ب</span><span><span class="frac"><b>3</b><b>5</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q5" value="2"><span class="opt"><span class="let">ج</span><span><span class="frac"><b>3</b><b>4</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q5" value="3"><span class="opt"><span class="let">د</span><span><span class="frac"><b>4</b><b>3</b></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q6"><div class="q-head"><div class="num">7</div><div class="stem"><span class="m">أ ب ج</span> مثلث قائم الزاوية في ب. إذا كان <span class="m">26 أ ب = 10 أ ج</span> فما قيمة ظا ج؟</div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 7">
+    <label class="ch"><input type="radio" name="q6" value="0"><span class="opt"><span class="let">أ</span><span><span class="frac"><b>12</b><b>5</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q6" value="1"><span class="opt"><span class="let">ب</span><span><span class="frac"><b>5</b><b>12</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q6" value="2"><span class="opt"><span class="let">ج</span><span><span class="frac"><b>12</b><b>13</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q6" value="3"><span class="opt"><span class="let">د</span><span><span class="frac"><b>5</b><b>13</b></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q7"><div class="q-head"><div class="num">8</div><div class="stem">في الشكل المقابل: ما قيمة جا أ؟</div></div>
+   <div class="figwrap" dir="ltr"><svg aria-label="مثلث أ ب ج قائم في ب، د على أ ج، هـ على ج ب، د هـ عمودي على أ ج، ج د 8 سم، د هـ 6 سم" role="img" viewbox="0 0 270 215">
+ <polygon fill="none" points="30,190 230,190 230,40" stroke="#c2185b" stroke-width="2.2"></polygon> <line fill="none" stroke="#c2185b" stroke-width="2.2" x1="106.8" x2="150" y1="132.4" y2="190"></line> <polyline fill="none" points="99.6,137.8 105,145 112.2,139.6" stroke="#c2185b" stroke-width="1.4"></polyline> <polyline fill="none" points="220,190 220,180 230,180" stroke="#c2185b" stroke-width="1.4"></polyline> <text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="241" y="38">أ</text><text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="241" y="208">ب</text> <text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="21" y="208">ج</text><text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="103" y="124">د</text><text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="150" y="210">هـ</text> <text fill="#4e3426" font-size="15" text-anchor="middle" x="50" y="150">8 سم</text><text fill="#4e3426" font-size="15" text-anchor="middle" x="152" y="152">6 سم</text>
+</svg></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 8">
+    <label class="ch"><input type="radio" name="q7" value="0"><span class="opt"><span class="let">أ</span><span><span class="frac"><b>3</b><b>4</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q7" value="1"><span class="opt"><span class="let">ب</span><span><span class="frac"><b>4</b><b>3</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q7" value="2"><span class="opt"><span class="let">ج</span><span><span class="frac"><b>4</b><b>5</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q7" value="3"><span class="opt"><span class="let">د</span><span><span class="frac"><b>3</b><b>5</b></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q8"><div class="q-head"><div class="num">9</div><div class="stem">في الشكل المقابل: إذا كان <span class="m">جا θ = <span class="frac"><b>7</b><b>25</b></span></span> فما قيمة ظا θ؟</div></div>
+   <div class="figwrap" dir="ltr"><svg aria-label="مثلث أ ب ج قائم في ب والزاوية θ عند ج" role="img" viewbox="0 0 310 135">
+ <polygon fill="none" points="30,110 49.6,42.8 280,110" stroke="#c2185b" stroke-width="2.2"></polygon> <polyline fill="none" points="47.1,51.4 55.7,53.9 58.2,45.3" stroke="#c2185b" stroke-width="1.4"></polyline> <path d="M250,110 A30,30 0 0 0 251.2,101.6" fill="none" stroke="#c2185b" stroke-width="1.4"></path> <text fill="#4e3426" font-size="15" text-anchor="middle" x="237" y="106">θ</text> <text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="21" y="128">أ</text><text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="47" y="34">ب</text><text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="289" y="128">ج</text>
+</svg></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 9">
+    <label class="ch"><input type="radio" name="q8" value="0"><span class="opt"><span class="let">أ</span><span><span class="frac"><b>7</b><b>24</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q8" value="1"><span class="opt"><span class="let">ب</span><span><span class="frac"><b>24</b><b>7</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q8" value="2"><span class="opt"><span class="let">ج</span><span><span class="frac"><b>24</b><b>25</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q8" value="3"><span class="opt"><span class="let">د</span><span><span class="frac"><b>7</b><b>25</b></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q9"><div class="q-head"><div class="num">10</div><div class="stem">في الشكل المقابل: ما قيمة جا ب؟</div></div>
+   <div class="figwrap" dir="ltr"><svg aria-label="مثلث متساوي الساقين ج أ = ج ب = 13 سم، أ ب = 10 سم، ج د عمودي على أ ب" role="img" viewbox="0 0 220 235">
+ <polygon fill="none" points="40,190 180,190 110,22" stroke="#c2185b" stroke-width="2.2"></polygon> <line fill="none" stroke="#c2185b" stroke-width="2.2" x1="110" x2="110" y1="22" y2="190"></line> <polyline fill="none" points="110,180 120,180 120,190" stroke="#c2185b" stroke-width="1.4"></polyline> <text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="110" y="16">ج</text><text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="31" y="208">أ</text> <text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="104" y="208">د</text><text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="189" y="208">ب</text> <text fill="#4e3426" font-size="15" text-anchor="middle" x="40" y="105">13 سم</text><text fill="#4e3426" font-size="15" text-anchor="middle" x="180" y="105">13 سم</text> <line fill="none" stroke="#4e3426" stroke-width="1.4" x1="40" x2="180" y1="222" y2="222"></line> <line fill="none" stroke="#4e3426" stroke-width="1.4" x1="40" x2="40" y1="216" y2="228"></line><line fill="none" stroke="#4e3426" stroke-width="1.4" x1="180" x2="180" y1="216" y2="228"></line> <rect fill="#f7f2eb" height="20" width="48" x="86" y="212"></rect> <text fill="#4e3426" font-size="15" text-anchor="middle" x="110" y="228">10 سم</text>
+</svg></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 10">
+    <label class="ch"><input type="radio" name="q9" value="0"><span class="opt"><span class="let">أ</span><span><span class="frac"><b>5</b><b>13</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q9" value="1"><span class="opt"><span class="let">ب</span><span><span class="frac"><b>12</b><b>13</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q9" value="2"><span class="opt"><span class="let">ج</span><span><span class="frac"><b>5</b><b>12</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q9" value="3"><span class="opt"><span class="let">د</span><span><span class="frac"><b>12</b><b>5</b></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q10"><div class="q-head"><div class="num">11</div><div class="stem">لأي زاوية حادة قياسها θ ، ما قيمة <span class="m">جا θ − جتا θ ظا θ</span>؟
+<br><span>(بورسعيد 24 / الوادي الجديد 22)</span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 11">
+    <label class="ch"><input type="radio" name="q10" value="0"><span class="opt"><span class="let">أ</span><span>صفر</span></span></label>
+    <label class="ch"><input type="radio" name="q10" value="1"><span class="opt"><span class="let">ب</span><span>1</span></span></label>
+    <label class="ch"><input type="radio" name="q10" value="2"><span class="opt"><span class="let">ج</span><span><span dir="ltr">−1</span></span></span></label>
+    <label class="ch"><input type="radio" name="q10" value="3"><span class="opt"><span class="let">د</span><span>2</span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q11"><div class="q-head"><div class="num">12</div><div class="stem">إذا كان <span class="m">△ أ ب ج</span> قائم الزاوية في ب ، فأي مما يلي يساوي <span class="m">جا أ + جتا ج</span>؟
+<br><span>(المنوفية 17)</span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 12">
+    <label class="ch"><input type="radio" name="q11" value="0"><span class="opt"><span class="let">أ</span><span>2 جا أ</span></span></label>
+    <label class="ch"><input type="radio" name="q11" value="1"><span class="opt"><span class="let">ب</span><span>2 جا ج</span></span></label>
+    <label class="ch"><input type="radio" name="q11" value="2"><span class="opt"><span class="let">ج</span><span>2 جا ب</span></span></label>
+    <label class="ch"><input type="radio" name="q11" value="3"><span class="opt"><span class="let">د</span><span>2 جتا أ</span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q12"><div class="q-head"><div class="num">13</div><div class="stem">في الشكل المقابل: ما قيمة جا ج؟
+<br><span>(أسوان 17)</span></div></div>
+   <div class="figwrap" dir="ltr"><svg aria-label="مثلث أ ب ج قائم في ب، أ ب 6 سم، د منتصف أ ج، ب د 5 سم" role="img" viewbox="0 0 260 175">
+ <polygon fill="none" points="56,150 200,150 200,42" stroke="#c2185b" stroke-width="2.2"></polygon> <line fill="none" stroke="#c2185b" stroke-width="2.2" x1="128" x2="200" y1="96" y2="150"></line> <polyline fill="none" points="190,150 190,140 200,140" stroke="#c2185b" stroke-width="1.4"></polyline> <line fill="none" stroke="#c2185b" stroke-width="1.4" x1="158" x2="165.2" y1="66" y2="75.6"></line><line fill="none" stroke="#c2185b" stroke-width="1.4" x1="162.8" x2="170" y1="62.4" y2="72"></line> <line fill="none" stroke="#c2185b" stroke-width="1.4" x1="86" x2="93.2" y1="120" y2="129.6"></line><line fill="none" stroke="#c2185b" stroke-width="1.4" x1="90.8" x2="98" y1="116.4" y2="126"></line> <text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="200" y="34">أ</text><text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="201" y="170">ب</text> <text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="49" y="170">ج</text><text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="117" y="90">د</text> <text fill="#4e3426" font-size="15" text-anchor="middle" x="226" y="100">6 سم</text><text fill="#4e3426" font-size="15" text-anchor="middle" x="134" y="134">5 سم</text>
+</svg></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 13">
+    <label class="ch"><input type="radio" name="q12" value="0"><span class="opt"><span class="let">أ</span><span><span class="frac"><b>5</b><b>6</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q12" value="1"><span class="opt"><span class="let">ب</span><span><span class="frac"><b>3</b><b>5</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q12" value="2"><span class="opt"><span class="let">ج</span><span><span class="frac"><b>6</b><b>5</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q12" value="3"><span class="opt"><span class="let">د</span><span><span class="frac"><b>5</b><b>3</b></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q13"><div class="q-head"><div class="num">14</div><div class="stem">في الشكل المقابل: <span class="m">أ ب ج د</span> مربع ، هـ منتصف <span class="ov">أ د</span>. ما قيمة ظا θ؟</div></div>
+   <div class="figwrap" dir="ltr"><svg aria-label="مربع أ ب ج د، هـ منتصف أ د، القطعة هـ ج، الزاوية θ عند ج بين ج هـ و ج ب" role="img" viewbox="0 0 230 205">
+ <rect fill="none" height="150" stroke="#c2185b" stroke-width="2.2" width="150" x="40" y="30"></rect> <line fill="none" stroke="#c2185b" stroke-width="2.2" x1="40" x2="190" y1="105" y2="30"></line> <line fill="none" stroke="#c2185b" stroke-width="1.4" x1="34" x2="46" y1="67.5" y2="67.5"></line><line fill="none" stroke="#c2185b" stroke-width="1.4" x1="34" x2="46" y1="142.5" y2="142.5"></line> <path d="M190,52 A22,22 0 0 1 170.3,39.8" fill="none" stroke="#c2185b" stroke-width="1.4"></path> <text fill="#4e3426" font-size="15" text-anchor="middle" x="177" y="66">θ</text> <text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="31" y="24">د</text><text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="199" y="24">ج</text> <text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="31" y="200">أ</text><text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="199" y="200">ب</text> <text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="26" y="112">هـ</text>
+</svg></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 14">
+    <label class="ch"><input type="radio" name="q13" value="0"><span class="opt"><span class="let">أ</span><span>2</span></span></label>
+    <label class="ch"><input type="radio" name="q13" value="1"><span class="opt"><span class="let">ب</span><span><span class="frac"><b>1</b><b>2</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q13" value="2"><span class="opt"><span class="let">ج</span><span><span class="frac"><b>1</b><b>3</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q13" value="3"><span class="opt"><span class="let">د</span><span><span class="frac"><b>1</b><b>4</b></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q14"><div class="q-head"><div class="num">15</div><div class="stem">في الشكل المقابل: 6 مربعات متطابقة. ما قيمة جا θ؟</div></div>
+   <div class="figwrap" dir="ltr"><svg aria-label="أربعة مربعات في صف وفوق المربع الأخير مربعان، وقطر من أسفل اليسار إلى أعلى اليمين" role="img" viewbox="0 0 200 185">
+ <rect fill="none" height="40" stroke="#c2185b" stroke-width="2.2" width="160" x="20" y="130"></rect> <rect fill="none" height="80" stroke="#c2185b" stroke-width="2.2" width="40" x="140" y="50"></rect> <line fill="none" stroke="#c2185b" stroke-width="2.2" x1="60" x2="60" y1="130" y2="170"></line><line fill="none" stroke="#c2185b" stroke-width="2.2" x1="100" x2="100" y1="130" y2="170"></line><line fill="none" stroke="#c2185b" stroke-width="2.2" x1="140" x2="140" y1="130" y2="170"></line> <line fill="none" stroke="#c2185b" stroke-width="2.2" x1="140" x2="180" y1="90" y2="90"></line> <line fill="none" stroke="#c2185b" stroke-width="2.2" x1="20" x2="180" y1="170" y2="50"></line> <path d="M93.3,130 A20,20 0 0 0 89.3,118" fill="none" stroke="#c2185b" stroke-width="1.4"></path> <text fill="#4e3426" font-size="14" text-anchor="middle" x="109" y="126">θ</text>
+</svg></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 15">
+    <label class="ch"><input type="radio" name="q14" value="0"><span class="opt"><span class="let">أ</span><span><span class="frac"><b>4</b><b>3</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q14" value="1"><span class="opt"><span class="let">ب</span><span><span class="frac"><b>3</b><b>4</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q14" value="2"><span class="opt"><span class="let">ج</span><span><span class="frac"><b>2</b><b>3</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q14" value="3"><span class="opt"><span class="let">د</span><span><span class="frac"><b>3</b><b>5</b></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q15"><div class="q-head"><div class="num">16</div><div class="stem">في الشكل المقابل: <span class="m">△ و أ ب</span> قائم الزاوية في أ ، <span class="m">أ<span dir="ltr">(6 , 3)</span></span>. ما قيمة <span class="m">ظا(∠ أ ب و)</span>؟
+<br><span>(الغربية 22)</span></div></div>
+   <div class="figwrap" dir="ltr"><svg aria-label="مستوى إحداثي، و نقطة الأصل، أ (6 ، 3)، ب على محور السينات، الزاوية القائمة عند أ" role="img" viewbox="0 0 310 195">
+ <line fill="none" stroke="#4e3426" stroke-width="1.4" x1="10" x2="298" y1="150" y2="150"></line><polyline fill="none" points="290,145 298,150 290,155" stroke="#4e3426" stroke-width="1.4"></polyline> <line fill="none" stroke="#4e3426" stroke-width="1.4" x1="40" x2="40" y1="186" y2="14"></line><polyline fill="none" points="35,22 40,14 45,22" stroke="#4e3426" stroke-width="1.4"></polyline> <line fill="none" stroke="#c2185b" stroke-dasharray="5 4" stroke-width="1.4" x1="40" x2="220" y1="60" y2="60"></line><line fill="none" stroke="#c2185b" stroke-dasharray="5 4" stroke-width="1.4" x1="220" x2="220" y1="60" y2="150"></line> <polygon fill="none" points="40,150 220,60 265,150" stroke="#c2185b" stroke-width="2.2"></polygon> <polyline fill="none" points="212,64 216,72 224,68" stroke="#c2185b" stroke-width="1.4"></polyline> <text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="27" y="170">و</text><text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="263" y="170">ب</text> <text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="208" y="50">أ</text><text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="240" y="50">(6, 3)</text> <text fill="#4e3426" font-size="15" text-anchor="middle" x="299" y="142">س</text><text fill="#4e3426" font-size="15" text-anchor="middle" x="54" y="20">ص</text>
+</svg></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 16">
+    <label class="ch"><input type="radio" name="q15" value="0"><span class="opt"><span class="let">أ</span><span><span class="frac"><b>1</b><b>2</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q15" value="1"><span class="opt"><span class="let">ب</span><span>2</span></span></label>
+    <label class="ch"><input type="radio" name="q15" value="2"><span class="opt"><span class="let">ج</span><span><span class="frac"><b>√<span class="ov">5</span></b><b>5</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q15" value="3"><span class="opt"><span class="let">د</span><span><span class="frac"><b>2√<span class="ov">5</span></b><b>5</b></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q16"><div class="q-head"><div class="num">17</div><div class="stem">في الشكل المقابل: إذا كان <span class="m">ظا س = <span class="frac"><b>3</b><b>4</b></span></span> فما قيمة ظا ص؟</div></div>
+   <div class="figwrap" dir="ltr"><svg aria-label="مثلث أ ب ج قائم في أ، د على ج أ، ج د = د ب، الزاوية ص عند ج، الزاوية س بين ب أ و ب د" role="img" viewbox="0 0 280 170">
+ <polygon fill="none" points="30,150 250,150 206,62" stroke="#c2185b" stroke-width="2.2"></polygon> <line fill="none" stroke="#c2185b" stroke-width="2.2" x1="140" x2="250" y1="95" y2="150"></line> <polyline fill="none" points="198,66 202,74 210,70" stroke="#c2185b" stroke-width="1.4"></polyline> <line fill="none" stroke="#c2185b" stroke-width="1.4" x1="79.6" x2="85" y1="118.4" y2="129.2"></line><line fill="none" stroke="#c2185b" stroke-width="1.4" x1="85" x2="90.4" y1="115.8" y2="126.6"></line> <line fill="none" stroke="#c2185b" stroke-width="1.4" x1="195" x2="189.6" y1="115.8" y2="126.6"></line><line fill="none" stroke="#c2185b" stroke-width="1.4" x1="200.4" x2="195" y1="118.4" y2="129.2"></line> <path d="M60,150 A30,30 0 0 0 56.8,136.6" fill="none" stroke="#c2185b" stroke-width="1.4"></path> <path d="M228.5,139.3 A24,24 0 0 1 239.3,128.5" fill="none" stroke="#c2185b" stroke-width="1.4"></path> <text fill="#4e3426" font-size="15" text-anchor="middle" x="72" y="146">ص</text> <text fill="#4e3426" font-size="15" text-anchor="middle" x="258" y="120">س</text> <text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="205" y="54">أ</text><text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="257" y="168">ب</text> <text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="21" y="168">ج</text><text fill="#4e3426" font-size="17" font-weight="bold" text-anchor="middle" x="133" y="88">د</text>
+</svg></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 17">
+    <label class="ch"><input type="radio" name="q16" value="0"><span class="opt"><span class="let">أ</span><span>3</span></span></label>
+    <label class="ch"><input type="radio" name="q16" value="1"><span class="opt"><span class="let">ب</span><span>2</span></span></label>
+    <label class="ch"><input type="radio" name="q16" value="2"><span class="opt"><span class="let">ج</span><span><span class="frac"><b>1</b><b>2</b></span></span></span></label>
+    <label class="ch"><input type="radio" name="q16" value="3"><span class="opt"><span class="let">د</span><span><span class="frac"><b>1</b><b>3</b></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q17"><div class="q-head"><div class="num">18</div><div class="stem">إذا كان <span class="m">△ د هـ و</span> قائم الزاوية في هـ ، فأي العلاقات الآتية خاطئة؟
+<br><span>(الدقهلية 22)</span></div></div>
+   <div class="opts" role="radiogroup" aria-label="السؤال 18">
+    <label class="ch"><input type="radio" name="q17" value="0"><span class="opt"><span class="let">أ</span><span><span class="m">ظا د × ظا و = 1</span></span></span></label>
+    <label class="ch"><input type="radio" name="q17" value="1"><span class="opt"><span class="let">ب</span><span><span class="m">جا د = جتا و</span></span></span></label>
+    <label class="ch"><input type="radio" name="q17" value="2"><span class="opt"><span class="let">ج</span><span><span class="m">جتا د = جا و</span></span></span></label>
+    <label class="ch"><input type="radio" name="q17" value="3"><span class="opt"><span class="let">د</span><span><span class="m">جتا د = جتا هـ</span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+
+  </div>
+
+  <div class="card jsonly" id="submitCard">
+    <p class="msg" id="msg"></p>
+    <button class="primary" id="submitBtn" onclick="submitTest()">أرسل إجاباتي</button>
+  </div>
+</main>
+<footer>اختر الإجابة الصحيحة لكل سؤال، ثم اضغط «أرسل إجاباتي».</footer>
+
+<script>
+var TEST_TITLE='الصف التاسع - النسب المثلثية للزاوية الحادة';
+var TEST_ID='g9-grade9-trig-ratios-mcq-ar';
+var T={"myTests":"اختباراتي","notice":"أنت تشاهد الاختبار في وضع المعاينة. افتحه عبر الإنترنت وسجّل الدخول لإرسال إجاباتك ومعرفة نتيجتك.","print":"طباعة / حفظ النتيجة","again":"حاول مرة أخرى","submit":"أرسل إجاباتي","footer":"اختر الإجابة الصحيحة لكل سؤال، ثم اضغط «أرسل إجاباتي».","answered":"تمت الإجابة عن {n} من {N}","left1":"بقي سؤال واحد بدون إجابة.","leftN":"بقي {n} من الأسئلة بدون إجابة.","checking":"جارٍ تصحيح إجاباتك…","expired":"انتهت مدة تسجيل الدخول. يرجى تسجيل الدخول مرة أخرى.","failed":"تعذّر تصحيح إجاباتك. تحقق من الإنترنت واضغط «أرسل إجاباتي» مرة أخرى.","correct":"إجابة صحيحة. ","correctAnswer":"الإجابة الصحيحة: {L}. ","saved":"تم حفظ نتيجتك.","signedIn":"تم تسجيل الدخول باسم {name}","note100":"ممتاز! الدرجة كاملة.","note80":"عمل جيد جدًا. راجع الأسئلة المحددة باللون الأحمر.","note50":"محاولة جيدة. اقرأ الشرح وحاول مرة أخرى.","note0":"استمر في التدريب. اقرأ شرح كل سؤال ثم حاول مرة أخرى.","letters":["أ","ب","ج","د"]};
+
+var L=T.letters, attempt=1, busy=false;
+var quiz=document.getElementById('quiz');
+var cards=quiz.querySelectorAll('.card'), N=cards.length;
+
+function fill(s,v){return s.replace(/\{(\w+)\}/g,function(m,k){return v[k];});}
+function inputsOf(i){return cards[i].querySelectorAll('input');}
+function pickedOf(i){var a=inputsOf(i),k;for(k=0;k<a.length;k++){if(a[k].checked)return k;}return -1;}
+
+function updateBar(){
+  var c=0,i;
+  for(i=0;i<N;i++){if(pickedOf(i)>=0){c++;cards[i].classList.remove('missing');}}
+  document.getElementById('barFill').style.width=(c/N*100)+'%';
+  document.getElementById('barText').textContent=fill(T.answered,{n:c,N:N});
+}
+quiz.addEventListener('change',updateBar);
+
+function showMsg(t){var m=document.getElementById('msg');m.textContent=t;m.style.display=t?'block':'none';}
+
+function submitTest(){
+  if(busy)return;
+  if(!PORTAL_SESSION){location.replace('../index.html');return;}
+  var first=-1,left=0,i,picks=[];
+  for(i=0;i<N;i++){
+    var p=pickedOf(i), miss=p<0;
+    cards[i].classList.toggle('missing',miss);
+    if(miss){left++;if(first<0)first=i;}
+    picks.push(p);
+  }
+  if(left){showMsg(fill(left>1?T.leftN:T.left1,{n:left}));cards[first].scrollIntoView();return;}
+  showMsg('');
+  busy=true;
+  var btn=document.getElementById('submitBtn'); btn.disabled=true; btn.textContent=T.checking;
+  Portal.submitTest({testId:TEST_ID,picks:picks,attempt:attempt},function(r){
+    busy=false; btn.disabled=false; btn.textContent=T.submit;
+    if(!r||!r.ok){
+      showMsg(r&&r.error==='signed_out'?T.expired:T.failed);
+      return;
+    }
+    showResult(r);
+  });
+}
+
+function showResult(r){
+  for(var i=0;i<N;i++){
+    var a=inputsOf(i), c=r.correct[i], ok=pickedOf(i)===c, k;
+    for(k=0;k<a.length;k++){if(k===c)a[k].setAttribute('data-c','');else a[k].removeAttribute('data-c');}
+    var w=cards[i].querySelector('.why');
+    w.classList.toggle('bad',!ok);
+    w.innerHTML='<strong>'+(ok?T.correct:fill(T.correctAnswer,{L:L[c]}))+'</strong>'+(r.explanations[i]||'');
+  }
+  quiz.classList.add('graded');
+  var pct=r.percent;
+  document.getElementById('who').textContent=PORTAL_SESSION.name;
+  document.getElementById('score').textContent=r.score+' / '+r.total+'  ('+pct+'%)';
+  document.getElementById('note').textContent=pct===100?T.note100:pct>=80?T.note80:pct>=50?T.note50:T.note0;
+  document.getElementById('saveMsg').textContent=r.saved?T.saved:'';
+  document.getElementById('result').style.display='block';
+  document.getElementById('submitCard').style.display='none';
+  document.getElementById('progress').style.display='none';
+  window.scrollTo(0,0);
+}
+function restart(){
+  var all=quiz.querySelectorAll('input'), k;
+  for(k=0;k<all.length;k++){all[k].checked=false;all[k].removeAttribute('data-c');}
+  var ws=quiz.querySelectorAll('.why'); for(k=0;k<ws.length;k++){ws[k].innerHTML='';ws[k].classList.remove('bad');}
+  attempt++;
+  quiz.classList.remove('graded');
+  updateBar();
+  document.getElementById('result').style.display='none';
+  document.getElementById('submitCard').style.display='block';
+  document.getElementById('progress').style.display='block';
+  window.scrollTo(0,0);
+}
+updateBar();
+if(PORTAL_SESSION){document.getElementById('whoami').textContent=fill(T.signedIn,{name:PORTAL_SESSION.name});}
+</script>
+</body>
+</html>
