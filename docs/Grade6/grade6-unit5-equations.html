@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Math Tests Studio">
+<title>Grade 6 Math Test – Unit 5 Assessment — Equations</title>
+<style>
+  :root{
+    --green:#1f9d57; --green-dark:#157a42; --green-soft:#e8f6ee;
+    --ink:#1d2b24; --muted:#5f6f67; --line:#d5e3db; --bg:#f4f8f5; --card:#ffffff;
+    --red:#c8372d; --red-soft:#fdeceb; --amber:#f2b632;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+  html[lang=ar] body{font-family:"Segoe UI",Tahoma,"Noto Sans Arabic","Noto Naskh Arabic",Roboto,Arial,sans-serif}
+  header{background:var(--green);color:#fff;padding:22px 16px 26px}
+  header .wrap{max-width:760px;margin:0 auto}
+  header h1{margin:0 0 4px;font-size:1.5rem}
+  header p{margin:0;opacity:.92;font-size:.95rem}
+  main{max-width:760px;margin:0 auto;padding:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+  .sec{font-size:1.05rem;color:var(--green-dark);margin:20px 4px 10px}
+  .progress{position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0 10px}
+  .bar{height:8px;background:#dde9e2;border-radius:99px;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:var(--green);transition:width .2s}
+  .progress small{color:var(--muted);display:block;margin-top:4px}
+  .q-head{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}
+  .num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--green-soft);color:var(--green-dark);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+  .stem{font-size:1.1rem;padding-top:2px;min-width:0}
+  .opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .opt{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;cursor:pointer;font-size:1.05rem;min-height:52px;background:#fff}
+  .opt:hover{border-color:var(--green)}
+  .opt .let{flex:none;width:26px;height:26px;border-radius:6px;border:1.5px solid var(--line);font-size:.85rem;font-weight:700;display:flex;align-items:center;justify-content:center;color:var(--muted)}
+  .why{display:none;margin-top:10px;padding:10px 12px;border-radius:8px;background:#f6f9f7;border-inline-start:4px solid var(--green);font-size:.95rem}
+  .why.bad{border-inline-start-color:var(--red)}
+  .card.missing{border-color:var(--amber);box-shadow:0 0 0 3px rgba(242,182,50,.25)}
+  /* maths markup */
+  .frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;line-height:1.1;font-size:.9em;margin:0 2px}
+  .frac b{font-weight:500;padding:0 4px}
+  .frac b:first-child{border-bottom:1.5px solid currentColor}
+  .rep,.ov{text-decoration:overline}
+  .nw,.rt{white-space:nowrap}
+  .m{white-space:nowrap;display:inline-block;font-family:"Segoe UI",Roboto,Arial,sans-serif}
+  .opt .m{white-space:normal}
+  .mb{display:block;margin:6px 0 2px;text-align:left}
+  .mb .m{white-space:normal}
+  .seq{line-height:2}
+  .rad{display:inline-block;border-top:1.5px solid currentColor;padding:1px 1px 0;margin-left:1px;line-height:1.15}
+  .rad>.frac{padding-top:3px}
+  .ri{font-size:.6em;margin-right:-.45em;vertical-align:.95em}
+  .circle{display:inline-block;width:26px;height:26px;border:1.5px solid #9bb3a6;border-radius:50%;vertical-align:middle;margin:0 8px}
+  .blank{display:inline-block;width:56px;border-bottom:1.5px solid #9bb3a6;vertical-align:baseline;margin:0 4px}
+  .venn{display:inline-flex;align-items:center;vertical-align:middle;margin-inline-start:10px;font-size:.9rem}
+  .venn span{display:inline-flex;align-items:center;justify-content:center;border:1.5px solid var(--ink);border-radius:50%;height:44px;line-height:1.1;text-align:center}
+  .venn .vl{width:58px;justify-content:flex-start;padding-left:12px;border-right:0;border-radius:50% 0 0 50%}
+  .venn .vm{width:34px;border-radius:50%;margin:0 -2px}
+  .venn .vr{width:58px;justify-content:flex-end;padding-right:12px;border-left:0;border-radius:0 50% 50% 0}
+  .venn-svg{display:block;margin:8px 0 0}
+  .venn-svg svg{max-width:100%;height:auto}
+  .venn-svg ellipse{fill:none;stroke:var(--ink);stroke-width:1.5}
+  .venn-svg circle{fill:currentColor}
+  .venn-svg text{font-size:15px;text-anchor:middle;fill:var(--ink);font-family:"Segoe UI",Roboto,Arial,sans-serif}
+  .venn-svg text.lab{font-weight:700;fill:#1f5fa8}
+  /* pictures */
+  .figwrap{text-align:center;margin:6px 0 12px;background:#fff;border-radius:10px;padding:6px}
+  .figimg{display:block;width:100%;height:auto;margin:0 auto}
+  .optimg{display:block;width:100%;max-width:120px!important;height:auto;margin:0 auto}
+  .stem img,.why img{max-width:100%;height:auto;vertical-align:middle}
+  .opts.pics .opt{justify-content:flex-start}
+  .opt>span:last-child{flex:1;min-width:0}
+  button{font:inherit;font-weight:600;border:0;border-radius:10px;padding:13px 20px;cursor:pointer}
+  button[disabled]{opacity:.65;cursor:default}
+  .primary{background:var(--green);color:#fff;width:100%;font-size:1.05rem}
+  .primary:hover{background:var(--green-dark)}
+  .ghost{background:#fff;color:var(--green-dark);border:1.5px solid var(--green)}
+  .msg{color:var(--red);font-weight:600;margin:0 0 10px;display:none}
+  #result{display:none;text-align:center}
+  #result .score{font-size:2.6rem;font-weight:800;color:var(--green-dark);margin:4px 0;direction:ltr;unicode-bidi:isolate}
+  #result .who{font-weight:600;font-size:1.1rem}
+  #result .note{color:var(--muted);margin:4px 0 14px}
+  .actions{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+  a.primary,a.ghost{display:inline-block;text-decoration:none;border-radius:10px;padding:13px 20px;font-weight:600;text-align:center}
+  footer{text-align:center;color:var(--muted);font-size:.8rem;padding:8px 16px 28px}
+  @media (max-width:420px){.opts{grid-template-columns:1fr}}
+  @media print{.progress,.actions,#submitCard{display:none}body{background:#fff}.card{break-inside:avoid}}
+  .ch{display:block;position:relative;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .ch input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+  .ch input:checked + .opt{border-color:var(--green);background:var(--green-soft)}
+  .ch input:checked + .opt .let{background:var(--green);border-color:var(--green);color:#fff}
+  .ch input:focus + .opt{box-shadow:0 0 0 3px rgba(31,157,87,.25)}
+  /* after the server grades: data-c marks the correct option */
+  .graded .ch{pointer-events:none;cursor:default}
+  .graded .ch input[data-c] + .opt{border-color:var(--green);background:var(--green-soft)}
+  .graded .ch input[data-c] + .opt .let{background:var(--green);border-color:var(--green);color:#fff}
+  .graded .ch input:checked:not([data-c]) + .opt{border-color:var(--red);background:var(--red-soft)}
+  .graded .ch input:checked:not([data-c]) + .opt .let{background:var(--red);border-color:var(--red);color:#fff}
+  .graded .why{display:block}
+  html:not(.js) .jsonly{display:none!important}
+  .js .nojs{display:none!important}
+  .notice{background:#fff8e6;border-color:#f2d58a;font-size:.95rem}
+  .who-bar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;font-size:.95rem;margin-bottom:12px}
+  .who-bar a{color:var(--green-dark);font-weight:600}
+  #saveMsg{font-weight:600;color:var(--green-dark);margin:0 0 12px}
+</style>
+<script>document.documentElement.className='js';</script>
+<script src="../config.js"></script>
+<script src="../portal.js"></script>
+<script>var PORTAL_SESSION=Portal.requireLogin('6');</script>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Unit 5 Assessment — Equations</h1>
+    <p>Grade 6 Math · 29 multiple choice questions</p>
+  </div>
+</header>
+
+<main>
+  <div class="who-bar jsonly"><span id="whoami"></span><a href="../index.html">My tests</a></div>
+  <div class="card notice nojs">You are viewing this test in preview mode. Open it online and sign in to submit your answers and see your score.</div>
+
+  <div class="card" id="result" aria-live="polite">
+    <div class="who" id="who"></div>
+    <div class="score" id="score"></div>
+    <div class="note" id="note"></div>
+    <p id="saveMsg"></p>
+    <div class="actions">
+      <button class="ghost" onclick="window.print()">Print / save result</button>
+      <button class="ghost" onclick="restart()">Try again</button>
+      <a class="ghost" href="../index.html">My tests</a>
+    </div>
+  </div>
+
+  <div class="progress jsonly" id="progress">
+    <div class="bar"><i id="barFill"></i></div>
+    <small id="barText">0 of 29 answered</small>
+  </div>
+
+  <div id="quiz">
+  <h2 class="sec">Part 1 · Choose the correct answer</h2>
+  <div class="card" id="q0"><div class="q-head"><div class="num">1</div><div class="stem">Which of the following is an equation?</div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 1">
+    <label class="ch"><input type="radio" name="q0" value="0"><span class="opt"><span class="let">A</span><span><span>20x + 1.3</span></span></span></label>
+    <label class="ch"><input type="radio" name="q0" value="1"><span class="opt"><span class="let">B</span><span><span>3 + a</span></span></span></label>
+    <label class="ch"><input type="radio" name="q0" value="2"><span class="opt"><span class="let">C</span><span><span>Twice a number.</span></span></span></label>
+    <label class="ch"><input type="radio" name="q0" value="3"><span class="opt"><span class="let">D</span><span><span>a + 9 = f</span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q1"><div class="q-head"><div class="num">2</div><div class="stem">"6 times m added to 2 equals n" in equation is ……
+<br><span>(Cairo 24)</span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 2">
+    <label class="ch"><input type="radio" name="q1" value="0"><span class="opt"><span class="let">A</span><span><span>6m − 2 = n</span></span></span></label>
+    <label class="ch"><input type="radio" name="q1" value="1"><span class="opt"><span class="let">B</span><span><span>6n + 2 = m</span></span></span></label>
+    <label class="ch"><input type="radio" name="q1" value="2"><span class="opt"><span class="let">C</span><span><span>6m + 2 = n</span></span></span></label>
+    <label class="ch"><input type="radio" name="q1" value="3"><span class="opt"><span class="let">D</span><span><span>6 × 2m = n</span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q2"><div class="q-head"><div class="num">3</div><div class="stem">The dependent in the equation: y = 2b is ……
+<br><span>(El Monofia – Shebin El Koum 24)</span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 3">
+    <label class="ch"><input type="radio" name="q2" value="0"><span class="opt"><span class="let">A</span><span><span>y</span></span></span></label>
+    <label class="ch"><input type="radio" name="q2" value="1"><span class="opt"><span class="let">B</span><span><span>b</span></span></span></label>
+    <label class="ch"><input type="radio" name="q2" value="2"><span class="opt"><span class="let">C</span><span><span>2</span></span></span></label>
+    <label class="ch"><input type="radio" name="q2" value="3"><span class="opt"><span class="let">D</span><span><span>4</span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q3"><div class="q-head"><div class="num">4</div><div class="stem">"The product of x and 3 equals y" in equation is ……
+<br><span>(Cairo 24)</span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 4">
+    <label class="ch"><input type="radio" name="q3" value="0"><span class="opt"><span class="let">A</span><span><span>y = 3x</span></span></span></label>
+    <label class="ch"><input type="radio" name="q3" value="1"><span class="opt"><span class="let">B</span><span><span>x = 3y</span></span></span></label>
+    <label class="ch"><input type="radio" name="q3" value="2"><span class="opt"><span class="let">C</span><span><span>x = 3 + y</span></span></span></label>
+    <label class="ch"><input type="radio" name="q3" value="3"><span class="opt"><span class="let">D</span><span><span>y = 3 + x</span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q4"><div class="q-head"><div class="num">5</div><div class="stem">In the equation: y = 6x + 4, if x = 3, then y = ……
+<br><span>(Cairo 24)</span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 5">
+    <label class="ch"><input type="radio" name="q4" value="0"><span class="opt"><span class="let">A</span><span><span>10</span></span></span></label>
+    <label class="ch"><input type="radio" name="q4" value="1"><span class="opt"><span class="let">B</span><span><span>22</span></span></span></label>
+    <label class="ch"><input type="radio" name="q4" value="2"><span class="opt"><span class="let">C</span><span><span>18</span></span></span></label>
+    <label class="ch"><input type="radio" name="q4" value="3"><span class="opt"><span class="let">D</span><span><span>67</span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q5"><div class="q-head"><div class="num">6</div><div class="stem">In the equation: y = 2x + 1, the ordered pair (2, a) satisfies the equation, then a = ……
+<br><span>(El Monofia – Tala 24)</span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 6">
+    <label class="ch"><input type="radio" name="q5" value="0"><span class="opt"><span class="let">A</span><span><span>5</span></span></span></label>
+    <label class="ch"><input type="radio" name="q5" value="1"><span class="opt"><span class="let">B</span><span><span><span class="frac"><b>1</b><b>2</b></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q5" value="2"><span class="opt"><span class="let">C</span><span><span>23</span></span></span></label>
+    <label class="ch"><input type="radio" name="q5" value="3"><span class="opt"><span class="let">D</span><span><span>6</span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q6"><div class="q-head"><div class="num">7</div><div class="stem">If y = 3x + 9, then the independent variable is ……
+<br><span>(Giza – Abo El Nomros 24)</span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 7">
+    <label class="ch"><input type="radio" name="q6" value="0"><span class="opt"><span class="let">A</span><span><span>y</span></span></span></label>
+    <label class="ch"><input type="radio" name="q6" value="1"><span class="opt"><span class="let">B</span><span><span>3</span></span></span></label>
+    <label class="ch"><input type="radio" name="q6" value="2"><span class="opt"><span class="let">C</span><span><span>9</span></span></span></label>
+    <label class="ch"><input type="radio" name="q6" value="3"><span class="opt"><span class="let">D</span><span><span>x</span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <h2 class="sec">Part 2 · Complete the following</h2>
+  <div class="card" id="q7"><div class="q-head"><div class="num">8</div><div class="stem">The verbal phrase for: w + 12 = 17 is ……</div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 8">
+    <label class="ch"><input type="radio" name="q7" value="0"><span class="opt"><span class="let">A</span><span><span>w decreased by 12 equals 17.</span></span></span></label>
+    <label class="ch"><input type="radio" name="q7" value="1"><span class="opt"><span class="let">B</span><span><span>w increased by 12 equals 17.</span></span></span></label>
+    <label class="ch"><input type="radio" name="q7" value="2"><span class="opt"><span class="let">C</span><span><span>12 times w equals 17.</span></span></span></label>
+    <label class="ch"><input type="radio" name="q7" value="3"><span class="opt"><span class="let">D</span><span><span>w increased by 17 equals 12.</span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q8"><div class="q-head"><div class="num">9</div><div class="stem">If y = 3x + 4 and <span class="m">x = <span class="frac"><b>1</b><b>3</b></span></span>, then y = ……
+<br><span>(Alexandria – Borg El Arab 24)</span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 9">
+    <label class="ch"><input type="radio" name="q8" value="0"><span class="opt"><span class="let">A</span><span><span>4</span></span></span></label>
+    <label class="ch"><input type="radio" name="q8" value="1"><span class="opt"><span class="let">B</span><span><span>13</span></span></span></label>
+    <label class="ch"><input type="radio" name="q8" value="2"><span class="opt"><span class="let">C</span><span><span>5</span></span></span></label>
+    <label class="ch"><input type="radio" name="q8" value="3"><span class="opt"><span class="let">D</span><span><span>7</span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q9"><div class="q-head"><div class="num">10</div><div class="stem">If the number (a) depends on another number (b), then the dependent variable is ……</div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 10">
+    <label class="ch"><input type="radio" name="q9" value="0"><span class="opt"><span class="let">A</span><span><span>a</span></span></span></label>
+    <label class="ch"><input type="radio" name="q9" value="1"><span class="opt"><span class="let">B</span><span><span>b</span></span></span></label>
+    <label class="ch"><input type="radio" name="q9" value="2"><span class="opt"><span class="let">C</span><span><span>a and b</span></span></span></label>
+    <label class="ch"><input type="radio" name="q9" value="3"><span class="opt"><span class="let">D</span><span><span>neither of them</span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q10"><div class="q-head"><div class="num">11</div><div class="stem">"e equals f increased by 2.5" in algebraic equation is ……</div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 11">
+    <label class="ch"><input type="radio" name="q10" value="0"><span class="opt"><span class="let">A</span><span><span>e = f − 2.5</span></span></span></label>
+    <label class="ch"><input type="radio" name="q10" value="1"><span class="opt"><span class="let">B</span><span><span>f = e + 2.5</span></span></span></label>
+    <label class="ch"><input type="radio" name="q10" value="2"><span class="opt"><span class="let">C</span><span><span>e = 2.5f</span></span></span></label>
+    <label class="ch"><input type="radio" name="q10" value="3"><span class="opt"><span class="let">D</span><span><span>e = f + 2.5</span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q11"><div class="q-head"><div class="num">12</div><div class="stem">If the rule is "Add 9", then the equation is ……</div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 12">
+    <label class="ch"><input type="radio" name="q11" value="0"><span class="opt"><span class="let">A</span><span><span>y = 9x</span></span></span></label>
+    <label class="ch"><input type="radio" name="q11" value="1"><span class="opt"><span class="let">B</span><span><span>y = x − 9</span></span></span></label>
+    <label class="ch"><input type="radio" name="q11" value="2"><span class="opt"><span class="let">C</span><span><span>y = x + 9</span></span></span></label>
+    <label class="ch"><input type="radio" name="q11" value="3"><span class="opt"><span class="let">D</span><span><span>x = y + 9</span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q12"><div class="q-head"><div class="num">13</div><div class="stem">The equation represented by the table is ……
+<svg height="62" role="img" viewbox="0 0 266 62" width="266">
+ <rect fill="#e2f5f4" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="1" y="1"></rect><text fill="#4e3426" font-size="15" font-weight="bold" text-anchor="middle" x="23.0" y="21">x</text><rect fill="#ffffff" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="45" y="1"></rect><text fill="#4e3426" font-size="15" text-anchor="middle" x="67.0" y="21">0</text><rect fill="#ffffff" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="89" y="1"></rect><text fill="#4e3426" font-size="15" text-anchor="middle" x="111.0" y="21">2</text><rect fill="#ffffff" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="133" y="1"></rect><text fill="#4e3426" font-size="15" text-anchor="middle" x="155.0" y="21">5</text><rect fill="#ffffff" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="177" y="1"></rect><text fill="#4e3426" font-size="15" text-anchor="middle" x="199.0" y="21">7</text><rect fill="#ffffff" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="221" y="1"></rect><text fill="#4e3426" font-size="15" text-anchor="middle" x="243.0" y="21">10</text><rect fill="#e2f5f4" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="1" y="31"></rect><text fill="#4e3426" font-size="15" font-weight="bold" text-anchor="middle" x="23.0" y="51">y</text><rect fill="#ffffff" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="45" y="31"></rect><text fill="#4e3426" font-size="15" text-anchor="middle" x="67.0" y="51">0</text><rect fill="#ffffff" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="89" y="31"></rect><text fill="#4e3426" font-size="15" text-anchor="middle" x="111.0" y="51">4</text><rect fill="#ffffff" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="133" y="31"></rect><text fill="#4e3426" font-size="15" text-anchor="middle" x="155.0" y="51">10</text><rect fill="#ffffff" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="177" y="31"></rect><text fill="#4e3426" font-size="15" text-anchor="middle" x="199.0" y="51">14</text><rect fill="#ffffff" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="221" y="31"></rect><text fill="#4e3426" font-size="15" text-anchor="middle" x="243.0" y="51">20</text>
+</svg></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 13">
+    <label class="ch"><input type="radio" name="q12" value="0"><span class="opt"><span class="let">A</span><span><span>y = x + 2</span></span></span></label>
+    <label class="ch"><input type="radio" name="q12" value="1"><span class="opt"><span class="let">B</span><span><span>y = 2x</span></span></span></label>
+    <label class="ch"><input type="radio" name="q12" value="2"><span class="opt"><span class="let">C</span><span><span>y = x + 4</span></span></span></label>
+    <label class="ch"><input type="radio" name="q12" value="3"><span class="opt"><span class="let">D</span><span><span>y = 2x + 2</span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q13"><div class="q-head"><div class="num">14</div><div class="stem">"30 more than g equals h" in equation is ……</div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 14">
+    <label class="ch"><input type="radio" name="q13" value="0"><span class="opt"><span class="let">A</span><span><span>h = g + 30</span></span></span></label>
+    <label class="ch"><input type="radio" name="q13" value="1"><span class="opt"><span class="let">B</span><span><span>h = 30g</span></span></span></label>
+    <label class="ch"><input type="radio" name="q13" value="2"><span class="opt"><span class="let">C</span><span><span>g = h + 30</span></span></span></label>
+    <label class="ch"><input type="radio" name="q13" value="3"><span class="opt"><span class="let">D</span><span><span>h = g − 30</span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q14"><div class="q-head"><div class="num">15</div><div class="stem">(4, ……) satisfies the equation: y = x + 10
+<br><span>(El Menia – Maghagha 24)</span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 15">
+    <label class="ch"><input type="radio" name="q14" value="0"><span class="opt"><span class="let">A</span><span><span>6</span></span></span></label>
+    <label class="ch"><input type="radio" name="q14" value="1"><span class="opt"><span class="let">B</span><span><span>40</span></span></span></label>
+    <label class="ch"><input type="radio" name="q14" value="2"><span class="opt"><span class="let">C</span><span><span>10</span></span></span></label>
+    <label class="ch"><input type="radio" name="q14" value="3"><span class="opt"><span class="let">D</span><span><span>14</span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <h2 class="sec">Part 3 · Choose the correct answer</h2>
+  <div class="card" id="q15"><div class="q-head"><div class="num">16</div><div class="stem">In the equation: y = 2x, if the input is 5, then the output is ……
+<br><span>(El Menia – Deir Mawas 24)</span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 16">
+    <label class="ch"><input type="radio" name="q15" value="0"><span class="opt"><span class="let">A</span><span><span>12</span></span></span></label>
+    <label class="ch"><input type="radio" name="q15" value="1"><span class="opt"><span class="let">B</span><span><span>50</span></span></span></label>
+    <label class="ch"><input type="radio" name="q15" value="2"><span class="opt"><span class="let">C</span><span><span>0</span></span></span></label>
+    <label class="ch"><input type="radio" name="q15" value="3"><span class="opt"><span class="let">D</span><span><span>10</span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q16"><div class="q-head"><div class="num">17</div><div class="stem">If y = 7 + 2x, then (……, 11) satisfies the equation.</div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 17">
+    <label class="ch"><input type="radio" name="q16" value="0"><span class="opt"><span class="let">A</span><span><span>1</span></span></span></label>
+    <label class="ch"><input type="radio" name="q16" value="1"><span class="opt"><span class="let">B</span><span><span>2</span></span></span></label>
+    <label class="ch"><input type="radio" name="q16" value="2"><span class="opt"><span class="let">C</span><span><span>3</span></span></span></label>
+    <label class="ch"><input type="radio" name="q16" value="3"><span class="opt"><span class="let">D</span><span><span>4</span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q17"><div class="q-head"><div class="num">18</div><div class="stem">In the equation: y = 2x + 10, the constant is ……
+<br><span>(Souhag 24)</span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 18">
+    <label class="ch"><input type="radio" name="q17" value="0"><span class="opt"><span class="let">A</span><span><span>10</span></span></span></label>
+    <label class="ch"><input type="radio" name="q17" value="1"><span class="opt"><span class="let">B</span><span><span>x</span></span></span></label>
+    <label class="ch"><input type="radio" name="q17" value="2"><span class="opt"><span class="let">C</span><span><span>y</span></span></span></label>
+    <label class="ch"><input type="radio" name="q17" value="3"><span class="opt"><span class="let">D</span><span><span>2</span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q18"><div class="q-head"><div class="num">19</div><div class="stem">The dependent variable in the equation: <span class="m">s = 4t + <span class="frac"><b>1</b><b>8</b></span></span> is ……</div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 19">
+    <label class="ch"><input type="radio" name="q18" value="0"><span class="opt"><span class="let">A</span><span><span>s</span></span></span></label>
+    <label class="ch"><input type="radio" name="q18" value="1"><span class="opt"><span class="let">B</span><span><span>4</span></span></span></label>
+    <label class="ch"><input type="radio" name="q18" value="2"><span class="opt"><span class="let">C</span><span><span>t</span></span></span></label>
+    <label class="ch"><input type="radio" name="q18" value="3"><span class="opt"><span class="let">D</span><span><span><span class="frac"><b>1</b><b>8</b></span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q19"><div class="q-head"><div class="num">20</div><div class="stem">The ordered pair which satisfies the equation: y = x + 2 is ……</div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 20">
+    <label class="ch"><input type="radio" name="q19" value="0"><span class="opt"><span class="let">A</span><span><span>(0, 0)</span></span></span></label>
+    <label class="ch"><input type="radio" name="q19" value="1"><span class="opt"><span class="let">B</span><span><span>(1, 2)</span></span></span></label>
+    <label class="ch"><input type="radio" name="q19" value="2"><span class="opt"><span class="let">C</span><span><span>(2, 4)</span></span></span></label>
+    <label class="ch"><input type="radio" name="q19" value="3"><span class="opt"><span class="let">D</span><span><span>(3, 6)</span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q20"><div class="q-head"><div class="num">21</div><div class="stem">The verbal phrase for the equation "y = 3x" is ……</div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 21">
+    <label class="ch"><input type="radio" name="q20" value="0"><span class="opt"><span class="let">A</span><span><span>Add 3.</span></span></span></label>
+    <label class="ch"><input type="radio" name="q20" value="1"><span class="opt"><span class="let">B</span><span><span>Increased by 3.</span></span></span></label>
+    <label class="ch"><input type="radio" name="q20" value="2"><span class="opt"><span class="let">C</span><span><span>Subtract 3.</span></span></span></label>
+    <label class="ch"><input type="radio" name="q20" value="3"><span class="opt"><span class="let">D</span><span><span>Multiply by 3.</span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q21"><div class="q-head"><div class="num">22</div><div class="stem">In the equation: y = x + 1, if the output is 1, then the input is ……</div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 22">
+    <label class="ch"><input type="radio" name="q21" value="0"><span class="opt"><span class="let">A</span><span><span>0</span></span></span></label>
+    <label class="ch"><input type="radio" name="q21" value="1"><span class="opt"><span class="let">B</span><span><span>1</span></span></span></label>
+    <label class="ch"><input type="radio" name="q21" value="2"><span class="opt"><span class="let">C</span><span><span>2</span></span></span></label>
+    <label class="ch"><input type="radio" name="q21" value="3"><span class="opt"><span class="let">D</span><span><span>3</span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <h2 class="sec">Part 4 · Answer the following questions</h2>
+  <div class="card" id="q22"><div class="q-head"><div class="num">23</div><div class="stem">x is the independent variable. The equation for the rule "Add 3" is ……
+<br><span>(El Kalyoubia 24)</span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 23">
+    <label class="ch"><input type="radio" name="q22" value="0"><span class="opt"><span class="let">A</span><span><span>y = 3x</span></span></span></label>
+    <label class="ch"><input type="radio" name="q22" value="1"><span class="opt"><span class="let">B</span><span><span>y = x + 3</span></span></span></label>
+    <label class="ch"><input type="radio" name="q22" value="2"><span class="opt"><span class="let">C</span><span><span>x = y + 3</span></span></span></label>
+    <label class="ch"><input type="radio" name="q22" value="3"><span class="opt"><span class="let">D</span><span><span>y = x − 3</span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q23"><div class="q-head"><div class="num">24</div><div class="stem">In y = x + 3, substitute <span class="m">x = <span class="frac"><b>1</b><b>2</b></span></span> to evaluate y. y = ……
+<br><span>(El Kalyoubia 24)</span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 24">
+    <label class="ch"><input type="radio" name="q23" value="0"><span class="opt"><span class="let">A</span><span><span>6</span></span></span></label>
+    <label class="ch"><input type="radio" name="q23" value="1"><span class="opt"><span class="let">B</span><span><span><span class="m">2<span class="frac"><b>1</b><b>2</b></span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q23" value="2"><span class="opt"><span class="let">C</span><span><span><span class="m">3<span class="frac"><b>1</b><b>2</b></span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q23" value="3"><span class="opt"><span class="let">D</span><span><span><span class="m">1<span class="frac"><b>1</b><b>2</b></span></span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q24"><div class="q-head"><div class="num">25</div><div class="stem">The verbal phrase for: p = 8l is ……</div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 25">
+    <label class="ch"><input type="radio" name="q24" value="0"><span class="opt"><span class="let">A</span><span><span>p equals 8 times l.</span></span></span></label>
+    <label class="ch"><input type="radio" name="q24" value="1"><span class="opt"><span class="let">B</span><span><span>p equals l increased by 8.</span></span></span></label>
+    <label class="ch"><input type="radio" name="q24" value="2"><span class="opt"><span class="let">C</span><span><span>p equals l divided by 8.</span></span></span></label>
+    <label class="ch"><input type="radio" name="q24" value="3"><span class="opt"><span class="let">D</span><span><span>l equals 8 times p.</span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q25"><div class="q-head"><div class="num">26</div><div class="stem">The verbal phrase for: d = 3c + 9 is ……</div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 26">
+    <label class="ch"><input type="radio" name="q25" value="0"><span class="opt"><span class="let">A</span><span><span>d equals 9 times c, increased by 3.</span></span></span></label>
+    <label class="ch"><input type="radio" name="q25" value="1"><span class="opt"><span class="let">B</span><span><span>d equals c increased by 3, then multiplied by 9.</span></span></span></label>
+    <label class="ch"><input type="radio" name="q25" value="2"><span class="opt"><span class="let">C</span><span><span>c equals 3 times d, increased by 9.</span></span></span></label>
+    <label class="ch"><input type="radio" name="q25" value="3"><span class="opt"><span class="let">D</span><span><span>d equals 3 times c, increased by 9.</span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q26"><div class="q-head"><div class="num">27</div><div class="stem">Complete the table according to the equation: y = 3x − 1. The y row is ……
+<svg height="62" role="img" viewbox="0 0 266 62" width="266">
+ <rect fill="#e2f5f4" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="1" y="1"></rect><text fill="#4e3426" font-size="15" font-weight="bold" text-anchor="middle" x="23.0" y="21">x</text><rect fill="#ffffff" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="45" y="1"></rect><text fill="#4e3426" font-size="15" text-anchor="middle" x="67.0" y="21">0</text><rect fill="#ffffff" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="89" y="1"></rect><text fill="#4e3426" font-size="15" text-anchor="middle" x="111.0" y="21">4</text><rect fill="#ffffff" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="133" y="1"></rect><text fill="#4e3426" font-size="15" text-anchor="middle" x="155.0" y="21">8</text><rect fill="#ffffff" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="177" y="1"></rect><text fill="#4e3426" font-size="15" text-anchor="middle" x="199.0" y="21">10</text><rect fill="#ffffff" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="221" y="1"></rect><text fill="#4e3426" font-size="15" text-anchor="middle" x="243.0" y="21">13</text><rect fill="#e2f5f4" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="1" y="31"></rect><text fill="#4e3426" font-size="15" font-weight="bold" text-anchor="middle" x="23.0" y="51">y</text><rect fill="#ffffff" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="45" y="31"></rect><text fill="#4e3426" font-size="15" text-anchor="middle" x="67.0" y="51">?</text><rect fill="#ffffff" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="89" y="31"></rect><text fill="#4e3426" font-size="15" text-anchor="middle" x="111.0" y="51">?</text><rect fill="#ffffff" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="133" y="31"></rect><text fill="#4e3426" font-size="15" text-anchor="middle" x="155.0" y="51">?</text><rect fill="#ffffff" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="177" y="31"></rect><text fill="#4e3426" font-size="15" text-anchor="middle" x="199.0" y="51">?</text><rect fill="#ffffff" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="221" y="31"></rect><text fill="#4e3426" font-size="15" text-anchor="middle" x="243.0" y="51">?</text>
+</svg>
+<br><span>(Assiut 24)</span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 27">
+    <label class="ch"><input type="radio" name="q26" value="0"><span class="opt"><span class="let">A</span><span><span><span><span class="m">1</span>, <span class="m">13</span>, <span class="m">25</span>, <span class="m">31</span>, <span class="m">40</span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q26" value="1"><span class="opt"><span class="let">B</span><span><span><span><span class="m">−1</span>, <span class="m">11</span>, <span class="m">23</span>, <span class="m">29</span>, <span class="m">38</span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q26" value="2"><span class="opt"><span class="let">C</span><span><span><span><span class="m">0</span>, <span class="m">11</span>, <span class="m">23</span>, <span class="m">29</span>, <span class="m">38</span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q26" value="3"><span class="opt"><span class="let">D</span><span><span><span><span class="m">−1</span>, <span class="m">12</span>, <span class="m">24</span>, <span class="m">30</span>, <span class="m">39</span></span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q27"><div class="q-head"><div class="num">28</div><div class="stem">The equation: y = 2x + 1. Complete the table: the ordered pairs are ……
+<svg height="62" role="img" viewbox="0 0 178 62" width="178">
+ <rect fill="#e2f5f4" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="1" y="1"></rect><text fill="#4e3426" font-size="15" font-weight="bold" text-anchor="middle" x="23.0" y="21">x</text><rect fill="#ffffff" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="45" y="1"></rect><text fill="#4e3426" font-size="15" text-anchor="middle" x="67.0" y="21">0</text><rect fill="#ffffff" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="89" y="1"></rect><text fill="#4e3426" font-size="15" text-anchor="middle" x="111.0" y="21">2</text><rect fill="#ffffff" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="133" y="1"></rect><text fill="#4e3426" font-size="15" text-anchor="middle" x="155.0" y="21">4</text><rect fill="#e2f5f4" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="1" y="31"></rect><text fill="#4e3426" font-size="15" font-weight="bold" text-anchor="middle" x="23.0" y="51">y</text><rect fill="#ffffff" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="45" y="31"></rect><text fill="#4e3426" font-size="15" text-anchor="middle" x="67.0" y="51">?</text><rect fill="#ffffff" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="89" y="31"></rect><text fill="#4e3426" font-size="15" text-anchor="middle" x="111.0" y="51">?</text><rect fill="#ffffff" height="30" stroke="#7a5a47" stroke-width="1.2" width="44" x="133" y="31"></rect><text fill="#4e3426" font-size="15" text-anchor="middle" x="155.0" y="51">?</text>
+</svg>
+<br><span>(Alexandria – Middle 24)</span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 28">
+    <label class="ch"><input type="radio" name="q27" value="0"><span class="opt"><span class="let">A</span><span><span><span><span class="m">(0, 1)</span>, <span class="m">(2, 5)</span>, <span class="m">(4, 9)</span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q27" value="1"><span class="opt"><span class="let">B</span><span><span><span><span class="m">(0, 0)</span>, <span class="m">(2, 4)</span>, <span class="m">(4, 8)</span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q27" value="2"><span class="opt"><span class="let">C</span><span><span><span><span class="m">(0, 2)</span>, <span class="m">(2, 6)</span>, <span class="m">(4, 10)</span></span></span></span></span></label>
+    <label class="ch"><input type="radio" name="q27" value="3"><span class="opt"><span class="let">D</span><span><span><span><span class="m">(1, 0)</span>, <span class="m">(5, 2)</span>, <span class="m">(9, 4)</span></span></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+  <div class="card" id="q28"><div class="q-head"><div class="num">29</div><div class="stem">Which graph represents the equation y = 2x + 1?
+<br><span>(Alexandria – Middle 24)</span></div></div>
+   <div class="opts" role="radiogroup" aria-label="Question 29">
+    <label class="ch"><input type="radio" name="q28" value="0"><span class="opt"><span class="let">A</span><span><span>
+ <svg role="img" viewbox="0 0 145 168">
+  <line stroke="#d8cbbd" stroke-width="1" x1="42" x2="42" y1="15" y2="150"></line><line stroke="#d8cbbd" stroke-width="1" x1="64" x2="64" y1="15" y2="150"></line><line stroke="#d8cbbd" stroke-width="1" x1="86" x2="86" y1="15" y2="150"></line><line stroke="#d8cbbd" stroke-width="1" x1="108" x2="108" y1="15" y2="150"></line><line stroke="#d8cbbd" stroke-width="1" x1="130" x2="130" y1="15" y2="150"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="135" y2="135"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="120" y2="120"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="105" y2="105"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="90" y2="90"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="75" y2="75"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="60" y2="60"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="45" y2="45"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="30" y2="30"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="15" y2="15"></line><line fill="none" stroke="#4e3426" stroke-width="1.4" x1="20" x2="138" y1="150" y2="150"></line><line fill="none" stroke="#4e3426" stroke-width="1.4" x1="20" x2="20" y1="150" y2="8"></line><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="162">0</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="42" y="162">1</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="64" y="162">2</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="86" y="162">3</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="108" y="162">4</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="130" y="162">5</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="138">1</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="123">2</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="108">3</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="93">4</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="78">5</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="63">6</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="48">7</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="33">8</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="18">9</text><text fill="#4e3426" font-size="11" text-anchor="middle" x="140" y="146">x</text><text fill="#4e3426" font-size="11" text-anchor="middle" x="30" y="10">y</text><line fill="none" stroke="#c2185b" stroke-width="2.2" x1="20" x2="130" y1="135" y2="60"></line><circle cx="20" cy="135" fill="#c2185b" r="3"></circle><circle cx="64" cy="105" fill="#c2185b" r="3"></circle><circle cx="108" cy="75" fill="#c2185b" r="3"></circle>
+ </svg></span></span></span></label>
+    <label class="ch"><input type="radio" name="q28" value="1"><span class="opt"><span class="let">B</span><span><span>
+ <svg role="img" viewbox="0 0 145 168">
+  <line stroke="#d8cbbd" stroke-width="1" x1="42" x2="42" y1="15" y2="150"></line><line stroke="#d8cbbd" stroke-width="1" x1="64" x2="64" y1="15" y2="150"></line><line stroke="#d8cbbd" stroke-width="1" x1="86" x2="86" y1="15" y2="150"></line><line stroke="#d8cbbd" stroke-width="1" x1="108" x2="108" y1="15" y2="150"></line><line stroke="#d8cbbd" stroke-width="1" x1="130" x2="130" y1="15" y2="150"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="135" y2="135"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="120" y2="120"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="105" y2="105"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="90" y2="90"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="75" y2="75"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="60" y2="60"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="45" y2="45"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="30" y2="30"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="15" y2="15"></line><line fill="none" stroke="#4e3426" stroke-width="1.4" x1="20" x2="138" y1="150" y2="150"></line><line fill="none" stroke="#4e3426" stroke-width="1.4" x1="20" x2="20" y1="150" y2="8"></line><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="162">0</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="42" y="162">1</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="64" y="162">2</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="86" y="162">3</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="108" y="162">4</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="130" y="162">5</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="138">1</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="123">2</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="108">3</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="93">4</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="78">5</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="63">6</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="48">7</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="33">8</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="18">9</text><text fill="#4e3426" font-size="11" text-anchor="middle" x="140" y="146">x</text><text fill="#4e3426" font-size="11" text-anchor="middle" x="30" y="10">y</text><line fill="none" stroke="#c2185b" stroke-width="2.2" x1="20" x2="119" y1="150" y2="15"></line><circle cx="20" cy="150" fill="#c2185b" r="3"></circle><circle cx="64" cy="90" fill="#c2185b" r="3"></circle><circle cx="108" cy="30" fill="#c2185b" r="3"></circle>
+ </svg></span></span></span></label>
+    <label class="ch"><input type="radio" name="q28" value="2"><span class="opt"><span class="let">C</span><span><span>
+ <svg role="img" viewbox="0 0 145 168">
+  <line stroke="#d8cbbd" stroke-width="1" x1="42" x2="42" y1="15" y2="150"></line><line stroke="#d8cbbd" stroke-width="1" x1="64" x2="64" y1="15" y2="150"></line><line stroke="#d8cbbd" stroke-width="1" x1="86" x2="86" y1="15" y2="150"></line><line stroke="#d8cbbd" stroke-width="1" x1="108" x2="108" y1="15" y2="150"></line><line stroke="#d8cbbd" stroke-width="1" x1="130" x2="130" y1="15" y2="150"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="135" y2="135"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="120" y2="120"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="105" y2="105"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="90" y2="90"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="75" y2="75"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="60" y2="60"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="45" y2="45"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="30" y2="30"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="15" y2="15"></line><line fill="none" stroke="#4e3426" stroke-width="1.4" x1="20" x2="138" y1="150" y2="150"></line><line fill="none" stroke="#4e3426" stroke-width="1.4" x1="20" x2="20" y1="150" y2="8"></line><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="162">0</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="42" y="162">1</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="64" y="162">2</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="86" y="162">3</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="108" y="162">4</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="130" y="162">5</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="138">1</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="123">2</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="108">3</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="93">4</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="78">5</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="63">6</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="48">7</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="33">8</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="18">9</text><text fill="#4e3426" font-size="11" text-anchor="middle" x="140" y="146">x</text><text fill="#4e3426" font-size="11" text-anchor="middle" x="30" y="10">y</text><line fill="none" stroke="#c2185b" stroke-width="2.2" x1="20" x2="108" y1="135" y2="15"></line><circle cx="20" cy="135" fill="#c2185b" r="3"></circle><circle cx="64" cy="75" fill="#c2185b" r="3"></circle><circle cx="108" cy="15" fill="#c2185b" r="3"></circle>
+ </svg></span></span></span></label>
+    <label class="ch"><input type="radio" name="q28" value="3"><span class="opt"><span class="let">D</span><span><span>
+ <svg role="img" viewbox="0 0 145 168">
+  <line stroke="#d8cbbd" stroke-width="1" x1="42" x2="42" y1="15" y2="150"></line><line stroke="#d8cbbd" stroke-width="1" x1="64" x2="64" y1="15" y2="150"></line><line stroke="#d8cbbd" stroke-width="1" x1="86" x2="86" y1="15" y2="150"></line><line stroke="#d8cbbd" stroke-width="1" x1="108" x2="108" y1="15" y2="150"></line><line stroke="#d8cbbd" stroke-width="1" x1="130" x2="130" y1="15" y2="150"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="135" y2="135"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="120" y2="120"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="105" y2="105"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="90" y2="90"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="75" y2="75"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="60" y2="60"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="45" y2="45"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="30" y2="30"></line><line stroke="#d8cbbd" stroke-width="1" x1="20" x2="130" y1="15" y2="15"></line><line fill="none" stroke="#4e3426" stroke-width="1.4" x1="20" x2="138" y1="150" y2="150"></line><line fill="none" stroke="#4e3426" stroke-width="1.4" x1="20" x2="20" y1="150" y2="8"></line><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="162">0</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="42" y="162">1</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="64" y="162">2</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="86" y="162">3</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="108" y="162">4</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="130" y="162">5</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="138">1</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="123">2</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="108">3</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="93">4</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="78">5</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="63">6</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="48">7</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="33">8</text><text fill="#4e3426" font-size="9" text-anchor="middle" x="11" y="18">9</text><text fill="#4e3426" font-size="11" text-anchor="middle" x="140" y="146">x</text><text fill="#4e3426" font-size="11" text-anchor="middle" x="30" y="10">y</text><line fill="none" stroke="#c2185b" stroke-width="2.2" x1="20" x2="97" y1="120" y2="15"></line><circle cx="20" cy="120" fill="#c2185b" r="3"></circle><circle cx="64" cy="60" fill="#c2185b" r="3"></circle><circle cx="86" cy="30" fill="#c2185b" r="3"></circle>
+ </svg></span></span></span></label>
+   </div>
+   <div class="why"></div></div>
+
+  </div>
+
+  <div class="card jsonly" id="submitCard">
+    <p class="msg" id="msg"></p>
+    <button class="primary" id="submitBtn" onclick="submitTest()">Submit my answers</button>
+  </div>
+</main>
+<footer>Choose the correct answer for each question, then press Submit.</footer>
+
+<script>
+var TEST_TITLE='Grade 6 - Unit 5 Assessment — Equations';
+var TEST_ID='g6-grade6-unit5-equations';
+var T={"myTests":"My tests","notice":"You are viewing this test in preview mode. Open it online and sign in to submit your answers and see your score.","print":"Print / save result","again":"Try again","submit":"Submit my answers","footer":"Choose the correct answer for each question, then press Submit.","answered":"{n} of {N} answered","left1":"You still have 1 question to answer.","leftN":"You still have {n} questions to answer.","checking":"Checking your answers…","expired":"Your sign-in has expired. Please sign in again.","failed":"Your answers could not be checked. Check your internet and press Submit again.","correct":"Correct. ","correctAnswer":"Correct answer: {L}. ","saved":"Your result is saved.","signedIn":"Signed in as {name}","note100":"Excellent! Full marks.","note80":"Very good work. Check the questions marked in red.","note50":"Good try. Read the explanations and try again.","note0":"Keep practising. Read each explanation below, then try again.","letters":["A","B","C","D"]};
+
+var L=T.letters, attempt=1, busy=false;
+var quiz=document.getElementById('quiz');
+var cards=quiz.querySelectorAll('.card'), N=cards.length;
+
+function fill(s,v){return s.replace(/\{(\w+)\}/g,function(m,k){return v[k];});}
+function inputsOf(i){return cards[i].querySelectorAll('input');}
+function pickedOf(i){var a=inputsOf(i),k;for(k=0;k<a.length;k++){if(a[k].checked)return k;}return -1;}
+
+function updateBar(){
+  var c=0,i;
+  for(i=0;i<N;i++){if(pickedOf(i)>=0){c++;cards[i].classList.remove('missing');}}
+  document.getElementById('barFill').style.width=(c/N*100)+'%';
+  document.getElementById('barText').textContent=fill(T.answered,{n:c,N:N});
+}
+quiz.addEventListener('change',updateBar);
+
+function showMsg(t){var m=document.getElementById('msg');m.textContent=t;m.style.display=t?'block':'none';}
+
+function submitTest(){
+  if(busy)return;
+  if(!PORTAL_SESSION){location.replace('../index.html');return;}
+  var first=-1,left=0,i,picks=[];
+  for(i=0;i<N;i++){
+    var p=pickedOf(i), miss=p<0;
+    cards[i].classList.toggle('missing',miss);
+    if(miss){left++;if(first<0)first=i;}
+    picks.push(p);
+  }
+  if(left){showMsg(fill(left>1?T.leftN:T.left1,{n:left}));cards[first].scrollIntoView();return;}
+  showMsg('');
+  busy=true;
+  var btn=document.getElementById('submitBtn'); btn.disabled=true; btn.textContent=T.checking;
+  Portal.submitTest({testId:TEST_ID,picks:picks,attempt:attempt},function(r){
+    busy=false; btn.disabled=false; btn.textContent=T.submit;
+    if(!r||!r.ok){
+      showMsg(r&&r.error==='signed_out'?T.expired:T.failed);
+      return;
+    }
+    showResult(r);
+  });
+}
+
+function showResult(r){
+  for(var i=0;i<N;i++){
+    var a=inputsOf(i), c=r.correct[i], ok=pickedOf(i)===c, k;
+    for(k=0;k<a.length;k++){if(k===c)a[k].setAttribute('data-c','');else a[k].removeAttribute('data-c');}
+    var w=cards[i].querySelector('.why');
+    w.classList.toggle('bad',!ok);
+    w.innerHTML='<strong>'+(ok?T.correct:fill(T.correctAnswer,{L:L[c]}))+'</strong>'+(r.explanations[i]||'');
+  }
+  quiz.classList.add('graded');
+  var pct=r.percent;
+  document.getElementById('who').textContent=PORTAL_SESSION.name;
+  document.getElementById('score').textContent=r.score+' / '+r.total+'  ('+pct+'%)';
+  document.getElementById('note').textContent=pct===100?T.note100:pct>=80?T.note80:pct>=50?T.note50:T.note0;
+  document.getElementById('saveMsg').textContent=r.saved?T.saved:'';
+  document.getElementById('result').style.display='block';
+  document.getElementById('submitCard').style.display='none';
+  document.getElementById('progress').style.display='none';
+  window.scrollTo(0,0);
+}
+function restart(){
+  var all=quiz.querySelectorAll('input'), k;
+  for(k=0;k<all.length;k++){all[k].checked=false;all[k].removeAttribute('data-c');}
+  var ws=quiz.querySelectorAll('.why'); for(k=0;k<ws.length;k++){ws[k].innerHTML='';ws[k].classList.remove('bad');}
+  attempt++;
+  quiz.classList.remove('graded');
+  updateBar();
+  document.getElementById('result').style.display='none';
+  document.getElementById('submitCard').style.display='block';
+  document.getElementById('progress').style.display='block';
+  window.scrollTo(0,0);
+}
+updateBar();
+if(PORTAL_SESSION){document.getElementById('whoami').textContent=fill(T.signedIn,{name:PORTAL_SESSION.name});}
+</script>
+</body>
+</html>
