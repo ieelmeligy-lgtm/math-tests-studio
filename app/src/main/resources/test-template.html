@@ -62,6 +62,17 @@
   .venn-svg circle{fill:currentColor}
   .venn-svg text{font-size:15px;text-anchor:middle;fill:var(--ink);font-family:"Segoe UI",Roboto,Arial,sans-serif}
   .venn-svg text.lab{font-weight:700;fill:#1f5fa8}
+  /* pictures */
+  .figwrap{text-align:center;margin:6px 0 12px;background:#fff;border-radius:10px;padding:6px}
+  .figimg{display:block;width:100%;height:auto;margin:0 auto}
+  .optimg{display:block;width:100%;max-width:120px!important;height:auto;margin:0 auto}
+  /* drawings (inline SVG figures from Claude) */
+  .figwrap svg{display:block;width:100%;max-width:360px;height:auto;margin:0 auto}
+  .opt svg{display:block;width:100%;max-width:140px;height:auto;margin:0 auto}
+  .stem svg{max-width:100%;height:auto;vertical-align:middle}
+  .stem img,.why img{max-width:100%;height:auto;vertical-align:middle}
+  .opts.pics .opt{justify-content:flex-start}
+  .opt>span:last-child{flex:1;min-width:0}
   button{font:inherit;font-weight:600;border:0;border-radius:10px;padding:13px 20px;cursor:pointer}
   button[disabled]{opacity:.65;cursor:default}
   .primary{background:var(--green);color:#fff;width:100%;font-size:1.05rem}

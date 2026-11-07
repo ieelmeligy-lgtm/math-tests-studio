@@ -111,7 +111,7 @@ public final class Backend {
             ObjectNode o = qs.addObject();
             o.put("no", i + 1);
             o.put("correct", String.valueOf((char) ('A' + q.correctIndex)));
-            o.put("explanation", Html.sanitize(q.explanationHtml));
+            o.put("explanation", d.withImages(Html.sanitize(q.explanationHtml)));
         }
         JsonNode r = call(b);
         if (!r.path("ok").asBoolean()) throw new IOException("The Sheet did not accept the test: " + r.path("error").asText("unknown"));

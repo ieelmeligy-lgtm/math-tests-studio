@@ -9,12 +9,19 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Base64;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
  * Reads a test page made in Claude with the math-tests-portal skill (English or Arabic):
  * question cards with the correct option marked data-c and an explanation in .why.
+ * Pictures come along: those already inside the file (data: URIs) and PNG/JPEG/GIF/WebP files next to it,
+ * which are put inside the page so the site needs no separate image files. Figure blocks placed between a
+ * question and its options (e.g. div.figwrap) are kept too.
  * The answers stay in the app and go to the Sheet; the public page is rebuilt without them.
  */
 public final class TestImporter {
@@ -55,6 +62,7 @@ public final class TestImporter {
 
         Element h1 = doc.selectFirst("header h1, h1");
         d.suggestedTitle = h1 != null ? h1.text().trim() : doc.title().trim();
+        collectImages(doc, file, d);
 
         Element quiz = doc.getElementById("quiz");
         Element scope = quiz != null ? quiz : doc.body();
@@ -82,6 +90,11 @@ public final class TestImporter {
             q.number = Integer.parseInt(label.replaceAll("\\D", "").isEmpty() ? String.valueOf(pos) : label.replaceAll("\\D", ""));
             q.sectionHtml = section;
             q.stemHtml = Html.sanitize(stem.html());
+            for (Element part : el.children()) {
+                if (part.is(".q-head, .opts, .why, input, script, style") || part.selectFirst(".stem, input") != null) continue;
+                String fig = Html.sanitize(part.is("img, svg") ? part.outerHtml() : part.html());
+                if (!fig.isEmpty()) q.figuresHtml.add(fig);
+            }
 
             int marked = 0, correct = -1;
             for (int k = 0; k < inputs.size(); k++) {
@@ -130,6 +143,46 @@ public final class TestImporter {
             d.questions.add(q);
         }
         return d;
+    }
+
+    /**
+     * Moves every picture into the draft and points its img at it with src="img:N", so the editor stays readable.
+     * A picture given as a file (e.g. src="q5.png" next to the HTML) is read and put inside the page.
+     */
+    private static void collectImages(Document doc, Path file, TestDraft d) {
+        Map<String, String> seen = new HashMap<>();
+        Path dir = file.toAbsolutePath().getParent();
+        for (Element img : doc.select("img[src]")) {
+            String src = img.attr("src").trim();
+            String uri = Html.DATA_IMAGE.matcher(src).matches() ? src.replaceAll("\\s", "") : fromFile(dir, src);
+            if (uri == null) {
+                d.notes.add("A picture could not be read and was left out: " + (src.length() > 60 ? src.substring(0, 60) + "…" : src));
+                continue;
+            }
+            String ref = seen.get(uri);
+            if (ref == null) {
+                ref = "img:" + (d.images.size() + 1);
+                seen.put(uri, ref);
+                d.images.put(ref, uri);
+            }
+            img.attr("src", ref);
+        }
+    }
+
+    /** A picture file next to the test file as a data: URI, or null when it is not a local PNG/JPEG/GIF/WebP. */
+    private static String fromFile(Path dir, String src) {
+        if (dir == null || src.isEmpty() || src.matches("(?i)^[a-z][a-z0-9+.-]*:.*") || src.startsWith("//")) return null;
+        String name = src.replaceAll("[?#].*$", "").replace("%20", " ");
+        Matcher ext = Pattern.compile("(?i)\\.(png|jpe?g|gif|webp)$").matcher(name);
+        if (!ext.find()) return null;
+        Path p = dir.resolve(name).normalize();
+        try {
+            if (!Files.isRegularFile(p)) return null;
+            String type = ext.group(1).toLowerCase(Locale.ROOT).replace("jpg", "jpeg");
+            return "data:image/" + type + ";base64," + Base64.getEncoder().encodeToString(Files.readAllBytes(p));
+        } catch (IOException | RuntimeException e) {
+            return null;
+        }
     }
 
     /** The visible option next to a radio input: the .opt span in the same label. */

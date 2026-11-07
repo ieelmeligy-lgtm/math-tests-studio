@@ -104,12 +104,17 @@ public final class PageBuilder {
             if (!sec.isEmpty() && !sec.equals(section)) qs.append("  <h2 class=\"sec\">").append(sec).append("</h2>\n");
             section = sec;
             qs.append("  <div class=\"card\" id=\"q").append(i).append("\"><div class=\"q-head\"><div class=\"num\">")
-              .append(i + 1).append("</div><div class=\"stem\">").append(Html.sanitize(q.stemHtml)).append("</div></div>\n");
-            qs.append("   <div class=\"opts\" role=\"radiogroup\" aria-label=\"").append(ar ? "السؤال " : "Question ").append(i + 1).append("\">\n");
+              .append(i + 1).append("</div><div class=\"stem\">").append(d.withImages(Html.sanitize(q.stemHtml))).append("</div></div>\n");
+            for (String fig : q.figuresHtml) {
+                String f = Html.sanitize(fig);
+                if (!f.isEmpty()) qs.append("   <div class=\"figwrap\" dir=\"ltr\">").append(d.withImages(f)).append("</div>\n");
+            }
+            boolean pics = q.optionsHtml.stream().anyMatch(o -> o.contains("<img"));
+            qs.append("   <div class=\"opts").append(pics ? " pics" : "").append("\" role=\"radiogroup\" aria-label=\"").append(ar ? "السؤال " : "Question ").append(i + 1).append("\">\n");
             for (int k = 0; k < q.optionsHtml.size(); k++) {
                 qs.append("    <label class=\"ch\"><input type=\"radio\" name=\"q").append(i).append("\" value=\"").append(k)
                   .append("\"><span class=\"opt\"><span class=\"let\">").append(letters.get(k)).append("</span><span>")
-                  .append(Html.sanitize(q.optionsHtml.get(k))).append("</span></span></label>\n");
+                  .append(d.withImages(Html.sanitize(q.optionsHtml.get(k)))).append("</span></span></label>\n");
             }
             qs.append("   </div>\n   <div class=\"why\"></div></div>\n");
         }

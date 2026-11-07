@@ -230,6 +230,7 @@ public final class ReviewDialog extends JDialog {
         flag.setIcon(!q.misprintNote.isBlank() ? Icons.get("warning", 18) : q.optionsWrittenByClaude ? Icons.get("pencil", 18) : null);
         String f = (!q.misprintNote.isBlank() ? q.misprintNote + "   " : "")
                 + (q.optionsWrittenByClaude ? "Options written by Claude   " : "")
+                + (q.figuresHtml.isEmpty() ? "" : q.figuresHtml.size() == 1 ? "1 figure   " : q.figuresHtml.size() + " figures   ")
                 + (q.sectionHtml.isBlank() ? "" : "Part: " + Html.toPlain(q.sectionHtml));
         flag.setText(f.isEmpty() ? " " : f);
     }
@@ -294,7 +295,7 @@ public final class ReviewDialog extends JDialog {
             // Links back to the site will not work.
             List<Integer> key = new ArrayList<>();
             List<String> expl = new ArrayList<>();
-            for (TestDraft.Question q : draft.questions) { key.add(q.correctIndex); expl.add(Html.sanitize(q.explanationHtml)); }
+            for (TestDraft.Question q : draft.questions) { key.add(q.correctIndex); expl.add(draft.withImages(Html.sanitize(q.explanationHtml))); }
             String data = Backend.JSON.writeValueAsString(List.of(key, expl)).replace("<", "\\u003c");
             String stub = "<script>var Portal={requireLogin:function(){return {name:'Preview'};},submitTest:function(d,cb){"
                     + "var k=" + data + ",c=k[0],s=0,i;for(i=0;i<c.length;i++){if(d.picks[i]===c[i])s++;}"
